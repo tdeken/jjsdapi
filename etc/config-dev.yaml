@@ -1,0 +1,35 @@
+# 服务器配置
+server:
+  env: dev #local dev test prod
+  port: "13100"
+
+logger:
+  std_out: true
+  file_out: true
+  path: ./logs/server.log
+  max_size: 10
+  max_backups: 5
+  max_age: 30
+  compress: false
+
+database:
+  url: root:123456@tcp(127.0.0.1:3306)/bazaar?charset=utf8mb4&parseTime=True&loc=Local
+  max_idle_conn: 10
+  max_open_conn: 20
+  conn_max_lifetime: 1h0m0s
+  slow_threshold: 300ms
+
+redis:
+  addr: 127.0.0.1:6379
+  password: secret_redis
+  db: 0
+  sentinel:
+  sentinel_master_name:
+
+alert:
+  feishu:
+    url: "https://open.feishu.cn/open-apis/bot/v2/hook/747c9575-66cd-4701-a691-cdf544056683"
+    secret: "KcATHHyFtGp7BUPfRW465e"
+  scenes:
+    - { url: "https://open.feishu.cn/open-apis/bot/v2/hook/be94c172-66c7-4915-9eae-4f7a885975a2", secret: "CzWcDpDeEMDnlALJ4E8SUd", scene: "normal" }
+    - { url: "https://open.feishu.cn/open-apis/bot/v2/hook/be94c172-66c7-4915-9eae-4f7a885975a2", secret: "CzWcDpDeEMDnlALJ4E8SUd", scene: "notice" }

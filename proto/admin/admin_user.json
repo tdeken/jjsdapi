@@ -1,0 +1,33 @@
+{
+  "group": {
+    "name": "AdminUser",
+    "desc": "后台用户"
+  },
+  "interfaces": [
+    {
+      "name": "Login",
+      "desc": "登陆",
+      "method": "POST",
+      "req": {
+        "fields": [
+          {"name": "username", "class": "string", "desc": "用户名", "validate": "required"},
+          {"name": "password", "class": "string", "desc": "密码", "validate": "required"}
+        ]
+      },
+      "res": {
+        "fields": [
+          {"name": "token", "class": "string", "desc": "token"},
+          {"name": "name", "class": "string", "desc": "name"}
+        ]
+      }
+    },
+    {
+      "name": "Logout",
+      "desc": "登出",
+      "method": "GET",
+      "mid_type": "admin_jwt",
+      "req": {},
+      "res": {}
+    }
+  ]
+}

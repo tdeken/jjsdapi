@@ -1,0 +1,37 @@
+{
+  "group": {
+    "name": "Customer",
+    "desc": "客户数据"
+  },
+  "interfaces": [
+    {
+      "name": "AddressList",
+      "desc": "配送地址列表",
+      "method": "GET",
+      "req": {
+        "fields": [
+          {"name": "page", "class": "int32", "desc": "当前页"},
+          {"name": "per_page", "class": "int32", "desc": "每页条数"}
+        ]
+      },
+      "res": {
+        "fields": [
+          {"name": "list", "class": "[]?One", "desc": "列表数据"},
+          {"name": "total", "class": "int64", "desc": "数据总条数"}
+        ],
+        "messages": [
+          {
+            "name": "One",
+            "fields": [
+              {"name": "id", "class": "int64", "desc": "地址id"},
+              {"name": "title", "class": "string", "desc": "商店名称"},
+              {"name": "address", "class": "string", "desc": "商店地址"},
+              {"name": "tel", "class": "string", "desc": "联系电话"},
+              {"name": "created_date", "class": "string", "desc": "创建时间"}
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

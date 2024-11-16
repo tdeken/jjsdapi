@@ -1,0 +1,701 @@
+2024/11/14 10:51:00.023	ERROR	orm/logger.go:82	[dev] /Users/branchcn/Project/go/src/jjsdapi/plugins/orm/orm.go:43 [error] failed to initialize database, got error Error 1045 (28000): Access denied for user 'root'@'172.17.0.1' (using password: YES) (gorm)
+jjsdapi/plugins/orm.DefaultLogger.Error
+	/Users/branchcn/Project/go/src/jjsdapi/plugins/orm/logger.go:82
+gorm.io/gorm.Open
+	/Users/branchcn/Project/go/pkg/mod/gorm.io/gorm@v1.25.12/gorm.go:214
+jjsdapi/plugins/orm.NewPlugin
+	/Users/branchcn/Project/go/src/jjsdapi/plugins/orm/orm.go:43
+jjsdapi/internal/app.InitDB
+	/Users/branchcn/Project/go/src/jjsdapi/internal/app/mysql.go:19
+jjsdapi/internal/boot.Init
+	/Users/branchcn/Project/go/src/jjsdapi/internal/boot/boot.go:37
+main.main
+	/Users/branchcn/Project/go/src/jjsdapi/cmd/jjsdapi/jjsdapi.go:12
+runtime.main
+	/usr/local/go/src/runtime/proc.go:272
+2024/11/14 16:33:08.372	INFO	mid/common.go:50	[dev] [Request] 2024-11-14 16:33:08 | 204 |     54.884µs | 127.0.0.1 | OPTIONS /vue-admin-template/user/info, res: No Content
+2024/11/14 16:33:08.374	INFO	mid/common.go:50	[dev] [csqrbh23l4k3kphn8tu0] [Request] 2024-11-14 16:33:08 | 200 |    498.357µs | 127.0.0.1 | GET     /vue-admin-template/user/info, res: 
+2024/11/14 16:33:11.142	INFO	mid/common.go:50	[dev] [Request] 2024-11-14 16:33:11 | 204 |      7.175µs | 127.0.0.1 | OPTIONS /admin/admin-user/login, res: No Content
+2024/11/14 16:33:11.144	INFO	mid/common.go:50	[dev] [csqrbhq3l4k3kphn8tug] [Request] 2024-11-14 16:33:11 | 200 |    351.025µs | 127.0.0.1 | POST    /admin/admin-user/login, res: 
+2024/11/14 16:33:11.144	ERROR	mid/common.go:29	[dev] [csqrbhq3l4k3kphn8tug] 环境:dev
+请求服务:[POST]/admin/admin-user/login
+请求rawData:{"username":"admin","password":"111111"}
+错误内容:runtime error: invalid memory address or nil pointer dereference
+堆栈信息:
+/Users/branchcn/Project/go/src/jjsdapi/internal/fiber/mid/common.go:29 jjsdapi/internal/fiber/server.server.Recover.func1.1
+/usr/local/go/src/runtime/panic.go:785 runtime.gopanic
+/usr/local/go/src/runtime/panic.go:262 runtime.panicmem
+/usr/local/go/src/runtime/signal_unix.go:900 runtime.sigpanic
+/Users/branchcn/Project/go/pkg/mod/gorm.io/gorm@v1.25.12/gorm.go:223 gorm.io/gorm.(*DB).Session
+/Users/branchcn/Project/go/pkg/mod/gorm.io/gorm@v1.25.12/gorm.go:324 gorm.io/gorm.(*DB).WithContext
+
+jjsdapi/internal/fiber/server.server.Recover.func1.1
+	/Users/branchcn/Project/go/src/jjsdapi/internal/fiber/mid/common.go:29
+runtime.gopanic
+	/usr/local/go/src/runtime/panic.go:785
+runtime.panicmem
+	/usr/local/go/src/runtime/panic.go:262
+runtime.sigpanic
+	/usr/local/go/src/runtime/signal_unix.go:900
+gorm.io/gorm.(*DB).Session
+	/Users/branchcn/Project/go/pkg/mod/gorm.io/gorm@v1.25.12/gorm.go:223
+gorm.io/gorm.(*DB).WithContext
+	/Users/branchcn/Project/go/pkg/mod/gorm.io/gorm@v1.25.12/gorm.go:324
+gorm.io/gen.(*DO).WithContext
+	/Users/branchcn/Project/go/pkg/mod/gorm.io/gen@v0.3.26/do.go:167
+jjsdapi/internal/repository/dao.adminUserDo.WithContext
+	/Users/branchcn/Project/go/src/jjsdapi/internal/repository/dao/admin_user.gen.go:146
+jjsdapi/internal/repository/dao.(*adminUser).WithContext
+	/Users/branchcn/Project/go/src/jjsdapi/internal/repository/dao/admin_user.gen.go:85
+jjsdapi/internal/service/admin.AdminUser.Login
+	/Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/admin_user.go:21
+jjsdapi/internal/handler/admin.AdminUser.Login
+	/Users/branchcn/Project/go/src/jjsdapi/internal/handler/admin/admin_user.go:17
+github.com/gofiber/fiber/v2.(*App).next
+	/Users/branchcn/Project/go/pkg/mod/github.com/gofiber/fiber/v2@v2.52.5/router.go:145
+github.com/gofiber/fiber/v2.(*Ctx).Next
+	/Users/branchcn/Project/go/pkg/mod/github.com/gofiber/fiber/v2@v2.52.5/ctx.go:1034
+jjsdapi/internal/fiber/mid.TraceId.New.func2
+	/Users/branchcn/Project/go/pkg/mod/github.com/gofiber/fiber/v2@v2.52.5/middleware/requestid/requestid.go:31
+github.com/gofiber/fiber/v2.(*Ctx).Next
+	/Users/branchcn/Project/go/pkg/mod/github.com/gofiber/fiber/v2@v2.52.5/ctx.go:1031
+github.com/gofiber/fiber/v2/middleware/cors.New.func1
+	/Users/branchcn/Project/go/pkg/mod/github.com/gofiber/fiber/v2@v2.52.5/middleware/cors/cors.go:227
+github.com/gofiber/fiber/v2.(*Ctx).Next
+	/Users/branchcn/Project/go/pkg/mod/github.com/gofiber/fiber/v2@v2.52.5/ctx.go:1031
+jjsdapi/internal/fiber/server.server.Logger.func2
+	/Users/branchcn/Project/go/src/jjsdapi/internal/fiber/mid/common.go:61
+github.com/gofiber/fiber/v2.(*Ctx).Next
+	/Users/branchcn/Project/go/pkg/mod/github.com/gofiber/fiber/v2@v2.52.5/ctx.go:1031
+jjsdapi/internal/fiber/server.server.Recover.func1
+	/Users/branchcn/Project/go/src/jjsdapi/internal/fiber/mid/common.go:39
+github.com/gofiber/fiber/v2.(*App).next
+	/Users/branchcn/Project/go/pkg/mod/github.com/gofiber/fiber/v2@v2.52.5/router.go:145
+github.com/gofiber/fiber/v2.(*App).handler
+	/Users/branchcn/Project/go/pkg/mod/github.com/gofiber/fiber/v2@v2.52.5/router.go:172
+github.com/valyala/fasthttp.(*Server).serveConn
+	/Users/branchcn/Project/go/pkg/mod/github.com/valyala/fasthttp@v1.57.0/server.go:2385
+github.com/valyala/fasthttp.(*workerPool).workerFunc
+	/Users/branchcn/Project/go/pkg/mod/github.com/valyala/fasthttp@v1.57.0/workerpool.go:225
+github.com/valyala/fasthttp.(*workerPool).getCh.func1
+	/Users/branchcn/Project/go/pkg/mod/github.com/valyala/fasthttp@v1.57.0/workerpool.go:197
+2024/11/14 16:33:44.779	INFO	mid/common.go:50	[dev] [Request] 2024-11-14 16:33:44 | 204 |     11.521µs | 127.0.0.1 | OPTIONS /admin/admin-user/login, res: No Content
+2024/11/14 16:33:44.781	INFO	mid/common.go:50	[dev] [csqrbq23l4k3kphn8tv0] [Request] 2024-11-14 16:33:44 | 200 |     53.119µs | 127.0.0.1 | POST    /admin/admin-user/login, res: 
+2024/11/14 16:33:44.781	ERROR	mid/common.go:29	[dev] [csqrbq23l4k3kphn8tv0] 环境:dev
+请求服务:[POST]/admin/admin-user/login
+请求rawData:{"username":"admin","password":"111111"}
+错误内容:runtime error: invalid memory address or nil pointer dereference
+堆栈信息:
+/Users/branchcn/Project/go/src/jjsdapi/internal/fiber/mid/common.go:29 jjsdapi/internal/fiber/server.server.Recover.func1.1
+/usr/local/go/src/runtime/panic.go:785 runtime.gopanic
+/usr/local/go/src/runtime/panic.go:262 runtime.panicmem
+/usr/local/go/src/runtime/signal_unix.go:900 runtime.sigpanic
+/Users/branchcn/Project/go/pkg/mod/gorm.io/gorm@v1.25.12/gorm.go:223 gorm.io/gorm.(*DB).Session
+/Users/branchcn/Project/go/pkg/mod/gorm.io/gorm@v1.25.12/gorm.go:324 gorm.io/gorm.(*DB).WithContext
+
+jjsdapi/internal/fiber/server.server.Recover.func1.1
+	/Users/branchcn/Project/go/src/jjsdapi/internal/fiber/mid/common.go:29
+runtime.gopanic
+	/usr/local/go/src/runtime/panic.go:785
+runtime.panicmem
+	/usr/local/go/src/runtime/panic.go:262
+runtime.sigpanic
+	/usr/local/go/src/runtime/signal_unix.go:900
+gorm.io/gorm.(*DB).Session
+	/Users/branchcn/Project/go/pkg/mod/gorm.io/gorm@v1.25.12/gorm.go:223
+gorm.io/gorm.(*DB).WithContext
+	/Users/branchcn/Project/go/pkg/mod/gorm.io/gorm@v1.25.12/gorm.go:324
+gorm.io/gen.(*DO).WithContext
+	/Users/branchcn/Project/go/pkg/mod/gorm.io/gen@v0.3.26/do.go:167
+jjsdapi/internal/repository/dao.adminUserDo.WithContext
+	/Users/branchcn/Project/go/src/jjsdapi/internal/repository/dao/admin_user.gen.go:146
+jjsdapi/internal/repository/dao.(*adminUser).WithContext
+	/Users/branchcn/Project/go/src/jjsdapi/internal/repository/dao/admin_user.gen.go:85
+jjsdapi/internal/service/admin.AdminUser.Login
+	/Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/admin_user.go:21
+jjsdapi/internal/handler/admin.AdminUser.Login
+	/Users/branchcn/Project/go/src/jjsdapi/internal/handler/admin/admin_user.go:17
+github.com/gofiber/fiber/v2.(*App).next
+	/Users/branchcn/Project/go/pkg/mod/github.com/gofiber/fiber/v2@v2.52.5/router.go:145
+github.com/gofiber/fiber/v2.(*Ctx).Next
+	/Users/branchcn/Project/go/pkg/mod/github.com/gofiber/fiber/v2@v2.52.5/ctx.go:1034
+jjsdapi/internal/fiber/mid.TraceId.New.func2
+	/Users/branchcn/Project/go/pkg/mod/github.com/gofiber/fiber/v2@v2.52.5/middleware/requestid/requestid.go:31
+github.com/gofiber/fiber/v2.(*Ctx).Next
+	/Users/branchcn/Project/go/pkg/mod/github.com/gofiber/fiber/v2@v2.52.5/ctx.go:1031
+github.com/gofiber/fiber/v2/middleware/cors.New.func1
+	/Users/branchcn/Project/go/pkg/mod/github.com/gofiber/fiber/v2@v2.52.5/middleware/cors/cors.go:227
+github.com/gofiber/fiber/v2.(*Ctx).Next
+	/Users/branchcn/Project/go/pkg/mod/github.com/gofiber/fiber/v2@v2.52.5/ctx.go:1031
+jjsdapi/internal/fiber/server.server.Logger.func2
+	/Users/branchcn/Project/go/src/jjsdapi/internal/fiber/mid/common.go:61
+github.com/gofiber/fiber/v2.(*Ctx).Next
+	/Users/branchcn/Project/go/pkg/mod/github.com/gofiber/fiber/v2@v2.52.5/ctx.go:1031
+jjsdapi/internal/fiber/server.server.Recover.func1
+	/Users/branchcn/Project/go/src/jjsdapi/internal/fiber/mid/common.go:39
+github.com/gofiber/fiber/v2.(*App).next
+	/Users/branchcn/Project/go/pkg/mod/github.com/gofiber/fiber/v2@v2.52.5/router.go:145
+github.com/gofiber/fiber/v2.(*App).handler
+	/Users/branchcn/Project/go/pkg/mod/github.com/gofiber/fiber/v2@v2.52.5/router.go:172
+github.com/valyala/fasthttp.(*Server).serveConn
+	/Users/branchcn/Project/go/pkg/mod/github.com/valyala/fasthttp@v1.57.0/server.go:2385
+github.com/valyala/fasthttp.(*workerPool).workerFunc
+	/Users/branchcn/Project/go/pkg/mod/github.com/valyala/fasthttp@v1.57.0/workerpool.go:225
+github.com/valyala/fasthttp.(*workerPool).getCh.func1
+	/Users/branchcn/Project/go/pkg/mod/github.com/valyala/fasthttp@v1.57.0/workerpool.go:197
+2024/11/14 16:35:01.186	INFO	mid/common.go:50	[dev] [Request] 2024-11-14 16:35:01 | 204 |      9.852µs | 127.0.0.1 | OPTIONS /admin/admin-user/login, res: No Content
+2024/11/14 16:35:01.188	INFO	mid/common.go:50	[dev] [csqrcda3l4k3kphn8tvg] [Request] 2024-11-14 16:35:01 | 200 |     96.781µs | 127.0.0.1 | POST    /admin/admin-user/login, res: 
+2024/11/14 16:35:01.188	ERROR	mid/common.go:29	[dev] [csqrcda3l4k3kphn8tvg] 环境:dev
+请求服务:[POST]/admin/admin-user/login
+请求rawData:{"username":"admin","password":"111111"}
+错误内容:runtime error: invalid memory address or nil pointer dereference
+堆栈信息:
+/Users/branchcn/Project/go/src/jjsdapi/internal/fiber/mid/common.go:29 jjsdapi/internal/fiber/server.server.Recover.func1.1
+/usr/local/go/src/runtime/panic.go:785 runtime.gopanic
+/usr/local/go/src/runtime/panic.go:262 runtime.panicmem
+/usr/local/go/src/runtime/signal_unix.go:900 runtime.sigpanic
+/Users/branchcn/Project/go/pkg/mod/gorm.io/gorm@v1.25.12/gorm.go:223 gorm.io/gorm.(*DB).Session
+/Users/branchcn/Project/go/pkg/mod/gorm.io/gorm@v1.25.12/gorm.go:324 gorm.io/gorm.(*DB).WithContext
+
+jjsdapi/internal/fiber/server.server.Recover.func1.1
+	/Users/branchcn/Project/go/src/jjsdapi/internal/fiber/mid/common.go:29
+runtime.gopanic
+	/usr/local/go/src/runtime/panic.go:785
+runtime.panicmem
+	/usr/local/go/src/runtime/panic.go:262
+runtime.sigpanic
+	/usr/local/go/src/runtime/signal_unix.go:900
+gorm.io/gorm.(*DB).Session
+	/Users/branchcn/Project/go/pkg/mod/gorm.io/gorm@v1.25.12/gorm.go:223
+gorm.io/gorm.(*DB).WithContext
+	/Users/branchcn/Project/go/pkg/mod/gorm.io/gorm@v1.25.12/gorm.go:324
+gorm.io/gen.(*DO).WithContext
+	/Users/branchcn/Project/go/pkg/mod/gorm.io/gen@v0.3.26/do.go:167
+jjsdapi/internal/repository/dao.adminUserDo.WithContext
+	/Users/branchcn/Project/go/src/jjsdapi/internal/repository/dao/admin_user.gen.go:146
+jjsdapi/internal/repository/dao.(*adminUser).WithContext
+	/Users/branchcn/Project/go/src/jjsdapi/internal/repository/dao/admin_user.gen.go:85
+jjsdapi/internal/service/admin.AdminUser.Login
+	/Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/admin_user.go:21
+jjsdapi/internal/handler/admin.AdminUser.Login
+	/Users/branchcn/Project/go/src/jjsdapi/internal/handler/admin/admin_user.go:17
+github.com/gofiber/fiber/v2.(*App).next
+	/Users/branchcn/Project/go/pkg/mod/github.com/gofiber/fiber/v2@v2.52.5/router.go:145
+github.com/gofiber/fiber/v2.(*Ctx).Next
+	/Users/branchcn/Project/go/pkg/mod/github.com/gofiber/fiber/v2@v2.52.5/ctx.go:1034
+jjsdapi/internal/fiber/mid.TraceId.New.func2
+	/Users/branchcn/Project/go/pkg/mod/github.com/gofiber/fiber/v2@v2.52.5/middleware/requestid/requestid.go:31
+github.com/gofiber/fiber/v2.(*Ctx).Next
+	/Users/branchcn/Project/go/pkg/mod/github.com/gofiber/fiber/v2@v2.52.5/ctx.go:1031
+github.com/gofiber/fiber/v2/middleware/cors.New.func1
+	/Users/branchcn/Project/go/pkg/mod/github.com/gofiber/fiber/v2@v2.52.5/middleware/cors/cors.go:227
+github.com/gofiber/fiber/v2.(*Ctx).Next
+	/Users/branchcn/Project/go/pkg/mod/github.com/gofiber/fiber/v2@v2.52.5/ctx.go:1031
+jjsdapi/internal/fiber/server.server.Logger.func2
+	/Users/branchcn/Project/go/src/jjsdapi/internal/fiber/mid/common.go:61
+github.com/gofiber/fiber/v2.(*Ctx).Next
+	/Users/branchcn/Project/go/pkg/mod/github.com/gofiber/fiber/v2@v2.52.5/ctx.go:1031
+jjsdapi/internal/fiber/server.server.Recover.func1
+	/Users/branchcn/Project/go/src/jjsdapi/internal/fiber/mid/common.go:39
+github.com/gofiber/fiber/v2.(*App).next
+	/Users/branchcn/Project/go/pkg/mod/github.com/gofiber/fiber/v2@v2.52.5/router.go:145
+github.com/gofiber/fiber/v2.(*App).handler
+	/Users/branchcn/Project/go/pkg/mod/github.com/gofiber/fiber/v2@v2.52.5/router.go:172
+github.com/valyala/fasthttp.(*Server).serveConn
+	/Users/branchcn/Project/go/pkg/mod/github.com/valyala/fasthttp@v1.57.0/server.go:2385
+github.com/valyala/fasthttp.(*workerPool).workerFunc
+	/Users/branchcn/Project/go/pkg/mod/github.com/valyala/fasthttp@v1.57.0/workerpool.go:225
+github.com/valyala/fasthttp.(*workerPool).getCh.func1
+	/Users/branchcn/Project/go/pkg/mod/github.com/valyala/fasthttp@v1.57.0/workerpool.go:197
+2024/11/14 16:37:08.542	INFO	mid/common.go:50	[dev] [Request] 2024-11-14 16:37:08 | 204 |      27.92µs | 127.0.0.1 | OPTIONS /admin/admin-user/login, res: No Content
+2024/11/14 16:37:08.544	INFO	mid/common.go:50	[dev] [csqrdd23l4k706mggk9g] [Request] 2024-11-14 16:37:08 | 200 |     317.61µs | 127.0.0.1 | POST    /admin/admin-user/login, res: 
+2024/11/14 16:37:08.545	ERROR	mid/common.go:29	[dev] [csqrdd23l4k706mggk9g] 环境:dev
+请求服务:[POST]/admin/admin-user/login
+请求rawData:{"username":"admin","password":"111111"}
+错误内容:runtime error: invalid memory address or nil pointer dereference
+堆栈信息:
+/Users/branchcn/Project/go/src/jjsdapi/internal/fiber/mid/common.go:29 jjsdapi/internal/fiber/server.server.Recover.func1.1
+/usr/local/go/src/runtime/panic.go:785 runtime.gopanic
+/usr/local/go/src/runtime/panic.go:262 runtime.panicmem
+/usr/local/go/src/runtime/signal_unix.go:900 runtime.sigpanic
+/Users/branchcn/Project/go/pkg/mod/gorm.io/gorm@v1.25.12/gorm.go:223 gorm.io/gorm.(*DB).Session
+/Users/branchcn/Project/go/pkg/mod/gorm.io/gorm@v1.25.12/gorm.go:324 gorm.io/gorm.(*DB).WithContext
+
+jjsdapi/internal/fiber/server.server.Recover.func1.1
+	/Users/branchcn/Project/go/src/jjsdapi/internal/fiber/mid/common.go:29
+runtime.gopanic
+	/usr/local/go/src/runtime/panic.go:785
+runtime.panicmem
+	/usr/local/go/src/runtime/panic.go:262
+runtime.sigpanic
+	/usr/local/go/src/runtime/signal_unix.go:900
+gorm.io/gorm.(*DB).Session
+	/Users/branchcn/Project/go/pkg/mod/gorm.io/gorm@v1.25.12/gorm.go:223
+gorm.io/gorm.(*DB).WithContext
+	/Users/branchcn/Project/go/pkg/mod/gorm.io/gorm@v1.25.12/gorm.go:324
+gorm.io/gen.(*DO).WithContext
+	/Users/branchcn/Project/go/pkg/mod/gorm.io/gen@v0.3.26/do.go:167
+jjsdapi/internal/repository/dao.adminUserDo.WithContext
+	/Users/branchcn/Project/go/src/jjsdapi/internal/repository/dao/admin_user.gen.go:146
+jjsdapi/internal/repository/dao.(*adminUser).WithContext
+	/Users/branchcn/Project/go/src/jjsdapi/internal/repository/dao/admin_user.gen.go:85
+jjsdapi/internal/service/admin.AdminUser.Login
+	/Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/admin_user.go:24
+jjsdapi/internal/handler/admin.AdminUser.Login
+	/Users/branchcn/Project/go/src/jjsdapi/internal/handler/admin/admin_user.go:17
+github.com/gofiber/fiber/v2.(*App).next
+	/Users/branchcn/Project/go/pkg/mod/github.com/gofiber/fiber/v2@v2.52.5/router.go:145
+github.com/gofiber/fiber/v2.(*Ctx).Next
+	/Users/branchcn/Project/go/pkg/mod/github.com/gofiber/fiber/v2@v2.52.5/ctx.go:1034
+jjsdapi/internal/fiber/mid.TraceId.New.func2
+	/Users/branchcn/Project/go/pkg/mod/github.com/gofiber/fiber/v2@v2.52.5/middleware/requestid/requestid.go:31
+github.com/gofiber/fiber/v2.(*Ctx).Next
+	/Users/branchcn/Project/go/pkg/mod/github.com/gofiber/fiber/v2@v2.52.5/ctx.go:1031
+github.com/gofiber/fiber/v2/middleware/cors.New.func1
+	/Users/branchcn/Project/go/pkg/mod/github.com/gofiber/fiber/v2@v2.52.5/middleware/cors/cors.go:227
+github.com/gofiber/fiber/v2.(*Ctx).Next
+	/Users/branchcn/Project/go/pkg/mod/github.com/gofiber/fiber/v2@v2.52.5/ctx.go:1031
+jjsdapi/internal/fiber/server.server.Logger.func2
+	/Users/branchcn/Project/go/src/jjsdapi/internal/fiber/mid/common.go:61
+github.com/gofiber/fiber/v2.(*Ctx).Next
+	/Users/branchcn/Project/go/pkg/mod/github.com/gofiber/fiber/v2@v2.52.5/ctx.go:1031
+jjsdapi/internal/fiber/server.server.Recover.func1
+	/Users/branchcn/Project/go/src/jjsdapi/internal/fiber/mid/common.go:39
+github.com/gofiber/fiber/v2.(*App).next
+	/Users/branchcn/Project/go/pkg/mod/github.com/gofiber/fiber/v2@v2.52.5/router.go:145
+github.com/gofiber/fiber/v2.(*App).handler
+	/Users/branchcn/Project/go/pkg/mod/github.com/gofiber/fiber/v2@v2.52.5/router.go:172
+github.com/valyala/fasthttp.(*Server).serveConn
+	/Users/branchcn/Project/go/pkg/mod/github.com/valyala/fasthttp@v1.57.0/server.go:2385
+github.com/valyala/fasthttp.(*workerPool).workerFunc
+	/Users/branchcn/Project/go/pkg/mod/github.com/valyala/fasthttp@v1.57.0/workerpool.go:225
+github.com/valyala/fasthttp.(*workerPool).getCh.func1
+	/Users/branchcn/Project/go/pkg/mod/github.com/valyala/fasthttp@v1.57.0/workerpool.go:197
+2024/11/14 16:38:37.665	INFO	mid/common.go:50	[dev] [Request] 2024-11-14 16:38:37 | 204 |     76.163µs | 127.0.0.1 | OPTIONS /admin/admin-user/login, res: No Content
+2024/11/14 16:38:37.672	INFO	orm/logger.go:114	[dev] [csqre3a3l4k7embisc8g] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/admin_user.go:24 [5.422ms] [rows:0] SELECT * FROM `admin_user` WHERE `admin_user`.`username` = 'admin' AND `admin_user`.`deleted_at` = 0 ORDER BY `admin_user`.`id` LIMIT 1 (gorm)
+2024/11/14 16:38:37.672	INFO	mid/common.go:50	[dev] [csqre3a3l4k7embisc8g] [Request] 2024-11-14 16:38:37 | 200 |   5.900167ms | 127.0.0.1 | POST    /admin/admin-user/login, res: {"code":0,"msg":"record not found","data":null}
+2024/11/14 16:40:58.150	INFO	mid/common.go:50	[dev] [Request] 2024-11-14 16:40:58 | 204 |      24.75µs | 127.0.0.1 | OPTIONS /admin/admin-user/login, res: No Content
+2024/11/14 16:40:58.155	INFO	orm/logger.go:114	[dev] [csqrf6i3l4k85ldt03ng] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/admin_user.go:25 [3.948ms] [rows:0] SELECT * FROM `admin_user` WHERE `admin_user`.`username` = 'admin' AND `admin_user`.`deleted_at` = 0 ORDER BY `admin_user`.`id` LIMIT 1 (gorm)
+2024/11/14 16:40:58.155	INFO	mid/common.go:50	[dev] [csqrf6i3l4k85ldt03ng] [Request] 2024-11-14 16:40:58 | 200 |   4.377358ms | 127.0.0.1 | POST    /admin/admin-user/login, res: {"code":10001,"msg":"用户名或密码错误","data":null}
+2024/11/14 16:45:31.609	INFO	mid/common.go:50	[dev] [Request] 2024-11-14 16:45:31 | 204 |     17.011µs | 127.0.0.1 | OPTIONS /admin/admin-user/login, res: No Content
+2024/11/14 16:45:31.617	INFO	orm/logger.go:114	[dev] [csqrhaq3l4k85ldt03o0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/admin_user.go:25 [5.445ms] [rows:0] SELECT * FROM `admin_user` WHERE `admin_user`.`username` = 'admin' AND `admin_user`.`deleted_at` = 0 ORDER BY `admin_user`.`id` LIMIT 1 (gorm)
+2024/11/14 16:45:31.618	INFO	mid/common.go:50	[dev] [csqrhaq3l4k85ldt03o0] [Request] 2024-11-14 16:45:31 | 200 |   5.944814ms | 127.0.0.1 | POST    /admin/admin-user/login, res: {"code":10001,"msg":"用户名或密码错误","data":null}
+2024/11/15 10:39:48.499	INFO	mid/common.go:50	[dev] [Request] 2024-11-15 10:39:48 | 204 |    671.361µs | 127.0.0.1 | OPTIONS /admin/admin-user/login, res: No Content
+2024/11/15 10:39:48.549	INFO	orm/logger.go:114	[dev] [csrb8t23l4k85ldt03og] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/admin_user.go:25 [45.138ms] [rows:0] SELECT * FROM `admin_user` WHERE `admin_user`.`username` = 'admin' AND `admin_user`.`deleted_at` = 0 ORDER BY `admin_user`.`id` LIMIT 1 (gorm)
+2024/11/15 10:39:48.550	INFO	mid/common.go:50	[dev] [csrb8t23l4k85ldt03og] [Request] 2024-11-15 10:39:48 | 200 |  46.754697ms | 127.0.0.1 | POST    /admin/admin-user/login, res: {"code":10001,"msg":"用户名或密码错误","data":null}
+2024/11/15 18:07:44.300	INFO	mid/common.go:50	[dev] [Request] 2024-11-15 18:07:44 | 204 |    452.517µs | 127.0.0.1 | OPTIONS /admin/admin-user/login, res: No Content
+2024/11/15 18:07:44.414	INFO	orm/logger.go:114	[dev] [csrhqs23l4k85ldt03p0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/admin_user.go:25 [108.860ms] [rows:0] SELECT * FROM `admin_user` WHERE `admin_user`.`username` = 'admin' AND `admin_user`.`deleted_at` = 0 ORDER BY `admin_user`.`id` LIMIT 1 (gorm)
+2024/11/15 18:07:44.415	INFO	mid/common.go:50	[dev] [csrhqs23l4k85ldt03p0] [Request] 2024-11-15 18:07:44 | 200 | 110.941206ms | 127.0.0.1 | POST    /admin/admin-user/login, res: {"code":10001,"msg":"用户名或密码错误","data":null}
+2024/11/15 18:35:11.605	INFO	mid/common.go:50	[dev] [Request] 2024-11-15 18:35:11 | 204 |    160.434µs | 127.0.0.1 | OPTIONS /admin/admin-user/login, res: No Content
+2024/11/15 18:35:11.617	INFO	orm/logger.go:114	[dev] [csri7nq3l4k85ldt03pg] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/admin_user.go:25 [6.969ms] [rows:0] SELECT * FROM `admin_user` WHERE `admin_user`.`username` = 'admin' AND `admin_user`.`deleted_at` = 0 ORDER BY `admin_user`.`id` LIMIT 1 (gorm)
+2024/11/15 18:35:11.617	INFO	mid/common.go:50	[dev] [csri7nq3l4k85ldt03pg] [Request] 2024-11-15 18:35:11 | 200 |   8.399595ms | 127.0.0.1 | POST    /admin/admin-user/login, res: {"code":10001,"msg":"用户名或密码错误","data":null}
+2024/11/15 18:35:12.398	INFO	mid/common.go:50	[dev] [Request] 2024-11-15 18:35:12 | 204 |     24.634µs | 127.0.0.1 | OPTIONS /admin/admin-user/login, res: No Content
+2024/11/15 18:35:12.405	INFO	orm/logger.go:114	[dev] [csri7o23l4k85ldt03q0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/admin_user.go:25 [4.760ms] [rows:0] SELECT * FROM `admin_user` WHERE `admin_user`.`username` = 'admin' AND `admin_user`.`deleted_at` = 0 ORDER BY `admin_user`.`id` LIMIT 1 (gorm)
+2024/11/15 18:35:12.405	INFO	mid/common.go:50	[dev] [csri7o23l4k85ldt03q0] [Request] 2024-11-15 18:35:12 | 200 |   4.993202ms | 127.0.0.1 | POST    /admin/admin-user/login, res: {"code":10001,"msg":"用户名或密码错误","data":null}
+2024/11/15 18:35:18.848	INFO	mid/common.go:50	[dev] [Request] 2024-11-15 18:35:18 | 204 |     36.155µs | 127.0.0.1 | OPTIONS /admin/admin-user/login, res: No Content
+2024/11/15 18:35:18.855	INFO	orm/logger.go:114	[dev] [csri7pi3l4k85ldt03qg] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/admin_user.go:25 [4.811ms] [rows:0] SELECT * FROM `admin_user` WHERE `admin_user`.`username` = 'admin' AND `admin_user`.`deleted_at` = 0 ORDER BY `admin_user`.`id` LIMIT 1 (gorm)
+2024/11/15 18:35:18.856	INFO	mid/common.go:50	[dev] [csri7pi3l4k85ldt03qg] [Request] 2024-11-15 18:35:18 | 200 |   6.332069ms | 127.0.0.1 | POST    /admin/admin-user/login, res: {"code":10001,"msg":"用户名或密码错误","data":null}
+2024/11/15 18:35:19.386	INFO	mid/common.go:50	[dev] [Request] 2024-11-15 18:35:19 | 204 |    731.686µs | 127.0.0.1 | OPTIONS /admin/admin-user/login, res: No Content
+2024/11/15 18:35:19.392	INFO	orm/logger.go:114	[dev] [csri7pq3l4k85ldt03r0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/admin_user.go:25 [3.189ms] [rows:0] SELECT * FROM `admin_user` WHERE `admin_user`.`username` = 'admin' AND `admin_user`.`deleted_at` = 0 ORDER BY `admin_user`.`id` LIMIT 1 (gorm)
+2024/11/15 18:35:19.392	INFO	mid/common.go:50	[dev] [csri7pq3l4k85ldt03r0] [Request] 2024-11-15 18:35:19 | 200 |   3.400257ms | 127.0.0.1 | POST    /admin/admin-user/login, res: {"code":10001,"msg":"用户名或密码错误","data":null}
+2024/11/15 18:35:19.768	INFO	mid/common.go:50	[dev] [Request] 2024-11-15 18:35:19 | 204 |      8.191µs | 127.0.0.1 | OPTIONS /admin/admin-user/login, res: No Content
+2024/11/15 18:35:19.777	INFO	orm/logger.go:114	[dev] [csri7pq3l4k85ldt03rg] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/admin_user.go:25 [7.074ms] [rows:0] SELECT * FROM `admin_user` WHERE `admin_user`.`username` = 'admin' AND `admin_user`.`deleted_at` = 0 ORDER BY `admin_user`.`id` LIMIT 1 (gorm)
+2024/11/15 18:35:19.778	INFO	mid/common.go:50	[dev] [csri7pq3l4k85ldt03rg] [Request] 2024-11-15 18:35:19 | 200 |   7.518021ms | 127.0.0.1 | POST    /admin/admin-user/login, res: {"code":10001,"msg":"用户名或密码错误","data":null}
+2024/11/15 18:36:16.533	INFO	mid/common.go:50	[dev] [Request] 2024-11-15 18:36:16 | 204 |      25.04µs | 127.0.0.1 | OPTIONS /admin/admin-user/login, res: No Content
+2024/11/15 18:36:16.544	INFO	orm/logger.go:114	[dev] [csri8823l4k85ldt03s0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/admin_user.go:25 [9.000ms] [rows:1] SELECT * FROM `admin_user` WHERE `admin_user`.`username` = 'admin' AND `admin_user`.`deleted_at` = 0 ORDER BY `admin_user`.`id` LIMIT 1 (gorm)
+2024/11/15 18:36:16.566	INFO	mid/common.go:50	[dev] [csri8823l4k85ldt03s0] [Request] 2024-11-15 18:36:16 | 200 |   32.27758ms | 127.0.0.1 | POST    /admin/admin-user/login, res: {"code":0,"msg":"","data":{"token":"eyJhbGciOiJIUzI1NiIsInNhbHQiOiJCc290cUgiLCJzaWduIjoiMTg0Y2IyZGY0NTA4MTBhOGM1ZDA0YjJhYTQ4ZGIzYWIiLCJ0eXAiOiJKV1QiLCJ2ZXIiOiJ2MSJ9.eyJ1c2VyX2lkIjoxLCJpc3MiOiJjZXJ0aWZpZWQiLCJzdWIiOiIxIiwiZXhwIjoxNzMyMjcxNzc2LCJuYmYiOjE3MzE2NjY5NzYsImlhdCI6MTczMTY2Njk3NiwianRpIjoiY3NyaTg4MjNsNGs4NWxkdDAzc2cifQ.mg9OxkVGpk0XRFa4-eNJY3fwzRbMv7_YXnAaJCnP_m4"}}
+2024/11/15 18:36:54.270	INFO	mid/common.go:50	[dev] [Request] 2024-11-15 18:36:54 | 204 |     21.951µs | 127.0.0.1 | OPTIONS /admin/admin-user/login, res: No Content
+2024/11/15 18:36:54.284	INFO	orm/logger.go:114	[dev] [csri8hi3l4ke847er5n0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/admin_user.go:25 [12.216ms] [rows:1] SELECT * FROM `admin_user` WHERE `admin_user`.`username` = 'admin' AND `admin_user`.`deleted_at` = 0 ORDER BY `admin_user`.`id` LIMIT 1 (gorm)
+2024/11/15 18:36:54.287	INFO	mid/common.go:50	[dev] [csri8hi3l4ke847er5n0] [Request] 2024-11-15 18:36:54 | 200 |  15.302264ms | 127.0.0.1 | POST    /admin/admin-user/login, res: {"code":0,"msg":"","data":{"token":"eyJhbGciOiJIUzI1NiIsInNhbHQiOiJvNWhNaEMiLCJzaWduIjoiOWZiOGFhNTZlNzY5MDk5ZDIyZGFjMzNmZTkyMDU2YjMiLCJ0eXAiOiJKV1QiLCJ2ZXIiOiJ2MSJ9.eyJ1c2VyX2lkIjoxLCJpc3MiOiJjZXJ0aWZpZWQiLCJzdWIiOiIxIiwiZXhwIjoxNzMyMjcxODE0LCJuYmYiOjE3MzE2NjcwMTQsImlhdCI6MTczMTY2NzAxNCwianRpIjoiY3NyaThoaTNsNGtlODQ3ZXI1bmcifQ.kVOTOSNRw2yaUzYbl4ljeNMBvqDGcU40evPx83DQ6FM"}}
+2024/11/15 18:38:07.472	INFO	mid/common.go:50	[dev] [Request] 2024-11-15 18:38:07 | 204 |     25.781µs | 127.0.0.1 | OPTIONS /admin/admin-user/login, res: No Content
+2024/11/15 18:38:07.485	INFO	orm/logger.go:114	[dev] [csri93q3l4kev9c3nqhg] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/admin_user.go:25 [11.162ms] [rows:1] SELECT * FROM `admin_user` WHERE `admin_user`.`username` = 'admin' AND `admin_user`.`deleted_at` = 0 ORDER BY `admin_user`.`id` LIMIT 1 (gorm)
+2024/11/15 18:38:07.488	INFO	mid/common.go:50	[dev] [csri93q3l4kev9c3nqhg] [Request] 2024-11-15 18:38:07 | 200 |  14.362828ms | 127.0.0.1 | POST    /admin/admin-user/login, res: {"code":200,"msg":"ok","data":{"token":"eyJhbGciOiJIUzI1NiIsInNhbHQiOiJFb0l1UjEiLCJzaWduIjoiZWEwYTIzYjNjYjk5YTk4YWM1OWFiYzVkYzVmYmU2NTMiLCJ0eXAiOiJKV1QiLCJ2ZXIiOiJ2MSJ9.eyJ1c2VyX2lkIjoxLCJpc3MiOiJjZXJ0aWZpZWQiLCJzdWIiOiIxIiwiZXhwIjoxNzMyMjcxODg3LCJuYmYiOjE3MzE2NjcwODcsImlhdCI6MTczMTY2NzA4NywianRpIjoiY3NyaTkzcTNsNGtldjljM25xaTAifQ.kWFcaQSGYkyLcyBO3KtRUFfmS72MgJibuQLJVSVTAUQ"}}
+2024/11/15 18:38:07.501	INFO	mid/common.go:50	[dev] [Request] 2024-11-15 18:38:07 | 204 |     10.368µs | 127.0.0.1 | OPTIONS /vue-admin-template/user/info, res: No Content
+2024/11/15 18:38:07.504	INFO	mid/common.go:50	[dev] [csri93q3l4kev9c3nqig] [Request] 2024-11-15 18:38:07 | 200 |     41.583µs | 127.0.0.1 | GET     /vue-admin-template/user/info, res: 
+2024/11/15 18:38:14.289	INFO	mid/common.go:50	[dev] [Request] 2024-11-15 18:38:14 | 204 |      7.125µs | 127.0.0.1 | OPTIONS /admin/admin-user/login, res: No Content
+2024/11/15 18:38:14.297	INFO	orm/logger.go:114	[dev] [csri95i3l4kev9c3nqj0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/admin_user.go:25 [7.101ms] [rows:1] SELECT * FROM `admin_user` WHERE `admin_user`.`username` = 'admin' AND `admin_user`.`deleted_at` = 0 ORDER BY `admin_user`.`id` LIMIT 1 (gorm)
+2024/11/15 18:38:14.300	INFO	mid/common.go:50	[dev] [csri95i3l4kev9c3nqj0] [Request] 2024-11-15 18:38:14 | 200 |   9.678892ms | 127.0.0.1 | POST    /admin/admin-user/login, res: {"code":200,"msg":"ok","data":{"token":"eyJhbGciOiJIUzI1NiIsInNhbHQiOiJ1aWlLN0QiLCJzaWduIjoiZTc2NzRhYjQ3OTdhYTc2Y2UwNDI1NDU1N2ExZmU1ODMiLCJ0eXAiOiJKV1QiLCJ2ZXIiOiJ2MSJ9.eyJ1c2VyX2lkIjoxLCJpc3MiOiJjZXJ0aWZpZWQiLCJzdWIiOiIxIiwiZXhwIjoxNzMyMjcxODk0LCJuYmYiOjE3MzE2NjcwOTQsImlhdCI6MTczMTY2NzA5NCwianRpIjoiY3NyaTk1aTNsNGtldjljM25xamcifQ.X_y4ef3CleErSIi8-evJfp9xbXV4ld7vfUzf0vtrtUc"}}
+2024/11/15 18:38:14.313	INFO	mid/common.go:50	[dev] [Request] 2024-11-15 18:38:14 | 204 |     11.056µs | 127.0.0.1 | OPTIONS /vue-admin-template/user/info, res: No Content
+2024/11/15 18:38:14.316	INFO	mid/common.go:50	[dev] [csri95i3l4kev9c3nqk0] [Request] 2024-11-15 18:38:14 | 200 |     12.769µs | 127.0.0.1 | GET     /vue-admin-template/user/info, res: 
+2024/11/15 18:45:08.139	INFO	mid/common.go:50	[dev] [Request] 2024-11-15 18:45:08 | 204 |     28.949µs | 127.0.0.1 | OPTIONS /admin/admin-user/login, res: No Content
+2024/11/15 18:45:08.148	INFO	orm/logger.go:114	[dev] [csricd23l4k3bfcme7f0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/admin_user.go:25 [6.920ms] [rows:1] SELECT * FROM `admin_user` WHERE `admin_user`.`username` = 'admin' AND `admin_user`.`deleted_at` = 0 ORDER BY `admin_user`.`id` LIMIT 1 (gorm)
+2024/11/15 18:45:08.150	INFO	mid/common.go:50	[dev] [csricd23l4k3bfcme7f0] [Request] 2024-11-15 18:45:08 | 200 |   9.544717ms | 127.0.0.1 | POST    /admin/admin-user/login, res: {"code":200,"msg":"ok","data":{"token":"eyJhbGciOiJIUzI1NiIsInNhbHQiOiJpakdlZG8iLCJzaWduIjoiYTRkYTc4MGI5MmNiNGU2NjZjNjBkNWU0ODZlZDcwZGUiLCJ0eXAiOiJKV1QiLCJ2ZXIiOiJ2MSJ9.eyJ1c2VyX2lkIjoxLCJpc3MiOiJjZXJ0aWZpZWQiLCJzdWIiOiIxIiwiZXhwIjoxNzMyMjcyMzA4LCJuYmYiOjE3MzE2Njc1MDgsImlhdCI6MTczMTY2NzUwOCwianRpIjoiY3NyaWNkMjNsNGszYmZjbWU3ZmcifQ.DLIpmbDHspPmjL8s2RlPonBl1BAVK9tgTPEq8mnxpaE","name":"admin"}}
+2024/11/15 18:45:08.159	INFO	mid/common.go:50	[dev] [Request] 2024-11-15 18:45:08 | 204 |      10.62µs | 127.0.0.1 | OPTIONS /vue-admin-template/user/info, res: No Content
+2024/11/15 18:45:08.161	INFO	mid/common.go:50	[dev] [csricd23l4k3bfcme7g0] [Request] 2024-11-15 18:45:08 | 200 |     39.389µs | 127.0.0.1 | GET     /vue-admin-template/user/info, res: 
+2024/11/15 18:46:51.947	INFO	mid/common.go:50	[dev] [Request] 2024-11-15 18:46:51 | 204 |     12.535µs | 127.0.0.1 | OPTIONS /admin/admin-user/login, res: No Content
+2024/11/15 18:46:51.955	INFO	orm/logger.go:114	[dev] [csrid6q3l4k3bfcme7gg] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/admin_user.go:25 [6.224ms] [rows:1] SELECT * FROM `admin_user` WHERE `admin_user`.`username` = 'admin' AND `admin_user`.`deleted_at` = 0 ORDER BY `admin_user`.`id` LIMIT 1 (gorm)
+2024/11/15 18:46:51.955	INFO	mid/common.go:50	[dev] [csrid6q3l4k3bfcme7gg] [Request] 2024-11-15 18:46:51 | 200 |   6.686915ms | 127.0.0.1 | POST    /admin/admin-user/login, res: {"code":10001,"msg":"用户名或密码错误","data":null}
+2024/11/15 18:47:00.708	INFO	mid/common.go:50	[dev] [Request] 2024-11-15 18:47:00 | 204 |      9.067µs | 127.0.0.1 | OPTIONS /admin/admin-user/login, res: No Content
+2024/11/15 18:47:00.714	INFO	orm/logger.go:114	[dev] [csrid923l4k3bfcme7h0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/admin_user.go:25 [5.054ms] [rows:1] SELECT * FROM `admin_user` WHERE `admin_user`.`username` = 'admin' AND `admin_user`.`deleted_at` = 0 ORDER BY `admin_user`.`id` LIMIT 1 (gorm)
+2024/11/15 18:47:00.716	INFO	mid/common.go:50	[dev] [csrid923l4k3bfcme7h0] [Request] 2024-11-15 18:47:00 | 200 |   7.007678ms | 127.0.0.1 | POST    /admin/admin-user/login, res: {"code":200,"msg":"ok","data":{"token":"eyJhbGciOiJIUzI1NiIsInNhbHQiOiJ4SDBmTFYiLCJzaWduIjoiNWU1NDk5YzA3YWIyMjE4YWY2MzQ5ZjQ3ZWU4NzJhYzciLCJ0eXAiOiJKV1QiLCJ2ZXIiOiJ2MSJ9.eyJ1c2VyX2lkIjoxLCJpc3MiOiJjZXJ0aWZpZWQiLCJzdWIiOiIxIiwiZXhwIjoxNzMyMjcyNDIwLCJuYmYiOjE3MzE2Njc2MjAsImlhdCI6MTczMTY2NzYyMCwianRpIjoiY3NyaWQ5MjNsNGszYmZjbWU3aGcifQ.lEmDPZBhZHidgSih-xgkcIuYKAyKHA4a0R5yVidVCUw","name":"admin"}}
+2024/11/15 18:48:09.602	INFO	mid/common.go:50	[dev] [Request] 2024-11-15 18:48:09 | 204 |      8.989µs | 127.0.0.1 | OPTIONS /vue-admin-template/user/info, res: No Content
+2024/11/15 18:48:09.604	INFO	mid/common.go:50	[dev] [csridqa3l4k3bfcme7i0] [Request] 2024-11-15 18:48:09 | 200 |     10.836µs | 127.0.0.1 | GET     /vue-admin-template/user/info, res: 
+2024/11/15 18:50:08.436	INFO	mid/common.go:50	[dev] [Request] 2024-11-15 18:50:08 | 204 |      7.476µs | 127.0.0.1 | OPTIONS /admin/admin-user/login, res: No Content
+2024/11/15 18:50:08.441	INFO	orm/logger.go:114	[dev] [csrieo23l4k3bfcme7ig] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/admin_user.go:25 [4.010ms] [rows:1] SELECT * FROM `admin_user` WHERE `admin_user`.`username` = 'admin' AND `admin_user`.`deleted_at` = 0 ORDER BY `admin_user`.`id` LIMIT 1 (gorm)
+2024/11/15 18:50:08.441	INFO	mid/common.go:50	[dev] [csrieo23l4k3bfcme7ig] [Request] 2024-11-15 18:50:08 | 200 |   4.229032ms | 127.0.0.1 | POST    /admin/admin-user/login, res: {"code":10001,"msg":"用户名或密码错误","data":null}
+2024/11/15 18:50:15.783	INFO	mid/common.go:50	[dev] [Request] 2024-11-15 18:50:15 | 204 |       8.68µs | 127.0.0.1 | OPTIONS /admin/admin-user/login, res: No Content
+2024/11/15 18:50:15.789	INFO	orm/logger.go:114	[dev] [csriepq3l4k3bfcme7j0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/admin_user.go:25 [4.155ms] [rows:1] SELECT * FROM `admin_user` WHERE `admin_user`.`username` = 'admin' AND `admin_user`.`deleted_at` = 0 ORDER BY `admin_user`.`id` LIMIT 1 (gorm)
+2024/11/15 18:50:15.792	INFO	mid/common.go:50	[dev] [csriepq3l4k3bfcme7j0] [Request] 2024-11-15 18:50:15 | 200 |   7.073093ms | 127.0.0.1 | POST    /admin/admin-user/login, res: {"code":200,"msg":"ok","data":{"token":"eyJhbGciOiJIUzI1NiIsInNhbHQiOiJUMEcwTEUiLCJzaWduIjoiNWE3NzVkODkyODVkYmIzY2Q4NmJjZTMwOWE1N2VmNTIiLCJ0eXAiOiJKV1QiLCJ2ZXIiOiJ2MSJ9.eyJ1c2VyX2lkIjoxLCJpc3MiOiJjZXJ0aWZpZWQiLCJzdWIiOiIxIiwiZXhwIjoxNzMyMjcyNjE1LCJuYmYiOjE3MzE2Njc4MTUsImlhdCI6MTczMTY2NzgxNSwianRpIjoiY3NyaWVwcTNsNGszYmZjbWU3amcifQ.OqiN8qb3IuOMpcS29uCoV18L_FsVmUUsJ63WoD5hxnM","name":"admin"}}
+2024/11/15 18:50:35.746	INFO	mid/common.go:50	[dev] [Request] 2024-11-15 18:50:35 | 204 |      7.833µs | 127.0.0.1 | OPTIONS /admin/admin-user/logout, res: No Content
+2024/11/15 18:50:35.747	INFO	mid/common.go:50	[dev] [csrieuq3l4k3bfcme7k0] [Request] 2024-11-15 18:50:35 | 200 |     10.172µs | 127.0.0.1 | GET     /admin/admin-user/logout, res: 
+2024/11/15 18:50:41.729	INFO	mid/common.go:50	[dev] [Request] 2024-11-15 18:50:41 | 204 |      7.091µs | 127.0.0.1 | OPTIONS /admin/admin-user/logout, res: No Content
+2024/11/15 18:50:41.730	INFO	mid/common.go:50	[dev] [csrif0a3l4k3bfcme7kg] [Request] 2024-11-15 18:50:41 | 200 |      6.275µs | 127.0.0.1 | GET     /admin/admin-user/logout, res: 
+2024/11/15 18:50:57.599	INFO	mid/common.go:50	[dev] [Request] 2024-11-15 18:50:57 | 204 |      8.592µs | 127.0.0.1 | OPTIONS /admin/admin-user/logout, res: No Content
+2024/11/15 18:50:57.602	INFO	mid/common.go:50	[dev] [csrif4a3l4k3bfcme7l0] [Request] 2024-11-15 18:50:57 | 200 |     10.478µs | 127.0.0.1 | GET     /admin/admin-user/logout, res: 
+2024/11/15 18:52:40.035	INFO	mid/common.go:50	[dev] [Request] 2024-11-15 18:52:40 | 204 |     23.319µs | 127.0.0.1 | OPTIONS /admin/admin-user/logout, res: No Content
+2024/11/15 18:52:40.041	INFO	mid/common.go:50	[dev] [csrifu23l4k84jscp8dg] [Request] 2024-11-15 18:52:40 | 200 |   3.739672ms | 127.0.0.1 | GET     /admin/admin-user/logout, res: {"code":200,"msg":"ok","data":{}}
+2024/11/15 18:52:41.258	INFO	mid/common.go:50	[dev] [Request] 2024-11-15 18:52:41 | 204 |      8.047µs | 127.0.0.1 | OPTIONS /admin/admin-user/login, res: No Content
+2024/11/15 18:52:41.271	INFO	orm/logger.go:114	[dev] [csrifua3l4k84jscp8e0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/admin_user.go:25 [11.018ms] [rows:1] SELECT * FROM `admin_user` WHERE `admin_user`.`username` = 'admin' AND `admin_user`.`deleted_at` = 0 ORDER BY `admin_user`.`id` LIMIT 1 (gorm)
+2024/11/15 18:52:41.271	INFO	mid/common.go:50	[dev] [csrifua3l4k84jscp8e0] [Request] 2024-11-15 18:52:41 | 200 |  11.692338ms | 127.0.0.1 | POST    /admin/admin-user/login, res: {"code":10001,"msg":"用户名或密码错误","data":null}
+2024/11/15 18:52:45.770	INFO	mid/common.go:50	[dev] [Request] 2024-11-15 18:52:45 | 204 |      10.59µs | 127.0.0.1 | OPTIONS /admin/admin-user/login, res: No Content
+2024/11/15 18:52:45.775	INFO	orm/logger.go:114	[dev] [csrifva3l4k84jscp8eg] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/admin_user.go:25 [4.133ms] [rows:1] SELECT * FROM `admin_user` WHERE `admin_user`.`username` = 'admin' AND `admin_user`.`deleted_at` = 0 ORDER BY `admin_user`.`id` LIMIT 1 (gorm)
+2024/11/15 18:52:45.779	INFO	mid/common.go:50	[dev] [csrifva3l4k84jscp8eg] [Request] 2024-11-15 18:52:45 | 200 |   8.227421ms | 127.0.0.1 | POST    /admin/admin-user/login, res: {"code":200,"msg":"ok","data":{"token":"eyJhbGciOiJIUzI1NiIsInNhbHQiOiJrUWkyNE4iLCJzaWduIjoiMzRiYzQ1YzVmZjg3YjU0ZmYyN2VmNThjMmNkZTA0ZTAiLCJ0eXAiOiJKV1QiLCJ2ZXIiOiJ2MSJ9.eyJ1c2VyX2lkIjoxLCJpc3MiOiJjZXJ0aWZpZWQiLCJzdWIiOiIxIiwiZXhwIjoxNzMyMjcyNzY1LCJuYmYiOjE3MzE2Njc5NjUsImlhdCI6MTczMTY2Nzk2NSwianRpIjoiY3NyaWZ2YTNsNGs4NGpzY3A4ZjAifQ.3eismPQsd2KIc2n9Oa22cJ5ZUlHmbuprZ1KH0wie8yI","name":"admin"}}
+2024/11/15 18:54:42.790	INFO	mid/common.go:50	[dev] [Request] 2024-11-15 18:54:42 | 204 |     41.488µs | 127.0.0.1 | OPTIONS /admin/admin-user/logout, res: No Content
+2024/11/15 18:54:42.794	INFO	mid/common.go:50	[dev] [csrigsi3l4k84jscp8fg] [Request] 2024-11-15 18:54:42 | 200 |    1.92221ms | 127.0.0.1 | GET     /admin/admin-user/logout, res: {"code":200,"msg":"ok","data":{}}
+2024/11/16 12:55:39.077	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 12:55:39 | 204 |     44.682µs | 127.0.0.1 | OPTIONS /admin/admin-user/login, res: No Content
+2024/11/16 12:55:39.105	INFO	orm/logger.go:114	[dev] [css2biq3l4k84jscp8g0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/admin_user.go:25 [22.407ms] [rows:1] SELECT * FROM `admin_user` WHERE `admin_user`.`username` = 'admin' AND `admin_user`.`deleted_at` = 0 ORDER BY `admin_user`.`id` LIMIT 1 (gorm)
+2024/11/16 12:55:39.106	INFO	mid/common.go:50	[dev] [css2biq3l4k84jscp8g0] [Request] 2024-11-16 12:55:39 | 200 |  23.747399ms | 127.0.0.1 | POST    /admin/admin-user/login, res: {"code":10001,"msg":"用户名或密码错误","data":null}
+2024/11/16 12:56:00.167	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 12:56:00 | 204 |     19.681µs | 127.0.0.1 | OPTIONS /admin/admin-user/login, res: No Content
+2024/11/16 12:56:00.174	INFO	orm/logger.go:114	[dev] [css2bo23l4k84jscp8gg] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/admin_user.go:25 [4.481ms] [rows:1] SELECT * FROM `admin_user` WHERE `admin_user`.`username` = 'admin' AND `admin_user`.`deleted_at` = 0 ORDER BY `admin_user`.`id` LIMIT 1 (gorm)
+2024/11/16 12:56:00.183	INFO	mid/common.go:50	[dev] [css2bo23l4k84jscp8gg] [Request] 2024-11-16 12:56:00 | 200 |  13.652502ms | 127.0.0.1 | POST    /admin/admin-user/login, res: {"code":200,"msg":"ok","data":{"token":"eyJhbGciOiJIUzI1NiIsInNhbHQiOiJuRmM3UzgiLCJzaWduIjoiZjU1MmQxOTMyZDJlNzlhZmMzZWU5Nzk4MTliZDU5YTQiLCJ0eXAiOiJKV1QiLCJ2ZXIiOiJ2MSJ9.eyJ1c2VyX2lkIjoxLCJpc3MiOiJjZXJ0aWZpZWQiLCJzdWIiOiIxIiwiZXhwIjoxNzMyMzM3NzYwLCJuYmYiOjE3MzE3MzI5NjAsImlhdCI6MTczMTczMjk2MCwianRpIjoiY3NzMmJvMjNsNGs4NGpzY3A4aDAifQ.DnXP7oOFASG8xMBeq50THOqCQ3Lfe8hxqCXZV8x6ACA","name":"admin"}}
+2024/11/16 12:56:00.192	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 12:56:00 | 204 |     14.979µs | 127.0.0.1 | OPTIONS /vue-admin-template/user/info, res: No Content
+2024/11/16 12:56:00.195	INFO	mid/common.go:50	[dev] [css2bo23l4k84jscp8hg] [Request] 2024-11-16 12:56:00 | 200 |     54.934µs | 127.0.0.1 | GET     /vue-admin-template/user/info, res: 
+2024/11/16 12:56:02.568	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 12:56:02 | 204 |      8.209µs | 127.0.0.1 | OPTIONS /admin/admin-user/login, res: No Content
+2024/11/16 12:56:02.575	INFO	orm/logger.go:114	[dev] [css2boi3l4k84jscp8i0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/admin_user.go:25 [4.328ms] [rows:1] SELECT * FROM `admin_user` WHERE `admin_user`.`username` = 'admin' AND `admin_user`.`deleted_at` = 0 ORDER BY `admin_user`.`id` LIMIT 1 (gorm)
+2024/11/16 12:56:02.577	INFO	mid/common.go:50	[dev] [css2boi3l4k84jscp8i0] [Request] 2024-11-16 12:56:02 | 200 |   7.088793ms | 127.0.0.1 | POST    /admin/admin-user/login, res: {"code":200,"msg":"ok","data":{"token":"eyJhbGciOiJIUzI1NiIsInNhbHQiOiJKaHQydEoiLCJzaWduIjoiY2U0YmU2NGU5YmJkYTRiYTY3ODhiYWFmNTUwNmU5NWEiLCJ0eXAiOiJKV1QiLCJ2ZXIiOiJ2MSJ9.eyJ1c2VyX2lkIjoxLCJpc3MiOiJjZXJ0aWZpZWQiLCJzdWIiOiIxIiwiZXhwIjoxNzMyMzM3NzYyLCJuYmYiOjE3MzE3MzI5NjIsImlhdCI6MTczMTczMjk2MiwianRpIjoiY3NzMmJvaTNsNGs4NGpzY3A4aWcifQ.133Ah2ncgTp7r6XTURBIgBxJysmuc-h_PYY29Ka4rG8","name":"admin"}}
+2024/11/16 12:56:02.588	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 12:56:02 | 204 |      9.811µs | 127.0.0.1 | OPTIONS /vue-admin-template/user/info, res: No Content
+2024/11/16 12:56:02.589	INFO	mid/common.go:50	[dev] [css2boi3l4k84jscp8j0] [Request] 2024-11-16 12:56:02 | 200 |     12.184µs | 127.0.0.1 | GET     /vue-admin-template/user/info, res: 
+2024/11/16 13:03:33.410	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 13:03:33 | 204 |     13.415µs | 127.0.0.1 | OPTIONS /admin/admin-user/login, res: No Content
+2024/11/16 13:03:33.425	INFO	orm/logger.go:114	[dev] [css2f9a3l4k84jscp8jg] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/admin_user.go:25 [13.243ms] [rows:1] SELECT * FROM `admin_user` WHERE `admin_user`.`username` = 'admin' AND `admin_user`.`deleted_at` = 0 ORDER BY `admin_user`.`id` LIMIT 1 (gorm)
+2024/11/16 13:03:33.433	INFO	mid/common.go:50	[dev] [css2f9a3l4k84jscp8jg] [Request] 2024-11-16 13:03:33 | 200 |  21.383683ms | 127.0.0.1 | POST    /admin/admin-user/login, res: {"code":200,"msg":"ok","data":{"token":"eyJhbGciOiJIUzI1NiIsInNhbHQiOiJHZlN5ek8iLCJzaWduIjoiY2RjMTM4YzM2MzBhOTc2NGJmNGE3ZjUwZGY3OWEwMDgiLCJ0eXAiOiJKV1QiLCJ2ZXIiOiJ2MSJ9.eyJ1c2VyX2lkIjoxLCJpc3MiOiJjZXJ0aWZpZWQiLCJzdWIiOiIxIiwiZXhwIjoxNzMyMzM4MjEzLCJuYmYiOjE3MzE3MzM0MTMsImlhdCI6MTczMTczMzQxMywianRpIjoiY3NzMmY5YTNsNGs4NGpzY3A4azAifQ.3NdkbdsRY4iSvUi8iO5GHquAGb09TVZRT6dASZalOsw","name":"admin"}}
+2024/11/16 13:03:33.441	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 13:03:33 | 204 |     12.662µs | 127.0.0.1 | OPTIONS /admin/user/info, res: No Content
+2024/11/16 13:03:33.443	INFO	mid/common.go:50	[dev] [css2f9a3l4k84jscp8kg] [Request] 2024-11-16 13:03:33 | 200 |     13.177µs | 127.0.0.1 | GET     /admin/user/info, res: 
+2024/11/16 14:13:29.227	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 14:13:29 | 204 |     19.976µs | 127.0.0.1 | OPTIONS /admin/admin-user/login, res: No Content
+2024/11/16 14:13:29.261	INFO	orm/logger.go:114	[dev] [css3g2a3l4k84jscp8l0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/admin_user.go:25 [30.305ms] [rows:1] SELECT * FROM `admin_user` WHERE `admin_user`.`username` = 'admin' AND `admin_user`.`deleted_at` = 0 ORDER BY `admin_user`.`id` LIMIT 1 (gorm)
+2024/11/16 14:13:29.268	INFO	mid/common.go:50	[dev] [css3g2a3l4k84jscp8l0] [Request] 2024-11-16 14:13:29 | 200 |  38.514383ms | 127.0.0.1 | POST    /admin/admin-user/login, res: {"code":200,"msg":"ok","data":{"token":"eyJhbGciOiJIUzI1NiIsInNhbHQiOiJZVjZUejIiLCJzaWduIjoiZTVmMjA1ZWQwMTU4MjMwMzUyMmZhYjY4Y2QwNzYwMWYiLCJ0eXAiOiJKV1QiLCJ2ZXIiOiJ2MSJ9.eyJ1c2VyX2lkIjoxLCJpc3MiOiJjZXJ0aWZpZWQiLCJzdWIiOiIxIiwiZXhwIjoxNzMyMzQyNDA5LCJuYmYiOjE3MzE3Mzc2MDksImlhdCI6MTczMTczNzYwOSwianRpIjoiY3NzM2cyYTNsNGs4NGpzY3A4bGcifQ.JZVPK-N1efVKC0gFVcbSS-p7uri7v4LKcTyF1moHPSs","name":"admin"}}
+2024/11/16 14:13:29.282	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 14:13:29 | 204 |     34.487µs | 127.0.0.1 | OPTIONS /admin/admin-user/info, res: No Content
+2024/11/16 14:13:29.286	INFO	mid/common.go:50	[dev] [css3g2a3l4k84jscp8m0] [Request] 2024-11-16 14:13:29 | 200 |     11.763µs | 127.0.0.1 | GET     /admin/admin-user/info, res: 
+2024/11/16 14:44:58.141	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 14:44:58 | 204 |     33.695µs | 127.0.0.1 | OPTIONS /admin/admin-user/login, res: No Content
+2024/11/16 14:44:58.155	INFO	orm/logger.go:114	[dev] [css3uqi3l4k84jscp8mg] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/admin_user.go:25 [10.993ms] [rows:1] SELECT * FROM `admin_user` WHERE `admin_user`.`username` = 'admin' AND `admin_user`.`deleted_at` = 0 ORDER BY `admin_user`.`id` LIMIT 1 (gorm)
+2024/11/16 14:44:58.162	INFO	mid/common.go:50	[dev] [css3uqi3l4k84jscp8mg] [Request] 2024-11-16 14:44:58 | 200 |  18.817325ms | 127.0.0.1 | POST    /admin/admin-user/login, res: {"code":200,"msg":"ok","data":{"token":"eyJhbGciOiJIUzI1NiIsInNhbHQiOiJIenRRNksiLCJzaWduIjoiYjdkYTE0MmU4MzYwNWU0ZDcwODdkZWViZmM0ZDFmMDgiLCJ0eXAiOiJKV1QiLCJ2ZXIiOiJ2MSJ9.eyJ1c2VyX2lkIjoxLCJpc3MiOiJjZXJ0aWZpZWQiLCJzdWIiOiIxIiwiZXhwIjoxNzMyMzQ0Mjk4LCJuYmYiOjE3MzE3Mzk0OTgsImlhdCI6MTczMTczOTQ5OCwianRpIjoiY3NzM3VxaTNsNGs4NGpzY3A4bjAifQ.wdjnpn8IdPqLZqL_-0iW3qianRI0NiFVidpSLntHPOw","name":"admin"}}
+2024/11/16 14:49:13.289	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 14:49:13 | 204 |      10.88µs | 127.0.0.1 | OPTIONS /admin/admin-user/logout, res: No Content
+2024/11/16 14:49:13.298	INFO	mid/common.go:50	[dev] [css40qa3l4k84jscp8ng] [Request] 2024-11-16 14:49:13 | 200 |   2.797778ms | 127.0.0.1 | GET     /admin/admin-user/logout, res: {"code":200,"msg":"ok","data":{}}
+2024/11/16 14:49:19.941	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 14:49:19 | 204 |     36.658µs | 127.0.0.1 | OPTIONS /admin/admin-user/login, res: No Content
+2024/11/16 14:49:19.950	INFO	orm/logger.go:114	[dev] [css40rq3l4k84jscp8o0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/admin_user.go:25 [5.913ms] [rows:1] SELECT * FROM `admin_user` WHERE `admin_user`.`username` = 'admin' AND `admin_user`.`deleted_at` = 0 ORDER BY `admin_user`.`id` LIMIT 1 (gorm)
+2024/11/16 14:49:19.951	INFO	mid/common.go:50	[dev] [css40rq3l4k84jscp8o0] [Request] 2024-11-16 14:49:19 | 200 |   7.592412ms | 127.0.0.1 | POST    /admin/admin-user/login, res: {"code":200,"msg":"ok","data":{"token":"eyJhbGciOiJIUzI1NiIsInNhbHQiOiJibHo3Z3YiLCJzaWduIjoiMTdhMTcxOTI5ZTZjMzNjZTM4OWRiNjdhZDRkOTI5ZTUiLCJ0eXAiOiJKV1QiLCJ2ZXIiOiJ2MSJ9.eyJ1c2VyX2lkIjoxLCJpc3MiOiJjZXJ0aWZpZWQiLCJzdWIiOiIxIiwiZXhwIjoxNzMyMzQ0NTU5LCJuYmYiOjE3MzE3Mzk3NTksImlhdCI6MTczMTczOTc1OSwianRpIjoiY3NzNDBycTNsNGs4NGpzY3A4b2cifQ.HXHK64BcBBpk0PuQU32pZh7XpE-0ayxTMhhbr4V4NG4","name":"admin"}}
+2024/11/16 14:53:53.705	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 14:53:53 | 204 |      8.008µs | 127.0.0.1 | OPTIONS /admin/admin-user/logout, res: No Content
+2024/11/16 14:53:53.709	INFO	mid/common.go:50	[dev] [css430a3l4k84jscp8p0] [Request] 2024-11-16 14:53:53 | 200 |   1.902532ms | 127.0.0.1 | GET     /admin/admin-user/logout, res: {"code":200,"msg":"ok","data":{}}
+2024/11/16 14:53:55.689	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 14:53:55 | 204 |       7.99µs | 127.0.0.1 | OPTIONS /admin/admin-user/login, res: No Content
+2024/11/16 14:53:55.693	INFO	orm/logger.go:114	[dev] [css430q3l4k84jscp8pg] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/admin_user.go:25 [2.907ms] [rows:1] SELECT * FROM `admin_user` WHERE `admin_user`.`username` = 'admin' AND `admin_user`.`deleted_at` = 0 ORDER BY `admin_user`.`id` LIMIT 1 (gorm)
+2024/11/16 14:53:55.695	INFO	mid/common.go:50	[dev] [css430q3l4k84jscp8pg] [Request] 2024-11-16 14:53:55 | 200 |   5.207225ms | 127.0.0.1 | POST    /admin/admin-user/login, res: {"code":200,"msg":"ok","data":{"token":"eyJhbGciOiJIUzI1NiIsInNhbHQiOiJDbGwxck8iLCJzaWduIjoiNTMxMzM3MTZkNDk3MTdkZjQ0YjA1M2IwN2VjMzRmYjciLCJ0eXAiOiJKV1QiLCJ2ZXIiOiJ2MSJ9.eyJ1c2VyX2lkIjoxLCJpc3MiOiJjZXJ0aWZpZWQiLCJzdWIiOiIxIiwiZXhwIjoxNzMyMzQ0ODM1LCJuYmYiOjE3MzE3NDAwMzUsImlhdCI6MTczMTc0MDAzNSwianRpIjoiY3NzNDMwcTNsNGs4NGpzY3A4cTAifQ.VC1OXioIZev8zUVzxpJ6UZSjWW5Kqh8KhYN7JqvinRE","name":"admin"}}
+2024/11/16 15:11:24.647	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 15:11:24 | 204 |     16.014µs | 127.0.0.1 | OPTIONS /admin/admin-user/login, res: No Content
+2024/11/16 15:11:24.654	INFO	orm/logger.go:114	[dev] [css4b723l4k84jscp8qg] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/admin_user.go:25 [4.558ms] [rows:1] SELECT * FROM `admin_user` WHERE `admin_user`.`username` = 'admin' AND `admin_user`.`deleted_at` = 0 ORDER BY `admin_user`.`id` LIMIT 1 (gorm)
+2024/11/16 15:11:24.661	INFO	mid/common.go:50	[dev] [css4b723l4k84jscp8qg] [Request] 2024-11-16 15:11:24 | 200 |  11.731725ms | 127.0.0.1 | POST    /admin/admin-user/login, res: {"code":200,"msg":"ok","data":{"token":"eyJhbGciOiJIUzI1NiIsInNhbHQiOiJERTFCY2kiLCJzaWduIjoiZTA5MTQ1ZWYyMzY4OWM0ZTE0ZWM1MTBiZmVlN2ZiMjAiLCJ0eXAiOiJKV1QiLCJ2ZXIiOiJ2MSJ9.eyJ1c2VyX2lkIjoxLCJpc3MiOiJjZXJ0aWZpZWQiLCJzdWIiOiIxIiwiZXhwIjoxNzMyMzQ1ODg0LCJuYmYiOjE3MzE3NDEwODQsImlhdCI6MTczMTc0MTA4NCwianRpIjoiY3NzNGI3MjNsNGs4NGpzY3A4cjAifQ.d92D8bODEwTjftFqqjgr2nNNSg2_GA_D-DCHVk0yiQY","name":"admin"}}
+2024/11/16 15:12:27.966	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 15:12:27 | 204 |     10.296µs | 127.0.0.1 | OPTIONS /admin/admin-user/logout, res: No Content
+2024/11/16 15:12:27.975	INFO	mid/common.go:50	[dev] [css4bmq3l4k84jscp8rg] [Request] 2024-11-16 15:12:27 | 200 |   2.094781ms | 127.0.0.1 | GET     /admin/admin-user/logout, res: {"code":200,"msg":"ok","data":{}}
+2024/11/16 15:12:42.469	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 15:12:42 | 204 |     16.604µs | 127.0.0.1 | OPTIONS /admin/admin-user/login, res: No Content
+2024/11/16 15:12:42.476	INFO	orm/logger.go:114	[dev] [css4bqi3l4k84jscp8s0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/admin_user.go:25 [4.420ms] [rows:1] SELECT * FROM `admin_user` WHERE `admin_user`.`username` = 'admin' AND `admin_user`.`deleted_at` = 0 ORDER BY `admin_user`.`id` LIMIT 1 (gorm)
+2024/11/16 15:12:42.479	INFO	mid/common.go:50	[dev] [css4bqi3l4k84jscp8s0] [Request] 2024-11-16 15:12:42 | 200 |   7.288717ms | 127.0.0.1 | POST    /admin/admin-user/login, res: {"code":200,"msg":"ok","data":{"token":"eyJhbGciOiJIUzI1NiIsInNhbHQiOiIyWFlSbVgiLCJzaWduIjoiYThmNmY5ZGRmY2ZmODM0Y2ZjM2M3NTcwZGM4NjdlMDYiLCJ0eXAiOiJKV1QiLCJ2ZXIiOiJ2MSJ9.eyJ1c2VyX2lkIjoxLCJpc3MiOiJjZXJ0aWZpZWQiLCJzdWIiOiIxIiwiZXhwIjoxNzMyMzQ1OTYyLCJuYmYiOjE3MzE3NDExNjIsImlhdCI6MTczMTc0MTE2MiwianRpIjoiY3NzNGJxaTNsNGs4NGpzY3A4c2cifQ.PPWdTEEOegBzsC-CUUCoSDlQjGru2W7cWx9Ma6zUQ2k","name":"admin"}}
+2024/11/16 15:13:27.083	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 15:13:27 | 204 |      8.212µs | 127.0.0.1 | OPTIONS /admin/admin-user/logout, res: No Content
+2024/11/16 15:13:27.087	INFO	mid/common.go:50	[dev] [css4c5q3l4k84jscp8t0] [Request] 2024-11-16 15:13:27 | 200 |   1.720454ms | 127.0.0.1 | GET     /admin/admin-user/logout, res: {"code":200,"msg":"ok","data":{}}
+2024/11/16 15:13:28.234	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 15:13:28 | 204 |      7.591µs | 127.0.0.1 | OPTIONS /admin/admin-user/login, res: No Content
+2024/11/16 15:13:28.240	INFO	orm/logger.go:114	[dev] [css4c623l4k84jscp8tg] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/admin_user.go:25 [4.552ms] [rows:1] SELECT * FROM `admin_user` WHERE `admin_user`.`username` = 'admin' AND `admin_user`.`deleted_at` = 0 ORDER BY `admin_user`.`id` LIMIT 1 (gorm)
+2024/11/16 15:13:28.241	INFO	mid/common.go:50	[dev] [css4c623l4k84jscp8tg] [Request] 2024-11-16 15:13:28 | 200 |   6.292479ms | 127.0.0.1 | POST    /admin/admin-user/login, res: {"code":200,"msg":"ok","data":{"token":"eyJhbGciOiJIUzI1NiIsInNhbHQiOiI2T1hnT3QiLCJzaWduIjoiZmM0ODk4NTAzZTc0MGIyZDk1YzcwZjU0YjQ0MDVkZDkiLCJ0eXAiOiJKV1QiLCJ2ZXIiOiJ2MSJ9.eyJ1c2VyX2lkIjoxLCJpc3MiOiJjZXJ0aWZpZWQiLCJzdWIiOiIxIiwiZXhwIjoxNzMyMzQ2MDA4LCJuYmYiOjE3MzE3NDEyMDgsImlhdCI6MTczMTc0MTIwOCwianRpIjoiY3NzNGM2MjNsNGs4NGpzY3A4dTAifQ.dv9BYlk25nxnMuxMK9kVdsIllnc6KZ8Q6NHMFEjNqZs","name":"admin"}}
+2024/11/16 15:13:40.537	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 15:13:40 | 204 |      7.815µs | 127.0.0.1 | OPTIONS /admin/admin-user/logout, res: No Content
+2024/11/16 15:13:40.540	INFO	mid/common.go:50	[dev] [css4c923l4k84jscp8ug] [Request] 2024-11-16 15:13:40 | 200 |   2.030168ms | 127.0.0.1 | GET     /admin/admin-user/logout, res: {"code":200,"msg":"ok","data":{}}
+2024/11/16 15:13:50.006	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 15:13:50 | 204 |      7.372µs | 127.0.0.1 | OPTIONS /admin/admin-user/login, res: No Content
+2024/11/16 15:13:50.038	INFO	orm/logger.go:114	[dev] [css4cbi3l4k84jscp8v0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/admin_user.go:25 [29.809ms] [rows:1] SELECT * FROM `admin_user` WHERE `admin_user`.`username` = 'admin' AND `admin_user`.`deleted_at` = 0 ORDER BY `admin_user`.`id` LIMIT 1 (gorm)
+2024/11/16 15:13:50.039	INFO	mid/common.go:50	[dev] [css4cbi3l4k84jscp8v0] [Request] 2024-11-16 15:13:50 | 200 |  30.953139ms | 127.0.0.1 | POST    /admin/admin-user/login, res: {"code":200,"msg":"ok","data":{"token":"eyJhbGciOiJIUzI1NiIsInNhbHQiOiJTYUZVaXEiLCJzaWduIjoiOTBhYTFhMzEwMjVhMmYwZDJmYzE4MmRkY2JlYzk4MzYiLCJ0eXAiOiJKV1QiLCJ2ZXIiOiJ2MSJ9.eyJ1c2VyX2lkIjoxLCJpc3MiOiJjZXJ0aWZpZWQiLCJzdWIiOiIxIiwiZXhwIjoxNzMyMzQ2MDMwLCJuYmYiOjE3MzE3NDEyMzAsImlhdCI6MTczMTc0MTIzMCwianRpIjoiY3NzNGNiaTNsNGs4NGpzY3A4dmcifQ.p4BR2UIIyohmfr6Bust9sx2vaf_t16U95y-80usWLjQ","name":"admin"}}
+2024/11/16 15:14:28.760	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 15:14:28 | 204 |     12.175µs | 127.0.0.1 | OPTIONS /admin/admin-user/login, res: No Content
+2024/11/16 15:14:28.767	INFO	orm/logger.go:114	[dev] [css4cl23l4k84jscp900] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/admin_user.go:25 [6.123ms] [rows:1] SELECT * FROM `admin_user` WHERE `admin_user`.`username` = 'admin' AND `admin_user`.`deleted_at` = 0 ORDER BY `admin_user`.`id` LIMIT 1 (gorm)
+2024/11/16 15:14:28.768	INFO	mid/common.go:50	[dev] [css4cl23l4k84jscp900] [Request] 2024-11-16 15:14:28 | 200 |   7.795156ms | 127.0.0.1 | POST    /admin/admin-user/login, res: {"code":200,"msg":"ok","data":{"token":"eyJhbGciOiJIUzI1NiIsInNhbHQiOiJvRVc2QkYiLCJzaWduIjoiZjRjYTc5NzQyNTdkZDE2NGE4MTg3NWNhNjc4MWQ4ZDciLCJ0eXAiOiJKV1QiLCJ2ZXIiOiJ2MSJ9.eyJ1c2VyX2lkIjoxLCJpc3MiOiJjZXJ0aWZpZWQiLCJzdWIiOiIxIiwiZXhwIjoxNzMyMzQ2MDY4LCJuYmYiOjE3MzE3NDEyNjgsImlhdCI6MTczMTc0MTI2OCwianRpIjoiY3NzNGNsMjNsNGs4NGpzY3A5MGcifQ.rLVBHJSLwbRHDS06KVp2PyCXbjA8A9IEUchDcDNtowA","name":"admin"}}
+2024/11/16 15:18:12.072	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 15:18:12 | 204 |      8.467µs | 127.0.0.1 | OPTIONS /admin/admin-user/logout, res: No Content
+2024/11/16 15:18:12.076	INFO	mid/common.go:50	[dev] [css4ed23l4k84jscp910] [Request] 2024-11-16 15:18:12 | 200 |   1.302326ms | 127.0.0.1 | GET     /admin/admin-user/logout, res: {"code":200,"msg":"ok","data":{}}
+2024/11/16 15:18:13.239	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 15:18:13 | 204 |      8.473µs | 127.0.0.1 | OPTIONS /admin/admin-user/login, res: No Content
+2024/11/16 15:18:13.244	INFO	orm/logger.go:114	[dev] [css4eda3l4k84jscp91g] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/admin_user.go:25 [3.469ms] [rows:1] SELECT * FROM `admin_user` WHERE `admin_user`.`username` = 'admin' AND `admin_user`.`deleted_at` = 0 ORDER BY `admin_user`.`id` LIMIT 1 (gorm)
+2024/11/16 15:18:13.246	INFO	mid/common.go:50	[dev] [css4eda3l4k84jscp91g] [Request] 2024-11-16 15:18:13 | 200 |   4.982724ms | 127.0.0.1 | POST    /admin/admin-user/login, res: {"code":200,"msg":"ok","data":{"token":"eyJhbGciOiJIUzI1NiIsInNhbHQiOiJjSkRYZ1giLCJzaWduIjoiNDdjMDcyM2Q0ODMxNTY1YTA3NDc4MmEwYzIxNThhYmUiLCJ0eXAiOiJKV1QiLCJ2ZXIiOiJ2MSJ9.eyJ1c2VyX2lkIjoxLCJpc3MiOiJjZXJ0aWZpZWQiLCJzdWIiOiIxIiwiZXhwIjoxNzMyMzQ2MjkzLCJuYmYiOjE3MzE3NDE0OTMsImlhdCI6MTczMTc0MTQ5MywianRpIjoiY3NzNGVkYTNsNGs4NGpzY3A5MjAifQ.QjYLDvmjTyXDWv-wRze1ddF-wRks9cWBZIMaDYLG2wQ","name":"admin"}}
+2024/11/16 15:22:02.926	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 15:22:02 | 204 |      8.886µs | 127.0.0.1 | OPTIONS /admin/admin-user/logout, res: No Content
+2024/11/16 15:22:02.930	INFO	mid/common.go:50	[dev] [css4g6i3l4k84jscp92g] [Request] 2024-11-16 15:22:02 | 200 |     1.4504ms | 127.0.0.1 | GET     /admin/admin-user/logout, res: {"code":200,"msg":"ok","data":{}}
+2024/11/16 15:22:04.196	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 15:22:04 | 204 |      8.474µs | 127.0.0.1 | OPTIONS /admin/admin-user/login, res: No Content
+2024/11/16 15:22:04.201	INFO	orm/logger.go:114	[dev] [css4g723l4k84jscp930] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/admin_user.go:25 [4.030ms] [rows:1] SELECT * FROM `admin_user` WHERE `admin_user`.`username` = 'admin' AND `admin_user`.`deleted_at` = 0 ORDER BY `admin_user`.`id` LIMIT 1 (gorm)
+2024/11/16 15:22:04.203	INFO	mid/common.go:50	[dev] [css4g723l4k84jscp930] [Request] 2024-11-16 15:22:04 | 200 |   6.060085ms | 127.0.0.1 | POST    /admin/admin-user/login, res: {"code":200,"msg":"ok","data":{"token":"eyJhbGciOiJIUzI1NiIsInNhbHQiOiJpVGhGbWYiLCJzaWduIjoiYzc3YzYwY2Q5ODdiYjI3ODE3YjAzYjFjMGYxZGQwNjkiLCJ0eXAiOiJKV1QiLCJ2ZXIiOiJ2MSJ9.eyJ1c2VyX2lkIjoxLCJpc3MiOiJjZXJ0aWZpZWQiLCJzdWIiOiIxIiwiZXhwIjoxNzMyMzQ2NTI0LCJuYmYiOjE3MzE3NDE3MjQsImlhdCI6MTczMTc0MTcyNCwianRpIjoiY3NzNGc3MjNsNGs4NGpzY3A5M2cifQ.XU_ZDPidD5TMGlkf5TL_dUjmtUYQ8X8V2yYK2n3OCsA","name":"admin"}}
+2024/11/16 15:52:35.373	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 15:52:35 | 204 |     14.196µs | 127.0.0.1 | OPTIONS /vue-admin-template/table/list, res: No Content
+2024/11/16 15:52:35.375	INFO	mid/common.go:50	[dev] [css4ugq3l4k84jscp940] [Request] 2024-11-16 15:52:35 | 200 |      8.783µs | 127.0.0.1 | GET     /vue-admin-template/table/list, res: 
+2024/11/16 15:52:45.885	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 15:52:45 | 204 |      6.702µs | 127.0.0.1 | OPTIONS /vue-admin-template/table/list, res: No Content
+2024/11/16 15:52:45.886	INFO	mid/common.go:50	[dev] [css4uja3l4k84jscp94g] [Request] 2024-11-16 15:52:45 | 200 |     12.137µs | 127.0.0.1 | GET     /vue-admin-template/table/list, res: 
+2024/11/16 16:35:09.739	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 16:35:09 | 204 |     30.228µs | 127.0.0.1 | OPTIONS /vue-admin-template/table/list, res: No Content
+2024/11/16 16:35:09.741	INFO	mid/common.go:50	[dev] [css5ifa3l4k84jscp950] [Request] 2024-11-16 16:35:09 | 200 |     10.789µs | 127.0.0.1 | GET     /vue-admin-template/table/list, res: 
+2024/11/16 17:46:59.095	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 17:46:59 | 204 |     33.281µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 17:46:59.108	INFO	orm/logger.go:114	[dev] [css6k4q3l4k6bmhi9j5g] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [8.280ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 17:46:59.108	INFO	mid/common.go:50	[dev] [css6k4q3l4k6bmhi9j5g] [Request] 2024-11-16 17:46:59 | 200 |   8.887601ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 17:47:05.033	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 17:47:05 | 204 |       7.41µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 17:47:05.039	INFO	orm/logger.go:114	[dev] [css6k6a3l4k6bmhi9j60] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [3.993ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 17:47:05.039	INFO	mid/common.go:50	[dev] [css6k6a3l4k6bmhi9j60] [Request] 2024-11-16 17:47:05 | 200 |    4.19461ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 17:48:01.178	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 17:48:01 | 204 |     22.685µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 17:48:01.185	INFO	orm/logger.go:114	[dev] [css6kka3l4k6bmhi9j6g] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [4.395ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 17:48:01.185	INFO	mid/common.go:50	[dev] [css6kka3l4k6bmhi9j6g] [Request] 2024-11-16 17:48:01 | 200 |   4.675604ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 17:48:40.958	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 17:48:40 | 204 |       7.57µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 17:48:40.967	INFO	orm/logger.go:114	[dev] [css6ku23l4k6bmhi9j70] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [6.755ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 17:48:40.967	INFO	mid/common.go:50	[dev] [css6ku23l4k6bmhi9j70] [Request] 2024-11-16 17:48:40 | 200 |   7.042321ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 17:49:38.862	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 17:49:38 | 204 |      9.868µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 17:49:38.870	INFO	orm/logger.go:114	[dev] [css6lci3l4k6bmhi9j7g] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [3.933ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 17:49:38.870	INFO	mid/common.go:50	[dev] [css6lci3l4k6bmhi9j7g] [Request] 2024-11-16 17:49:38 | 200 |   4.206966ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 17:51:07.106	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 17:51:07 | 204 |      9.499µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 17:51:07.112	INFO	orm/logger.go:114	[dev] [css6m2q3l4k6bmhi9j80] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [3.652ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 17:51:07.112	INFO	mid/common.go:50	[dev] [css6m2q3l4k6bmhi9j80] [Request] 2024-11-16 17:51:07 | 200 |    3.88204ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 18:02:51.029	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 18:02:51 | 204 |     11.819µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 18:02:51.043	INFO	orm/logger.go:114	[dev] [css6riq3l4k6bmhi9j8g] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [6.422ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 18:02:51.043	INFO	mid/common.go:50	[dev] [css6riq3l4k6bmhi9j8g] [Request] 2024-11-16 18:02:51 | 200 |   7.303201ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 18:03:33.759	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 18:03:33 | 204 |     11.777µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 18:03:33.774	INFO	orm/logger.go:114	[dev] [css6rta3l4k6bmhi9j90] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [9.721ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 18:03:33.774	INFO	mid/common.go:50	[dev] [css6rta3l4k6bmhi9j90] [Request] 2024-11-16 18:03:33 | 200 |   10.42401ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:00:35.160	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:00:35 | 204 |     80.048µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:00:35.172	INFO	orm/logger.go:114	[dev] [css7mkq3l4k6bmhi9j9g] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [6.813ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:00:35.172	INFO	mid/common.go:50	[dev] [css7mkq3l4k6bmhi9j9g] [Request] 2024-11-16 19:00:35 | 200 |   9.749132ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:00:44.837	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:00:44 | 204 |      10.76µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:00:44.846	INFO	orm/logger.go:114	[dev] [css7mn23l4k6bmhi9ja0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [6.019ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:00:44.847	INFO	mid/common.go:50	[dev] [css7mn23l4k6bmhi9ja0] [Request] 2024-11-16 19:00:44 | 200 |   6.272965ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:02:15.125	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:02:15 | 204 |   1.162259ms | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:02:15.138	INFO	orm/logger.go:114	[dev] [css7ndq3l4k6bmhi9jag] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [6.482ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:02:15.138	INFO	mid/common.go:50	[dev] [css7ndq3l4k6bmhi9jag] [Request] 2024-11-16 19:02:15 | 200 |   9.756785ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:02:47.794	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:02:47 | 204 |      10.39µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:02:47.805	INFO	orm/logger.go:114	[dev] [css7nlq3l4k6bmhi9jb0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [8.660ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:02:47.805	INFO	mid/common.go:50	[dev] [css7nlq3l4k6bmhi9jb0] [Request] 2024-11-16 19:02:47 | 200 |    8.97525ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:05:02.364	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:05:02 | 204 |     29.983µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:05:02.395	INFO	orm/logger.go:114	[dev] [css7oni3l4k6bmhi9jbg] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [26.030ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:05:02.395	INFO	mid/common.go:50	[dev] [css7oni3l4k6bmhi9jbg] [Request] 2024-11-16 19:05:02 | 200 |  26.348774ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:06:04.006	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:06:04 | 204 |      9.001µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:06:04.015	INFO	orm/logger.go:114	[dev] [css7p723l4k6bmhi9jc0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [4.934ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:06:04.016	INFO	mid/common.go:50	[dev] [css7p723l4k6bmhi9jc0] [Request] 2024-11-16 19:06:04 | 200 |   6.175389ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:06:14.841	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:06:14 | 204 |     11.544µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:06:14.851	INFO	orm/logger.go:114	[dev] [css7p9i3l4k6bmhi9jcg] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [6.195ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:06:14.852	INFO	mid/common.go:50	[dev] [css7p9i3l4k6bmhi9jcg] [Request] 2024-11-16 19:06:14 | 200 |    6.53757ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:07:45.865	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:07:45 | 204 |     10.144µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:07:45.871	INFO	orm/logger.go:114	[dev] [css7q0a3l4k6bmhi9jd0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [3.042ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:07:45.871	INFO	mid/common.go:50	[dev] [css7q0a3l4k6bmhi9jd0] [Request] 2024-11-16 19:07:45 | 200 |   3.317043ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:07:56.070	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:07:56 | 204 |     10.788µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:07:56.139	INFO	orm/logger.go:114	[dev] [css7q323l4k6bmhi9jdg] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [18.548ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:07:56.139	INFO	mid/common.go:50	[dev] [css7q323l4k6bmhi9jdg] [Request] 2024-11-16 19:07:56 | 200 |  19.500325ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:07:57.813	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:07:57 | 204 |     10.648µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:07:57.820	INFO	orm/logger.go:114	[dev] [css7q3a3l4k6bmhi9je0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [4.265ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 10 (gorm)
+2024/11/16 19:07:57.820	INFO	mid/common.go:50	[dev] [css7q3a3l4k6bmhi9je0] [Request] 2024-11-16 19:07:57 | 200 |   4.555463ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:07:59.943	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:07:59 | 204 |     11.141µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:07:59.951	INFO	orm/logger.go:114	[dev] [css7q3q3l4k6bmhi9jeg] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [4.804ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 30 (gorm)
+2024/11/16 19:07:59.952	INFO	mid/common.go:50	[dev] [css7q3q3l4k6bmhi9jeg] [Request] 2024-11-16 19:07:59 | 200 |   5.120422ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:08:01.345	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:08:01 | 204 |     12.349µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:08:01.351	INFO	orm/logger.go:114	[dev] [css7q4a3l4k6bmhi9jf0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [3.855ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:08:01.351	INFO	mid/common.go:50	[dev] [css7q4a3l4k6bmhi9jf0] [Request] 2024-11-16 19:08:01 | 200 |   4.226247ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:12:12.577	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:12:12 | 204 |      9.705µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:12:12.582	INFO	orm/logger.go:114	[dev] [css7s323l4k6bmhi9jfg] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [3.561ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:12:12.582	INFO	mid/common.go:50	[dev] [css7s323l4k6bmhi9jfg] [Request] 2024-11-16 19:12:12 | 200 |   3.765968ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:12:35.444	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:12:35 | 204 |     20.738µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:12:35.450	INFO	orm/logger.go:114	[dev] [css7s8q3l4k6bmhi9jg0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [4.482ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:12:35.450	INFO	mid/common.go:50	[dev] [css7s8q3l4k6bmhi9jg0] [Request] 2024-11-16 19:12:35 | 200 |   4.842678ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:14:56.824	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:14:56 | 204 |     33.505µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:14:56.834	INFO	orm/logger.go:114	[dev] [css7tc23l4k4gqv9jm30] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [8.649ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:14:56.834	INFO	mid/common.go:50	[dev] [css7tc23l4k4gqv9jm30] [Request] 2024-11-16 19:14:56 | 200 |   9.269552ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:14:58.653	INFO	orm/logger.go:114	[dev] [css7tci3l4k4gqv9jm3g] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [4.688ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:14:58.653	INFO	mid/common.go:50	[dev] [css7tci3l4k4gqv9jm3g] [Request] 2024-11-16 19:14:58 | 200 |   5.084388ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:16:24.087	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:16:24 | 204 |      23.91µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:16:24.090	INFO	orm/logger.go:114	[dev] [css7u223l4k4gqv9jm40] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [2.013ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:16:24.090	INFO	mid/common.go:50	[dev] [css7u223l4k4gqv9jm40] [Request] 2024-11-16 19:16:24 | 200 |   2.203505ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:17:10.589	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:17:10 | 204 |      7.424µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:17:10.594	INFO	orm/logger.go:114	[dev] [css7udi3l4k4gqv9jm4g] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [2.873ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:17:10.594	INFO	mid/common.go:50	[dev] [css7udi3l4k4gqv9jm4g] [Request] 2024-11-16 19:17:10 | 200 |    3.01503ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:17:11.878	INFO	orm/logger.go:114	[dev] [css7udq3l4k4gqv9jm50] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [4.562ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:17:11.878	INFO	mid/common.go:50	[dev] [css7udq3l4k4gqv9jm50] [Request] 2024-11-16 19:17:11 | 200 |   4.753044ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:23:15.336	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:23:15 | 204 |     17.986µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:23:15.346	INFO	orm/logger.go:114	[dev] [css818q3l4k4gqv9jm5g] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [5.906ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:23:15.346	INFO	mid/common.go:50	[dev] [css818q3l4k4gqv9jm5g] [Request] 2024-11-16 19:23:15 | 200 |   6.253818ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:23:19.414	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:23:19 | 204 |      8.476µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:23:19.421	INFO	orm/logger.go:114	[dev] [css819q3l4k4gqv9jm60] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [4.885ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:23:19.421	INFO	mid/common.go:50	[dev] [css819q3l4k4gqv9jm60] [Request] 2024-11-16 19:23:19 | 200 |   5.142375ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:36:45.105	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:36:45 | 204 |    160.642µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:36:45.126	INFO	orm/logger.go:114	[dev] [css87ja3l4k4gqv9jm6g] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [13.393ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:36:45.126	INFO	mid/common.go:50	[dev] [css87ja3l4k4gqv9jm6g] [Request] 2024-11-16 19:36:45 | 200 |   15.67307ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:38:15.044	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:38:15 | 204 |      9.959µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:38:15.060	INFO	orm/logger.go:114	[dev] [css889q3l4k4gqv9jm70] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [12.560ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:38:15.060	INFO	mid/common.go:50	[dev] [css889q3l4k4gqv9jm70] [Request] 2024-11-16 19:38:15 | 200 |  13.056696ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:39:33.449	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:39:33 | 204 |     10.023µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:39:33.472	INFO	orm/logger.go:114	[dev] [css88ta3l4k4gqv9jm7g] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [18.335ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:39:33.473	INFO	mid/common.go:50	[dev] [css88ta3l4k4gqv9jm7g] [Request] 2024-11-16 19:39:33 | 200 |   20.42966ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:40:38.611	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:40:38 | 204 |     20.721µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:40:38.626	INFO	orm/logger.go:114	[dev] [css89di3l4k4gqv9jm80] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [12.267ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:40:38.626	INFO	mid/common.go:50	[dev] [css89di3l4k4gqv9jm80] [Request] 2024-11-16 19:40:38 | 200 |  12.576762ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:40:40.739	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:40:40 | 204 |     10.994µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:40:40.743	INFO	orm/logger.go:114	[dev] [css89e23l4k4gqv9jm8g] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [2.119ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:40:40.743	INFO	mid/common.go:50	[dev] [css89e23l4k4gqv9jm8g] [Request] 2024-11-16 19:40:40 | 200 |   2.253027ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:40:49.759	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:40:49 | 204 |     35.365µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:40:49.766	INFO	orm/logger.go:114	[dev] [css89ga3l4k4gqv9jm90] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [4.054ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:40:49.766	INFO	mid/common.go:50	[dev] [css89ga3l4k4gqv9jm90] [Request] 2024-11-16 19:40:49 | 200 |   4.406627ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:42:25.088	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:42:25 | 204 |     21.454µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:42:25.111	INFO	orm/logger.go:114	[dev] [css8a8a3l4k4gqv9jm9g] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [21.022ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:42:25.117	INFO	mid/common.go:50	[dev] [css8a8a3l4k4gqv9jm9g] [Request] 2024-11-16 19:42:25 | 200 |  22.335593ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:42:41.117	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:42:41 | 204 |     47.848µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:42:41.129	INFO	orm/logger.go:114	[dev] [css8aca3l4k4gqv9jma0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [7.168ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:42:41.129	INFO	mid/common.go:50	[dev] [css8aca3l4k4gqv9jma0] [Request] 2024-11-16 19:42:41 | 200 |     9.7568ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:42:42.424	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:42:42 | 204 |     10.454µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:42:42.437	INFO	orm/logger.go:114	[dev] [css8aci3l4k4gqv9jmag] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [9.680ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:42:42.437	INFO	mid/common.go:50	[dev] [css8aci3l4k4gqv9jmag] [Request] 2024-11-16 19:42:42 | 200 |   10.02746ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:42:45.998	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:42:45 | 204 |      9.716µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:42:46.015	INFO	orm/logger.go:114	[dev] [css8adi3l4k4gqv9jmb0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [12.523ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:42:46.015	INFO	mid/common.go:50	[dev] [css8adi3l4k4gqv9jmb0] [Request] 2024-11-16 19:42:46 | 200 |  12.791258ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:42:53.591	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:42:53 | 204 |     13.087µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:42:53.601	INFO	orm/logger.go:114	[dev] [css8afa3l4k4gqv9jmbg] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [4.039ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:42:53.601	INFO	mid/common.go:50	[dev] [css8afa3l4k4gqv9jmbg] [Request] 2024-11-16 19:42:53 | 200 |   4.323495ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:50:05.767	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:50:05 | 204 |     21.057µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:50:05.788	INFO	orm/logger.go:114	[dev] [css8dra3l4k4gqv9jmc0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [13.780ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:50:05.788	INFO	mid/common.go:50	[dev] [css8dra3l4k4gqv9jmc0] [Request] 2024-11-16 19:50:05 | 200 |  14.023451ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:51:08.777	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:51:08 | 204 |     12.253µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:51:08.806	INFO	orm/logger.go:114	[dev] [css8eb23l4k4gqv9jmcg] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [25.691ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:51:08.807	INFO	mid/common.go:50	[dev] [css8eb23l4k4gqv9jmcg] [Request] 2024-11-16 19:51:08 | 200 |  25.947733ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:51:13.810	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:51:13 | 204 |     10.532µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:51:13.819	INFO	orm/logger.go:114	[dev] [css8eca3l4k4gqv9jmd0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [5.230ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:51:13.820	INFO	mid/common.go:50	[dev] [css8eca3l4k4gqv9jmd0] [Request] 2024-11-16 19:51:13 | 200 |   5.628989ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:51:23.763	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:51:23 | 204 |     12.345µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:51:23.847	INFO	orm/logger.go:114	[dev] [css8eeq3l4k4gqv9jmdg] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [53.470ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:51:23.848	INFO	mid/common.go:50	[dev] [css8eeq3l4k4gqv9jmdg] [Request] 2024-11-16 19:51:23 | 200 |  53.710046ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:52:11.681	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:52:11 | 204 |     14.756µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:52:11.695	INFO	orm/logger.go:114	[dev] [css8eqq3l4k4gqv9jme0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [8.308ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:52:11.696	INFO	mid/common.go:50	[dev] [css8eqq3l4k4gqv9jme0] [Request] 2024-11-16 19:52:11 | 200 |   9.124613ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:54:09.500	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:54:09 | 204 |     13.814µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:54:09.543	INFO	orm/logger.go:114	[dev] [css8foa3l4k4gqv9jmeg] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [32.239ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:54:09.543	INFO	mid/common.go:50	[dev] [css8foa3l4k4gqv9jmeg] [Request] 2024-11-16 19:54:09 | 200 |  33.794898ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:54:15.273	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:54:15 | 204 |     12.634µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:54:15.298	INFO	orm/logger.go:114	[dev] [css8fpq3l4k4gqv9jmf0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [13.302ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:54:15.298	INFO	mid/common.go:50	[dev] [css8fpq3l4k4gqv9jmf0] [Request] 2024-11-16 19:54:15 | 200 |  13.636763ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:54:18.437	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:54:18 | 204 |     10.037µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:54:18.445	INFO	orm/logger.go:114	[dev] [css8fqi3l4k4gqv9jmfg] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [5.521ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:54:18.445	INFO	mid/common.go:50	[dev] [css8fqi3l4k4gqv9jmfg] [Request] 2024-11-16 19:54:18 | 200 |   5.776517ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:54:20.895	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:54:20 | 204 |     12.631µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:54:20.935	INFO	orm/logger.go:114	[dev] [css8fr23l4k4gqv9jmg0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [35.522ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:54:20.936	INFO	mid/common.go:50	[dev] [css8fr23l4k4gqv9jmg0] [Request] 2024-11-16 19:54:20 | 200 |  35.917619ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:57:14.543	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:57:14 | 204 |      8.942µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:57:14.552	INFO	orm/logger.go:114	[dev] [css8h6i3l4k4gqv9jmgg] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [6.470ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:57:14.552	INFO	mid/common.go:50	[dev] [css8h6i3l4k4gqv9jmgg] [Request] 2024-11-16 19:57:14 | 200 |   6.870043ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:57:18.794	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:57:18 | 204 |       8.57µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:57:18.803	INFO	orm/logger.go:114	[dev] [css8h7i3l4k4gqv9jmh0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [7.188ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:57:18.803	INFO	mid/common.go:50	[dev] [css8h7i3l4k4gqv9jmh0] [Request] 2024-11-16 19:57:18 | 200 |   7.526847ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:57:22.046	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:57:22 | 204 |     48.357µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:57:22.056	INFO	orm/logger.go:114	[dev] [css8h8i3l4k4gqv9jmhg] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [7.523ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:57:22.056	INFO	mid/common.go:50	[dev] [css8h8i3l4k4gqv9jmhg] [Request] 2024-11-16 19:57:22 | 200 |    7.93833ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:57:23.641	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:57:23 | 204 |     11.833µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:57:23.648	INFO	orm/logger.go:114	[dev] [css8h8q3l4k4gqv9jmi0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [5.103ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:57:23.648	INFO	mid/common.go:50	[dev] [css8h8q3l4k4gqv9jmi0] [Request] 2024-11-16 19:57:23 | 200 |   5.466728ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 19:58:07.839	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 19:58:07 | 204 |     28.743µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 19:58:07.848	INFO	orm/logger.go:114	[dev] [css8hjq3l4k4gqv9jmig] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [5.369ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 19:58:07.848	INFO	mid/common.go:50	[dev] [css8hjq3l4k4gqv9jmig] [Request] 2024-11-16 19:58:07 | 200 |   5.930672ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 20:00:09.423	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 20:00:09 | 204 |     23.535µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 20:00:09.434	INFO	orm/logger.go:114	[dev] [css8iia3l4k4gqv9jmj0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [7.952ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 20:00:09.435	INFO	mid/common.go:50	[dev] [css8iia3l4k4gqv9jmj0] [Request] 2024-11-16 20:00:09 | 200 |   8.493517ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 20:00:16.374	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 20:00:16 | 204 |     15.998µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 20:00:16.392	INFO	orm/logger.go:114	[dev] [css8ik23l4k4gqv9jmjg] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [13.692ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 20:00:16.392	INFO	mid/common.go:50	[dev] [css8ik23l4k4gqv9jmjg] [Request] 2024-11-16 20:00:16 | 200 |  14.126442ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 20:00:35.302	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 20:00:35 | 204 |     14.845µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 20:00:35.313	INFO	orm/logger.go:114	[dev] [css8ioq3l4k4gqv9jmk0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [7.336ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 20:00:35.314	INFO	mid/common.go:50	[dev] [css8ioq3l4k4gqv9jmk0] [Request] 2024-11-16 20:00:35 | 200 |   7.656172ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 20:00:39.956	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 20:00:39 | 204 |     14.954µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 20:00:39.966	INFO	orm/logger.go:114	[dev] [css8ipq3l4k4gqv9jmkg] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [7.111ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 20:00:39.966	INFO	mid/common.go:50	[dev] [css8ipq3l4k4gqv9jmkg] [Request] 2024-11-16 20:00:39 | 200 |   7.400367ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 20:00:52.131	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 20:00:52 | 204 |     16.576µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 20:00:52.146	INFO	orm/logger.go:114	[dev] [css8it23l4k4gqv9jml0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [8.762ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 20:00:52.146	INFO	mid/common.go:50	[dev] [css8it23l4k4gqv9jml0] [Request] 2024-11-16 20:00:52 | 200 |   9.440387ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 20:01:10.436	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 20:01:10 | 204 |     14.854µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 20:01:10.460	INFO	orm/logger.go:114	[dev] [css8j1i3l4k4gqv9jmlg] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [11.535ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 20:01:10.460	INFO	mid/common.go:50	[dev] [css8j1i3l4k4gqv9jmlg] [Request] 2024-11-16 20:01:10 | 200 |  11.989608ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 20:15:50.542	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 20:15:50 | 204 |     15.369µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 20:15:50.596	INFO	orm/logger.go:114	[dev] [css8pti3l4k4gqv9jmm0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [44.298ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 20:15:50.597	INFO	mid/common.go:50	[dev] [css8pti3l4k4gqv9jmm0] [Request] 2024-11-16 20:15:50 | 200 |  44.704785ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 20:17:46.324	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 20:17:46 | 204 |     13.807µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 20:17:46.348	INFO	orm/logger.go:114	[dev] [css8qqi3l4k4gqv9jmmg] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [6.101ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 20:17:46.348	INFO	mid/common.go:50	[dev] [css8qqi3l4k4gqv9jmmg] [Request] 2024-11-16 20:17:46 | 200 |   6.385856ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 20:18:41.862	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 20:18:41 | 204 |     12.738µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 20:18:41.872	INFO	orm/logger.go:114	[dev] [css8r8a3l4k4gqv9jmn0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [7.117ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 20:18:41.872	INFO	mid/common.go:50	[dev] [css8r8a3l4k4gqv9jmn0] [Request] 2024-11-16 20:18:41 | 200 |   7.368857ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 20:22:35.283	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 20:22:35 | 204 |     10.224µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 20:22:35.288	INFO	orm/logger.go:114	[dev] [css8t2q3l4k4gqv9jmng] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [3.546ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 20:22:35.288	INFO	mid/common.go:50	[dev] [css8t2q3l4k4gqv9jmng] [Request] 2024-11-16 20:22:35 | 200 |   3.764744ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 20:22:37.915	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 20:22:37 | 204 |      9.851µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 20:22:37.972	INFO	orm/logger.go:114	[dev] [css8t3a3l4k4gqv9jmo0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [53.492ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 20:22:37.978	INFO	mid/common.go:50	[dev] [css8t3a3l4k4gqv9jmo0] [Request] 2024-11-16 20:22:37 | 200 |  60.051215ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 20:22:58.215	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 20:22:58 | 204 |     14.717µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 20:22:58.221	INFO	orm/logger.go:114	[dev] [css8t8i3l4k4gqv9jmog] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [3.504ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 20:22:58.221	INFO	mid/common.go:50	[dev] [css8t8i3l4k4gqv9jmog] [Request] 2024-11-16 20:22:58 | 200 |   3.684384ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 20:23:03.808	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 20:23:03 | 204 |     10.488µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 20:23:03.831	INFO	orm/logger.go:114	[dev] [css8t9q3l4k4gqv9jmp0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [20.475ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 20:23:03.831	INFO	mid/common.go:50	[dev] [css8t9q3l4k4gqv9jmp0] [Request] 2024-11-16 20:23:03 | 200 |  20.776002ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 20:23:27.518	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 20:23:27 | 204 |     13.503µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 20:23:27.538	INFO	orm/logger.go:114	[dev] [css8tfq3l4k4gqv9jmpg] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [15.382ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 20:23:27.539	INFO	mid/common.go:50	[dev] [css8tfq3l4k4gqv9jmpg] [Request] 2024-11-16 20:23:27 | 200 |   16.83969ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 20:23:30.825	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 20:23:30 | 204 |     11.925µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 20:23:30.844	INFO	orm/logger.go:114	[dev] [css8tgi3l4k4gqv9jmq0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [13.375ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 20:23:30.844	INFO	mid/common.go:50	[dev] [css8tgi3l4k4gqv9jmq0] [Request] 2024-11-16 20:23:30 | 200 |  16.839108ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 20:23:44.996	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 20:23:44 | 204 |     35.924µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 20:23:45.006	INFO	orm/logger.go:114	[dev] [css8tk23l4k4gqv9jmqg] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [7.640ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 20:23:45.006	INFO	mid/common.go:50	[dev] [css8tk23l4k4gqv9jmqg] [Request] 2024-11-16 20:23:44 | 200 |   7.976285ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 20:24:12.591	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 20:24:12 | 204 |     12.424µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 20:24:12.601	INFO	orm/logger.go:114	[dev] [css8tr23l4k4gqv9jmr0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [7.650ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 20:24:12.601	INFO	mid/common.go:50	[dev] [css8tr23l4k4gqv9jmr0] [Request] 2024-11-16 20:24:12 | 200 |   7.940106ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 20:25:55.849	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 20:25:55 | 204 |     40.202µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 20:25:55.860	INFO	orm/logger.go:114	[dev] [css8ukq3l4k4gqv9jmrg] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [5.581ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 20:25:55.860	INFO	mid/common.go:50	[dev] [css8ukq3l4k4gqv9jmrg] [Request] 2024-11-16 20:25:55 | 200 |   5.940253ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 20:26:20.876	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 20:26:20 | 204 |     11.709µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 20:26:20.885	INFO	orm/logger.go:114	[dev] [css8ur23l4k4gqv9jms0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [5.809ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 20:26:20.886	INFO	mid/common.go:50	[dev] [css8ur23l4k4gqv9jms0] [Request] 2024-11-16 20:26:20 | 200 |   6.105279ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 20:30:29.309	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 20:30:29 | 204 |     12.488µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 20:30:29.392	INFO	orm/logger.go:114	[dev] [css90pa3l4k4gqv9jmsg] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [26.927ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 20:30:29.393	INFO	mid/common.go:50	[dev] [css90pa3l4k4gqv9jmsg] [Request] 2024-11-16 20:30:29 | 200 |  31.460642ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 20:49:44.726	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 20:49:44 | 204 |     10.266µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 20:49:44.791	INFO	orm/logger.go:114	[dev] [css99q23l4k4gqv9jmt0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [61.219ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 20:49:44.792	INFO	mid/common.go:50	[dev] [css99q23l4k4gqv9jmt0] [Request] 2024-11-16 20:49:44 | 200 |  61.470006ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 20:50:04.996	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 20:50:04 | 204 |     27.764µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 20:50:05.011	INFO	orm/logger.go:114	[dev] [css99v23l4k4gqv9jmtg] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [11.065ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 20:50:05.011	INFO	mid/common.go:50	[dev] [css99v23l4k4gqv9jmtg] [Request] 2024-11-16 20:50:04 | 200 |  12.286084ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 20:52:39.389	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 20:52:39 | 204 |     11.695µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 20:52:39.464	INFO	orm/logger.go:114	[dev] [css9b5q3l4k4gqv9jmu0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [71.788ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 20:52:39.464	INFO	mid/common.go:50	[dev] [css9b5q3l4k4gqv9jmu0] [Request] 2024-11-16 20:52:39 | 200 |  72.211866ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 20:54:54.802	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 20:54:54 | 204 |     21.395µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 20:54:54.816	INFO	orm/logger.go:114	[dev] [css9c7i3l4k4gqv9jmug] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [9.757ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 20:54:54.816	INFO	mid/common.go:50	[dev] [css9c7i3l4k4gqv9jmug] [Request] 2024-11-16 20:54:54 | 200 |  10.085169ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 20:56:20.676	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 20:56:20 | 204 |      10.75µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 20:56:20.687	INFO	orm/logger.go:114	[dev] [css9ct23l4k4gqv9jmv0] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [8.987ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 20:56:20.688	INFO	mid/common.go:50	[dev] [css9ct23l4k4gqv9jmv0] [Request] 2024-11-16 20:56:20 | 200 |   9.416476ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 20:57:00.545	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 20:57:00 | 204 |     14.137µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 20:57:00.564	INFO	orm/logger.go:114	[dev] [css9d723l4k4gqv9jmvg] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [15.286ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 20:57:00.565	INFO	mid/common.go:50	[dev] [css9d723l4k4gqv9jmvg] [Request] 2024-11-16 20:57:00 | 200 |  15.960298ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 20:57:40.287	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 20:57:40 | 204 |     11.783µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 20:57:40.293	INFO	orm/logger.go:114	[dev] [css9dh23l4k4gqv9jn00] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [4.623ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 20:57:40.293	INFO	mid/common.go:50	[dev] [css9dh23l4k4gqv9jn00] [Request] 2024-11-16 20:57:40 | 200 |   4.824989ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 20:57:45.425	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 20:57:45 | 204 |     13.356µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 20:57:45.431	INFO	orm/logger.go:114	[dev] [css9dia3l4k4gqv9jn0g] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [4.230ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 20:57:45.432	INFO	mid/common.go:50	[dev] [css9dia3l4k4gqv9jn0g] [Request] 2024-11-16 20:57:45 | 200 |   4.576702ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 20:59:07.232	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 20:59:07 | 204 |     13.978µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 20:59:07.270	INFO	orm/logger.go:114	[dev] [css9e6q3l4k4gqv9jn10] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [8.960ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 20:59:07.270	INFO	mid/common.go:50	[dev] [css9e6q3l4k4gqv9jn10] [Request] 2024-11-16 20:59:07 | 200 |   9.238909ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 21:04:15.509	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 21:04:15 | 204 |     48.112µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 21:04:15.550	INFO	orm/logger.go:114	[dev] [css9gjq3l4k4gqv9jn1g] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [14.906ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 21:04:15.551	INFO	mid/common.go:50	[dev] [css9gjq3l4k4gqv9jn1g] [Request] 2024-11-16 21:04:15 | 200 |  15.413625ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 21:06:27.921	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 21:06:27 | 204 |     11.555µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 21:06:27.994	INFO	orm/logger.go:114	[dev] [css9hkq3l4k4gqv9jn20] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [67.388ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 21:06:27.994	INFO	mid/common.go:50	[dev] [css9hkq3l4k4gqv9jn20] [Request] 2024-11-16 21:06:27 | 200 |  67.673828ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 21:07:14.085	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 21:07:14 | 204 |     11.535µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 21:07:14.124	INFO	orm/logger.go:114	[dev] [css9i0i3l4k4gqv9jn2g] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [22.886ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 21:07:14.124	INFO	mid/common.go:50	[dev] [css9i0i3l4k4gqv9jn2g] [Request] 2024-11-16 21:07:14 | 200 |  29.768906ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 21:07:17.566	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 21:07:17 | 204 |     10.755µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 21:07:17.586	INFO	orm/logger.go:114	[dev] [css9i1a3l4k4gqv9jn30] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [16.790ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 21:07:17.586	INFO	mid/common.go:50	[dev] [css9i1a3l4k4gqv9jn30] [Request] 2024-11-16 21:07:17 | 200 |  17.089369ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 21:08:13.807	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 21:08:13 | 204 |      6.899µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 21:08:13.817	INFO	orm/logger.go:114	[dev] [css9ifa3l4k4gqv9jn3g] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [7.350ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 21:08:13.817	INFO	mid/common.go:50	[dev] [css9ifa3l4k4gqv9jn3g] [Request] 2024-11-16 21:08:13 | 200 |    7.63344ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 21:08:54.997	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 21:08:54 | 204 |     27.566µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 21:08:55.003	INFO	orm/logger.go:114	[dev] [css9ipi3l4k4gqv9jn40] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [3.952ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 21:08:55.003	INFO	mid/common.go:50	[dev] [css9ipi3l4k4gqv9jn40] [Request] 2024-11-16 21:08:54 | 200 |   4.232904ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 21:08:57.922	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 21:08:57 | 204 |      8.641µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 21:08:57.927	INFO	orm/logger.go:114	[dev] [css9iqa3l4k4gqv9jn4g] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [3.997ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 21:08:57.928	INFO	mid/common.go:50	[dev] [css9iqa3l4k4gqv9jn4g] [Request] 2024-11-16 21:08:57 | 200 |   4.156858ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 21:09:32.113	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 21:09:32 | 204 |     10.006µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 21:09:32.121	INFO	orm/logger.go:114	[dev] [css9j323l4k4gqv9jn50] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [5.637ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 21:09:32.121	INFO	mid/common.go:50	[dev] [css9j323l4k4gqv9jn50] [Request] 2024-11-16 21:09:32 | 200 |   5.872568ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}
+2024/11/16 21:09:34.298	INFO	mid/common.go:50	[dev] [Request] 2024-11-16 21:09:34 | 204 |     11.661µs | 127.0.0.1 | OPTIONS /admin/customer/address-list, res: No Content
+2024/11/16 21:09:34.307	INFO	orm/logger.go:114	[dev] [css9j3i3l4k4gqv9jn5g] /Users/branchcn/Project/go/src/jjsdapi/internal/service/admin/customer.go:22 [5.680ms] [rows:1] SELECT * FROM `customer_address` ORDER BY `customer_address`.`id` DESC LIMIT 20 (gorm)
+2024/11/16 21:09:34.307	INFO	mid/common.go:50	[dev] [css9j3i3l4k4gqv9jn5g] [Request] 2024-11-16 21:09:34 | 200 |   7.426927ms | 127.0.0.1 | GET     /admin/customer/address-list, res: {"code":200,"msg":"ok","data":{"list":[{"id":1,"title":"廷泽商店","address":"裕光路","tel":"","created_date":"2020-12-28 21:10:22"}],"total":1}}

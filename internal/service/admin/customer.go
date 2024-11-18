@@ -5,7 +5,7 @@ import (
 	meet "jjsdapi/internal/meet/admin"
 	"jjsdapi/internal/service"
 	"jjsdapi/internal/utils"
-	"time"
+	"jjsdapi/internal/utils/timez"
 )
 
 type Customer struct {
@@ -35,7 +35,7 @@ func (s Customer) AddressList(req *meet.CustomerAddressListReq) (*meet.CustomerA
 			Title:       v.Title,
 			Address:     v.Address,
 			Tel:         v.Tel,
-			CreatedDate: time.Unix(v.CreatedAt, 0).Format(time.DateTime),
+			CreatedDate: timez.TableDateTime(v.CreatedAt),
 		})
 	}
 

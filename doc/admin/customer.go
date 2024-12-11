@@ -20,7 +20,7 @@ type CustomerAddressListRes struct {
 }
 
 type CustomerAddressListOne struct {
-	Id          int64  `json:"id"`           //地址id
+	Id          string `json:"id"`           //地址id
 	Title       string `json:"title"`        //商店名称
 	Address     string `json:"address"`      //商店地址
 	Tel         string `json:"tel"`          //联系电话

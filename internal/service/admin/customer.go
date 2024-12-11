@@ -31,7 +31,7 @@ func (s Customer) AddressList(req *meet.CustomerAddressListReq) (*meet.CustomerA
 
 	for _, v := range list {
 		res.List = append(res.List, &meet.CustomerAddressListOne{
-			Id:          v.ID,
+			Id:          utils.LongNumIdToStr(v.ID),
 			Title:       v.Title,
 			Address:     v.Address,
 			Tel:         v.Tel,

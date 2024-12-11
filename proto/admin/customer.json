@@ -23,7 +23,7 @@
           {
             "name": "One",
             "fields": [
-              {"name": "id", "class": "int64", "desc": "地址id"},
+              {"name": "id", "class": "string", "desc": "地址id"},
               {"name": "title", "class": "string", "desc": "商店名称"},
               {"name": "address", "class": "string", "desc": "商店地址"},
               {"name": "tel", "class": "string", "desc": "联系电话"},

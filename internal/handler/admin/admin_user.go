@@ -29,3 +29,15 @@ func (s AdminUser) Logout(ctx *fiber.Ctx) (e error) {
 	res, err := s.getDep(ctx).Logout(form)
 	return result.Json(ctx, res, err)
 }
+
+// Info 信息接口
+// @Router /admin/admin-user/info [GET]
+func (s AdminUser) Info(ctx *fiber.Ctx) (e error) {
+	var form = &meet.AdminUserInfoReq{}
+	if err := s.ValidateRequest(ctx, form); err != nil {
+		return result.Json(ctx, nil, err)
+	}
+
+	res, err := s.getDep(ctx).Info(form)
+	return result.Json(ctx, res, err)
+}

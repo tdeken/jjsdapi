@@ -35,6 +35,7 @@ func (s AdminUser) Register() []action.Action {
 	return []action.Action{
 		action.NewAction("POST", s.Login),
 		action.NewAction("GET", s.Logout, action.UseMidType("admin_jwt")),
+		action.NewAction("GET", s.Info, action.UseMidType("admin_jwt")),
 	}
 }
 

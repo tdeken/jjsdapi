@@ -17,3 +17,12 @@ type AdminUserLogoutReq struct {
 
 type AdminUserLogoutRes struct {
 }
+
+type AdminUserInfoReq struct {
+}
+
+type AdminUserInfoRes struct {
+	UserId string `json:"user_id"` //user_id
+	Name   string `json:"name"`    //name
+	Avatar string `json:"avatar"`  //name
+}

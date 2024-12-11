@@ -46,7 +46,7 @@ type AdminUserLogoutRes struct {
 
 // Logout
 // @Tags 后台用户
-// @Summary 登出
+// @Summary POST
 // @Security apiKey
 // @accept application/json
 // @Produce application/json
@@ -54,5 +54,33 @@ type AdminUserLogoutRes struct {
 // @Success 200 {object} AdminUserLogoutFormat
 // @Router /admin/admin-user/logout [GET]
 func (AdminUser) Logout() {
+
+}
+
+type AdminUserInfoFormat struct {
+	Code int32            `json:"code"`
+	Msg  string           `json:"msg"`
+	Data AdminUserInfoRes `json:"data"`
+}
+
+type AdminUserInfoReq struct {
+}
+
+type AdminUserInfoRes struct {
+	UserId string `json:"user_id"` //user_id
+	Name   string `json:"name"`    //name
+	Avatar string `json:"avatar"`  //name
+}
+
+// Info
+// @Tags 后台用户
+// @Summary 信息接口
+// @Security apiKey
+// @accept application/json
+// @Produce application/json
+// @Param data query AdminUserInfoReq true "数据"
+// @Success 200 {object} AdminUserInfoFormat
+// @Router /admin/admin-user/info [GET]
+func (AdminUser) Info() {
 
 }

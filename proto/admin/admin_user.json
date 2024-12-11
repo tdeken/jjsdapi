@@ -23,11 +23,25 @@
     },
     {
       "name": "Logout",
-      "desc": "登出",
+      "desc": "POST",
       "method": "GET",
       "mid_type": "admin_jwt",
       "req": {},
       "res": {}
+    },
+    {
+      "name": "Info",
+      "desc": "信息接口",
+      "method": "GET",
+      "mid_type": "admin_jwt",
+      "req": {},
+      "res": {
+        "fields": [
+          {"name": "user_id", "class": "string", "desc": "user_id"},
+          {"name": "name", "class": "string", "desc": "name"},
+          {"name": "avatar", "class": "string", "desc": "name"}
+        ]
+      }
     }
   ]
 }

@@ -18,12 +18,14 @@ import (
 var (
 	Q               = new(Query)
 	AdminUser       *adminUser
+	Customer        *customer
 	CustomerAddress *customerAddress
 )
 
 func SetDefault(db *gorm.DB, opts ...gen.DOOption) {
 	*Q = *Use(db, opts...)
 	AdminUser = &Q.AdminUser
+	Customer = &Q.Customer
 	CustomerAddress = &Q.CustomerAddress
 }
 
@@ -31,6 +33,7 @@ func Use(db *gorm.DB, opts ...gen.DOOption) *Query {
 	return &Query{
 		db:              db,
 		AdminUser:       newAdminUser(db, opts...),
+		Customer:        newCustomer(db, opts...),
 		CustomerAddress: newCustomerAddress(db, opts...),
 	}
 }
@@ -39,6 +42,7 @@ type Query struct {
 	db *gorm.DB
 
 	AdminUser       adminUser
+	Customer        customer
 	CustomerAddress customerAddress
 }
 
@@ -48,6 +52,7 @@ func (q *Query) clone(db *gorm.DB) *Query {
 	return &Query{
 		db:              db,
 		AdminUser:       q.AdminUser.clone(db),
+		Customer:        q.Customer.clone(db),
 		CustomerAddress: q.CustomerAddress.clone(db),
 	}
 }
@@ -64,18 +69,21 @@ func (q *Query) ReplaceDB(db *gorm.DB) *Query {
 	return &Query{
 		db:              db,
 		AdminUser:       q.AdminUser.replaceDB(db),
+		Customer:        q.Customer.replaceDB(db),
 		CustomerAddress: q.CustomerAddress.replaceDB(db),
 	}
 }
 
 type queryCtx struct {
 	AdminUser       *adminUserDo
+	Customer        *customerDo
 	CustomerAddress *customerAddressDo
 }
 
 func (q *Query) WithContext(ctx context.Context) *queryCtx {
 	return &queryCtx{
 		AdminUser:       q.AdminUser.WithContext(ctx),
+		Customer:        q.Customer.WithContext(ctx),
 		CustomerAddress: q.CustomerAddress.WithContext(ctx),
 	}
 }

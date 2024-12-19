@@ -5,13 +5,44 @@
   },
   "interfaces": [
     {
+      "name": "List",
+      "desc": "客户列表",
+      "method": "GET",
+      "req": {
+        "fields": [
+          {"name": "page", "class": "int32", "desc": "当前页"},
+          {"name": "per_page", "class": "int32", "desc": "每页条数"},
+          {"name": "name", "class": "string", "desc": "客户名称", "validate": "trim"}
+        ]
+      },
+      "res": {
+        "fields": [
+          {"name": "list", "class": "[]?One", "desc": "列表数据"},
+          {"name": "total", "class": "int64", "desc": "数据总条数"}
+        ],
+        "messages": [
+          {
+            "name": "One",
+            "fields": [
+              {"name": "id", "class": "string", "desc": "地址id"},
+              {"name": "name", "class": "string", "desc": "客户名称"},
+              {"name": "phone", "class": "string", "desc": "客户手机号"},
+              {"name": "created_date", "class": "string", "desc": "创建时间"}
+            ]
+          }
+        ]
+      }
+    },
+    {
       "name": "AddressList",
       "desc": "配送地址列表",
       "method": "GET",
       "req": {
         "fields": [
           {"name": "page", "class": "int32", "desc": "当前页"},
-          {"name": "per_page", "class": "int32", "desc": "每页条数"}
+          {"name": "per_page", "class": "int32", "desc": "每页条数"},
+          {"name": "title", "class": "string", "desc": "商店名称", "validate": "trim"},
+          {"name": "tel", "class": "string", "desc": "联系方式", "validate": "trim"}
         ]
       },
       "res": {

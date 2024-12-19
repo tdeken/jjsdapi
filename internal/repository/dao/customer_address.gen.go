@@ -32,6 +32,7 @@ func newCustomerAddress(db *gorm.DB, opts ...gen.DOOption) customerAddress {
 	_customerAddress.CreatedAt = field.NewInt64(tableName, "created_at")
 	_customerAddress.UpdatedAt = field.NewInt64(tableName, "updated_at")
 	_customerAddress.DeletedAt = field.NewInt64(tableName, "deleted_at")
+	_customerAddress.CustomerID = field.NewInt64(tableName, "customer_id")
 	_customerAddress.Title = field.NewString(tableName, "title")
 	_customerAddress.Address = field.NewString(tableName, "address")
 	_customerAddress.Tel = field.NewString(tableName, "tel")
@@ -45,14 +46,15 @@ func newCustomerAddress(db *gorm.DB, opts ...gen.DOOption) customerAddress {
 type customerAddress struct {
 	customerAddressDo customerAddressDo
 
-	ALL       field.Asterisk
-	ID        field.Int64
-	CreatedAt field.Int64
-	UpdatedAt field.Int64
-	DeletedAt field.Int64
-	Title     field.String // 商店名称
-	Address   field.String // 配送地址
-	Tel       field.String // 联系电话
+	ALL        field.Asterisk
+	ID         field.Int64
+	CreatedAt  field.Int64
+	UpdatedAt  field.Int64
+	DeletedAt  field.Int64
+	CustomerID field.Int64  // 客户id
+	Title      field.String // 商店名称
+	Address    field.String // 配送地址
+	Tel        field.String // 联系电话
 
 	fieldMap map[string]field.Expr
 }
@@ -73,6 +75,7 @@ func (c *customerAddress) updateTableName(table string) *customerAddress {
 	c.CreatedAt = field.NewInt64(table, "created_at")
 	c.UpdatedAt = field.NewInt64(table, "updated_at")
 	c.DeletedAt = field.NewInt64(table, "deleted_at")
+	c.CustomerID = field.NewInt64(table, "customer_id")
 	c.Title = field.NewString(table, "title")
 	c.Address = field.NewString(table, "address")
 	c.Tel = field.NewString(table, "tel")
@@ -104,11 +107,12 @@ func (c *customerAddress) GetFieldByName(fieldName string) (field.OrderExpr, boo
 }
 
 func (c *customerAddress) fillFieldMap() {
-	c.fieldMap = make(map[string]field.Expr, 7)
+	c.fieldMap = make(map[string]field.Expr, 8)
 	c.fieldMap["id"] = c.ID
 	c.fieldMap["created_at"] = c.CreatedAt
 	c.fieldMap["updated_at"] = c.UpdatedAt
 	c.fieldMap["deleted_at"] = c.DeletedAt
+	c.fieldMap["customer_id"] = c.CustomerID
 	c.fieldMap["title"] = c.Title
 	c.fieldMap["address"] = c.Address
 	c.fieldMap["tel"] = c.Tel

@@ -21,6 +21,11 @@ func PpDbLo(page, perPage int32) (offset, limit int) {
 	return
 }
 
+// DbAllLike 全模糊查询
+func DbAllLike(str string) string {
+	return "%" + str + "%"
+}
+
 // StrToLongNumId 把字符串变回要处理的ID
 func StrToLongNumId(v string) int64 {
 	if v == "" {

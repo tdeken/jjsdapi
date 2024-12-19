@@ -59,6 +59,7 @@ func (s Customer) Group() string {
 // Register 注册路由
 func (s Customer) Register() []action.Action {
 	return []action.Action{
+		action.NewAction("GET", s.List),
 		action.NewAction("GET", s.AddressList),
 	}
 }

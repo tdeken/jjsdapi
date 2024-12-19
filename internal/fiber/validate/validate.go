@@ -31,6 +31,16 @@ func newValidate() *validator.Validate {
 	v := validator.New()
 
 	//load custom validate
+	v.RegisterValidation("trim", trim)
 
 	return v
+}
+
+func trim(fl validator.FieldLevel) bool {
+	if fl.Field().CanSet() {
+		fl.Field().SetString(strings.TrimSpace(fl.Field().String()))
+		return true
+	}
+
+	return false
 }

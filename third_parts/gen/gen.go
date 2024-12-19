@@ -75,6 +75,7 @@ func main() {
 	gn.ApplyInterface(func(Queries) {},
 		gn.GenerateModel("admin_user"),
 		gn.GenerateModel("customer_address"),
+		gn.GenerateModel("customer"),
 	)
 
 	// Generate the code

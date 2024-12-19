@@ -8,13 +8,14 @@ const TableNameCustomerAddress = "customer_address"
 
 // CustomerAddress 客户配送地址表
 type CustomerAddress struct {
-	ID        int64  `gorm:"column:id;type:bigint;primaryKey;autoIncrement:true" json:"id"`
-	CreatedAt int64  `gorm:"column:created_at;type:bigint;not null" json:"created_at"`
-	UpdatedAt int64  `gorm:"column:updated_at;type:bigint;not null" json:"updated_at"`
-	DeletedAt int64  `gorm:"column:deleted_at;type:bigint;not null" json:"deleted_at"`
-	Title     string `gorm:"column:title;type:varchar(255);not null;comment:商店名称" json:"title"`     // 商店名称
-	Address   string `gorm:"column:address;type:varchar(255);not null;comment:配送地址" json:"address"` // 配送地址
-	Tel       string `gorm:"column:tel;type:varchar(15);not null;comment:联系电话" json:"tel"`          // 联系电话
+	ID         int64  `gorm:"column:id;type:bigint;primaryKey;autoIncrement:true" json:"id"`
+	CreatedAt  int64  `gorm:"column:created_at;type:bigint;not null;index:idx_created_at,priority:1" json:"created_at"`
+	UpdatedAt  int64  `gorm:"column:updated_at;type:bigint;not null" json:"updated_at"`
+	DeletedAt  int64  `gorm:"column:deleted_at;type:bigint;not null" json:"deleted_at"`
+	CustomerID int64  `gorm:"column:customer_id;type:bigint;not null;comment:客户id" json:"customer_id"` // 客户id
+	Title      string `gorm:"column:title;type:varchar(255);not null;comment:商店名称" json:"title"`       // 商店名称
+	Address    string `gorm:"column:address;type:varchar(255);not null;comment:配送地址" json:"address"`   // 配送地址
+	Tel        string `gorm:"column:tel;type:varchar(15);not null;comment:联系电话" json:"tel"`            // 联系电话
 }
 
 // TableName CustomerAddress's table name

@@ -20,3 +20,7 @@ drun:
 .phony: admin
 admin:
 	grass -fb=admin
+
+.phony: model
+model:
+	@go run ./third_parts/gen/gen.go

@@ -11,7 +11,7 @@
       "req": {
         "fields": [
           {"name": "page", "class": "int32", "desc": "当前页"},
-          {"name": "per_page", "class": "int32", "desc": "每页条数"},
+          {"name": "page_size", "class": "int32", "desc": "每页条数"},
           {"name": "name", "class": "string", "desc": "客户名称", "validate": "trim"}
         ]
       },
@@ -34,13 +34,33 @@
       }
     },
     {
+      "name": "Select",
+      "desc": "客户列表选择",
+      "method": "GET",
+      "req": {},
+      "res": {
+        "fields": [
+          {"name": "list", "class": "[]?One", "desc": "列表数据"}
+        ],
+        "messages": [
+          {
+            "name": "One",
+            "fields": [
+              {"name": "id", "class": "string", "desc": "地址id"},
+              {"name": "name", "class": "string", "desc": "客户名称"}
+            ]
+          }
+        ]
+      }
+    },
+    {
       "name": "AddressList",
       "desc": "配送地址列表",
       "method": "GET",
       "req": {
         "fields": [
           {"name": "page", "class": "int32", "desc": "当前页"},
-          {"name": "per_page", "class": "int32", "desc": "每页条数"},
+          {"name": "page_size", "class": "int32", "desc": "每页条数"},
           {"name": "title", "class": "string", "desc": "商店名称", "validate": "trim"},
           {"name": "tel", "class": "string", "desc": "联系方式", "validate": "trim"}
         ]
@@ -63,6 +83,20 @@
           }
         ]
       }
+    },
+    {
+      "name": "CreateAddress",
+      "desc": "创建地址",
+      "method": "POST",
+      "req": {
+        "fields": [
+          {"name": "title", "class": "string", "desc": "商店名称", "validate": "trim,required"},
+          {"name": "address", "class": "string", "desc": "商店地址", "validate": "trim,required"},
+          {"name": "tel", "class": "string", "desc": "联系方式", "validate": "trim"},
+          {"name": "customer_id", "class": "string", "desc": "客户id", "validate": "trim"}
+        ]
+      },
+      "res": {}
     }
   ]
 }

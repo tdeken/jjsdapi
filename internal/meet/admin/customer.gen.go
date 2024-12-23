@@ -3,9 +3,9 @@
 package admin
 
 type CustomerListReq struct {
-	Page    int32  `json:"page" query:"page"`                 //当前页
-	PerPage int32  `json:"per_page" query:"per_page"`         //每页条数
-	Name    string `json:"name" query:"name" validate:"trim"` //客户名称
+	Page     int32  `json:"page" query:"page"`                 //当前页
+	PageSize int32  `json:"page_size" query:"page_size"`       //每页条数
+	Name     string `json:"name" query:"name" validate:"trim"` //客户名称
 }
 
 type CustomerListRes struct {
@@ -20,11 +20,23 @@ type CustomerListOne struct {
 	CreatedDate string `json:"created_date"` //创建时间
 }
 
+type CustomerSelectReq struct {
+}
+
+type CustomerSelectRes struct {
+	List []*CustomerSelectOne `json:"list"` //列表数据
+}
+
+type CustomerSelectOne struct {
+	Id   string `json:"id"`   //地址id
+	Name string `json:"name"` //客户名称
+}
+
 type CustomerAddressListReq struct {
-	Page    int32  `json:"page" query:"page"`                   //当前页
-	PerPage int32  `json:"per_page" query:"per_page"`           //每页条数
-	Title   string `json:"title" query:"title" validate:"trim"` //商店名称
-	Tel     string `json:"tel" query:"tel" validate:"trim"`     //联系方式
+	Page     int32  `json:"page" query:"page"`                   //当前页
+	PageSize int32  `json:"page_size" query:"page_size"`         //每页条数
+	Title    string `json:"title" query:"title" validate:"trim"` //商店名称
+	Tel      string `json:"tel" query:"tel" validate:"trim"`     //联系方式
 }
 
 type CustomerAddressListRes struct {
@@ -38,4 +50,14 @@ type CustomerAddressListOne struct {
 	Address     string `json:"address"`      //商店地址
 	Tel         string `json:"tel"`          //联系电话
 	CreatedDate string `json:"created_date"` //创建时间
+}
+
+type CustomerCreateAddressReq struct {
+	Title      string `json:"title" form:"title" validate:"trim,required"`     //商店名称
+	Address    string `json:"address" form:"address" validate:"trim,required"` //商店地址
+	Tel        string `json:"tel" form:"tel" validate:"trim"`                  //联系方式
+	CustomerId string `json:"customer_id" form:"customer_id" validate:"trim"`  //客户id
+}
+
+type CustomerCreateAddressRes struct {
 }

@@ -60,7 +60,9 @@ func (s Customer) Group() string {
 func (s Customer) Register() []action.Action {
 	return []action.Action{
 		action.NewAction("GET", s.List),
+		action.NewAction("GET", s.Select),
 		action.NewAction("GET", s.AddressList),
+		action.NewAction("POST", s.CreateAddress),
 	}
 }
 

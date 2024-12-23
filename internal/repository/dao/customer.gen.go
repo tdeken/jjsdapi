@@ -40,7 +40,7 @@ func newCustomer(db *gorm.DB, opts ...gen.DOOption) customer {
 	return _customer
 }
 
-// customer 客户配送地址表
+// customer 客户表
 type customer struct {
 	customerDo customerDo
 
@@ -118,17 +118,14 @@ func (c customer) replaceDB(db *gorm.DB) customer {
 
 type customerDo struct{ gen.DO }
 
-// GetByID
-// SELECT * FROM @@table WHERE id=@id
-func (c customerDo) GetByID(id int) (result *model.Customer, err error) {
-	var params []interface{}
-
+// SelectAll
+// SELECT * FROM @@table WHERE deleted_at=0 order by created_at desc
+func (c customerDo) SelectAll() (result []*model.Customer, err error) {
 	var generateSQL strings.Builder
-	params = append(params, id)
-	generateSQL.WriteString("SELECT * FROM customer WHERE id=? ")
+	generateSQL.WriteString("SELECT * FROM customer WHERE deleted_at=0 order by created_at desc ")
 
 	var executeSQL *gorm.DB
-	executeSQL = c.UnderlyingDB().Raw(generateSQL.String(), params...).Take(&result) // ignore_security_alert
+	executeSQL = c.UnderlyingDB().Raw(generateSQL.String()).Find(&result) // ignore_security_alert
 	err = executeSQL.Error
 
 	return

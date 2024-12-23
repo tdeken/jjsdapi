@@ -51,6 +51,10 @@ func (s *Service) PushErr(err error, prr ...*code.Error) *code.Error {
 	return prr[0]
 }
 
+func (s *Service) ParamErr(tip string) *code.Error {
+	return code.NewError(code.VerifyErrorCode, fmt.Sprintf("参数错误：%s", tip))
+}
+
 // AdminUser 获取用户信息
 func (s *Service) AdminUser() *mid.AdminAuth {
 	if s.adminUser == nil {

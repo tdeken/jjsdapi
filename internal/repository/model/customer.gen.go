@@ -6,7 +6,7 @@ package model
 
 const TableNameCustomer = "customer"
 
-// Customer 客户配送地址表
+// Customer 客户表
 type Customer struct {
 	ID        int64  `gorm:"column:id;type:bigint;primaryKey;autoIncrement:true" json:"id"`
 	CreatedAt int64  `gorm:"column:created_at;type:bigint;not null;index:idx_created_at,priority:1" json:"created_at"`

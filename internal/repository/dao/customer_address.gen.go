@@ -6,7 +6,6 @@ package dao
 
 import (
 	"context"
-	"strings"
 
 	"gorm.io/gorm"
 	"gorm.io/gorm/clause"
@@ -129,22 +128,6 @@ func (c customerAddress) replaceDB(db *gorm.DB) customerAddress {
 }
 
 type customerAddressDo struct{ gen.DO }
-
-// GetByID
-// SELECT * FROM @@table WHERE id=@id
-func (c customerAddressDo) GetByID(id int) (result *model.CustomerAddress, err error) {
-	var params []interface{}
-
-	var generateSQL strings.Builder
-	params = append(params, id)
-	generateSQL.WriteString("SELECT * FROM customer_address WHERE id=? ")
-
-	var executeSQL *gorm.DB
-	executeSQL = c.UnderlyingDB().Raw(generateSQL.String(), params...).Take(&result) // ignore_security_alert
-	err = executeSQL.Error
-
-	return
-}
 
 func (c customerAddressDo) Debug() *customerAddressDo {
 	return c.withDO(c.DO.Debug())

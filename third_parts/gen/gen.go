@@ -36,10 +36,16 @@ var dataMap = map[string]func(gorm.ColumnType) (dataType string){
 
 var url = "root:123456@tcp(127.0.0.1:3306)/bazaar?charset=utf8mb4&parseTime=True&loc=Local"
 
-type Queries interface {
-	// GetByID
+type FindById interface {
+	// FindById
 	// SELECT * FROM @@table WHERE id=@id
-	GetByID(id int) (*gen.T, error) // returns struct and error
+	FindById(id int) (*gen.T, error) // returns struct and error
+}
+
+type Select interface {
+	// SelectAll
+	// SELECT * FROM @@table WHERE deleted_at=0 order by created_at desc
+	SelectAll() ([]*gen.T, error) // returns struct and error
 }
 
 func main() {
@@ -72,10 +78,16 @@ func main() {
 	// specify diy mapping relationship
 	gn.WithDataTypeMap(dataMap)
 
-	gn.ApplyInterface(func(Queries) {},
+	gn.ApplyInterface(func(FindById) {},
 		gn.GenerateModel("admin_user"),
-		gn.GenerateModel("customer_address"),
+	)
+
+	gn.ApplyInterface(func(p Select) {},
 		gn.GenerateModel("customer"),
+	)
+
+	gn.ApplyBasic(
+		gn.GenerateModel("customer_address"),
 	)
 
 	// Generate the code

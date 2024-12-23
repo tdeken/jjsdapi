@@ -123,9 +123,9 @@ func (a adminUser) replaceDB(db *gorm.DB) adminUser {
 
 type adminUserDo struct{ gen.DO }
 
-// GetByID
+// FindById
 // SELECT * FROM @@table WHERE id=@id
-func (a adminUserDo) GetByID(id int) (result *model.AdminUser, err error) {
+func (a adminUserDo) FindById(id int) (result *model.AdminUser, err error) {
 	var params []interface{}
 
 	var generateSQL strings.Builder

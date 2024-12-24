@@ -52,12 +52,12 @@ type CustomerAddressListOne struct {
 	CreatedDate string `json:"created_date"` //创建时间
 }
 
-type CustomerCreateAddressReq struct {
+type CustomerAddressCreateReq struct {
 	Title      string `json:"title" form:"title" validate:"trim,required"`     //商店名称
 	Address    string `json:"address" form:"address" validate:"trim,required"` //商店地址
 	Tel        string `json:"tel" form:"tel" validate:"trim"`                  //联系方式
 	CustomerId string `json:"customer_id" form:"customer_id" validate:"trim"`  //客户id
 }
 
-type CustomerCreateAddressRes struct {
+type CustomerAddressCreateRes struct {
 }

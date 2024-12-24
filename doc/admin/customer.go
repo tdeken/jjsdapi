@@ -110,31 +110,31 @@ func (Customer) AddressList() {
 
 }
 
-type CustomerCreateAddressFormat struct {
+type CustomerAddressCreateFormat struct {
 	Code int32                    `json:"code"`
 	Msg  string                   `json:"msg"`
-	Data CustomerCreateAddressRes `json:"data"`
+	Data CustomerAddressCreateRes `json:"data"`
 }
 
-type CustomerCreateAddressReq struct {
+type CustomerAddressCreateReq struct {
 	Title      string `json:"title"  validate:"trim,required"`   //商店名称
 	Address    string `json:"address"  validate:"trim,required"` //商店地址
 	Tel        string `json:"tel"  validate:"trim"`              //联系方式
 	CustomerId string `json:"customer_id"  validate:"trim"`      //客户id
 }
 
-type CustomerCreateAddressRes struct {
+type CustomerAddressCreateRes struct {
 }
 
-// CreateAddress
+// AddressCreate
 // @Tags 客户数据
-// @Summary 创建地址
+// @Summary 地址创建
 // @Security apiKey
 // @accept application/json
 // @Produce application/json
-// @Param data body CustomerCreateAddressReq true "数据"
-// @Success 200 {object} CustomerCreateAddressFormat
-// @Router /admin/customer/create-address [POST]
-func (Customer) CreateAddress() {
+// @Param data body CustomerAddressCreateReq true "数据"
+// @Success 200 {object} CustomerAddressCreateFormat
+// @Router /admin/customer/address-create [POST]
+func (Customer) AddressCreate() {
 
 }

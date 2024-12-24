@@ -23,8 +23,8 @@
     },
     {
       "name": "Logout",
-      "desc": "POST",
-      "method": "GET",
+      "desc": "登出",
+      "method": "POST",
       "mid_type": "admin_jwt",
       "req": {},
       "res": {}

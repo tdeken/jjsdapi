@@ -85,8 +85,8 @@
       }
     },
     {
-      "name": "CreateAddress",
-      "desc": "创建地址",
+      "name": "AddressCreate",
+      "desc": "地址创建",
       "method": "POST",
       "req": {
         "fields": [

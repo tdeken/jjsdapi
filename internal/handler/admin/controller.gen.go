@@ -34,7 +34,7 @@ func (s AdminUser) Group() string {
 func (s AdminUser) Register() []action.Action {
 	return []action.Action{
 		action.NewAction("POST", s.Login),
-		action.NewAction("GET", s.Logout, action.UseMidType("admin_jwt")),
+		action.NewAction("POST", s.Logout, action.UseMidType("admin_jwt")),
 		action.NewAction("GET", s.Info, action.UseMidType("admin_jwt")),
 	}
 }
@@ -62,7 +62,7 @@ func (s Customer) Register() []action.Action {
 		action.NewAction("GET", s.List),
 		action.NewAction("GET", s.Select),
 		action.NewAction("GET", s.AddressList),
-		action.NewAction("POST", s.CreateAddress),
+		action.NewAction("POST", s.AddressCreate),
 	}
 }
 

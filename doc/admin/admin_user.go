@@ -46,13 +46,13 @@ type AdminUserLogoutRes struct {
 
 // Logout
 // @Tags 后台用户
-// @Summary POST
+// @Summary 登出
 // @Security apiKey
 // @accept application/json
 // @Produce application/json
-// @Param data query AdminUserLogoutReq true "数据"
+// @Param data body AdminUserLogoutReq true "数据"
 // @Success 200 {object} AdminUserLogoutFormat
-// @Router /admin/admin-user/logout [GET]
+// @Router /admin/admin-user/logout [POST]
 func (AdminUser) Logout() {
 
 }

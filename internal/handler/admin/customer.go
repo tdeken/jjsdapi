@@ -42,14 +42,14 @@ func (s Customer) Select(ctx *fiber.Ctx) (e error) {
 	return result.Json(ctx, res, err)
 }
 
-// CreateAddress 创建地址
-// @Router /admin/customer/create-address [POST]
-func (s Customer) CreateAddress(ctx *fiber.Ctx) (e error) {
-	var form = &meet.CustomerCreateAddressReq{}
+// AddressCreate 地址创建
+// @Router /admin/customer/address-create [POST]
+func (s Customer) AddressCreate(ctx *fiber.Ctx) (e error) {
+	var form = &meet.CustomerAddressCreateReq{}
 	if err := s.ValidateRequest(ctx, form); err != nil {
 		return result.Json(ctx, nil, err)
 	}
 
-	res, err := s.getDep(ctx).CreateAddress(form)
+	res, err := s.getDep(ctx).AddressCreate(form)
 	return result.Json(ctx, res, err)
 }

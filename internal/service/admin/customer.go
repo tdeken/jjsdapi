@@ -110,8 +110,8 @@ func (s Customer) Select(req *meet.CustomerSelectReq) (*meet.CustomerSelectRes, 
 	return res, nil
 }
 
-// CreateAddress 创建地址
-func (s Customer) CreateAddress(req *meet.CustomerCreateAddressReq) (*meet.CustomerCreateAddressRes, error) {
+// AddressCreate 地址创建
+func (s Customer) AddressCreate(req *meet.CustomerAddressCreateReq) (*meet.CustomerAddressCreateRes, error) {
 	m := s.GetDao().CustomerAddress
 
 	customerId := utils.StrToLongNumId(req.CustomerId)
@@ -158,5 +158,5 @@ func (s Customer) CreateAddress(req *meet.CustomerCreateAddressReq) (*meet.Custo
 		return nil, s.PushErr(err)
 	}
 
-	return &meet.CustomerCreateAddressRes{}, nil
+	return &meet.CustomerAddressCreateRes{}, nil
 }

@@ -63,6 +63,8 @@ func (s Customer) Register() []action.Action {
 		action.NewAction("GET", s.Select),
 		action.NewAction("GET", s.AddressList),
 		action.NewAction("POST", s.AddressCreate),
+		action.NewAction("POST", s.AddressUpdate),
+		action.NewAction("POST", s.AddressDestroy),
 	}
 }
 

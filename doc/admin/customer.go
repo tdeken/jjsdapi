@@ -95,6 +95,7 @@ type CustomerAddressListOne struct {
 	Address     string `json:"address"`      //商店地址
 	Tel         string `json:"tel"`          //联系电话
 	CreatedDate string `json:"created_date"` //创建时间
+	CustomerId  string `json:"customer_id"`  //客户id
 }
 
 // AddressList
@@ -136,5 +137,61 @@ type CustomerAddressCreateRes struct {
 // @Success 200 {object} CustomerAddressCreateFormat
 // @Router /admin/customer/address-create [POST]
 func (Customer) AddressCreate() {
+
+}
+
+type CustomerAddressUpdateFormat struct {
+	Code int32                    `json:"code"`
+	Msg  string                   `json:"msg"`
+	Data CustomerAddressUpdateRes `json:"data"`
+}
+
+type CustomerAddressUpdateReq struct {
+	Id         string `json:"id"  validate:"required"`           //商店地址id
+	Title      string `json:"title"  validate:"trim,required"`   //商店名称
+	Address    string `json:"address"  validate:"trim,required"` //商店地址
+	Tel        string `json:"tel"  validate:"trim"`              //联系方式
+	CustomerId string `json:"customer_id"  validate:"trim"`      //客户id
+}
+
+type CustomerAddressUpdateRes struct {
+}
+
+// AddressUpdate
+// @Tags 客户数据
+// @Summary 地址更新
+// @Security apiKey
+// @accept application/json
+// @Produce application/json
+// @Param data body CustomerAddressUpdateReq true "数据"
+// @Success 200 {object} CustomerAddressUpdateFormat
+// @Router /admin/customer/address-update [POST]
+func (Customer) AddressUpdate() {
+
+}
+
+type CustomerAddressDestroyFormat struct {
+	Code int32                     `json:"code"`
+	Msg  string                    `json:"msg"`
+	Data CustomerAddressDestroyRes `json:"data"`
+}
+
+type CustomerAddressDestroyReq struct {
+	Id string `json:"id"  validate:"required"` //商店地址id
+}
+
+type CustomerAddressDestroyRes struct {
+}
+
+// AddressDestroy
+// @Tags 客户数据
+// @Summary 地址删除
+// @Security apiKey
+// @accept application/json
+// @Produce application/json
+// @Param data body CustomerAddressDestroyReq true "数据"
+// @Success 200 {object} CustomerAddressDestroyFormat
+// @Router /admin/customer/address-destroy [POST]
+func (Customer) AddressDestroy() {
 
 }

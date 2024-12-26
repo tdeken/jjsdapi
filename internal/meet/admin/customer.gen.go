@@ -50,6 +50,7 @@ type CustomerAddressListOne struct {
 	Address     string `json:"address"`      //商店地址
 	Tel         string `json:"tel"`          //联系电话
 	CreatedDate string `json:"created_date"` //创建时间
+	CustomerId  string `json:"customer_id"`  //客户id
 }
 
 type CustomerAddressCreateReq struct {
@@ -60,4 +61,22 @@ type CustomerAddressCreateReq struct {
 }
 
 type CustomerAddressCreateRes struct {
+}
+
+type CustomerAddressUpdateReq struct {
+	Id         string `json:"id" form:"id" validate:"required"`                //商店地址id
+	Title      string `json:"title" form:"title" validate:"trim,required"`     //商店名称
+	Address    string `json:"address" form:"address" validate:"trim,required"` //商店地址
+	Tel        string `json:"tel" form:"tel" validate:"trim"`                  //联系方式
+	CustomerId string `json:"customer_id" form:"customer_id" validate:"trim"`  //客户id
+}
+
+type CustomerAddressUpdateRes struct {
+}
+
+type CustomerAddressDestroyReq struct {
+	Id string `json:"id" form:"id" validate:"required"` //商店地址id
+}
+
+type CustomerAddressDestroyRes struct {
 }

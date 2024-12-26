@@ -53,3 +53,27 @@ func (s Customer) AddressCreate(ctx *fiber.Ctx) (e error) {
 	res, err := s.getDep(ctx).AddressCreate(form)
 	return result.Json(ctx, res, err)
 }
+
+// AddressUpdate 地址更新
+// @Router /admin/customer/address-update [POST]
+func (s Customer) AddressUpdate(ctx *fiber.Ctx) (e error) {
+	var form = &meet.CustomerAddressUpdateReq{}
+	if err := s.ValidateRequest(ctx, form); err != nil {
+		return result.Json(ctx, nil, err)
+	}
+
+	res, err := s.getDep(ctx).AddressUpdate(form)
+	return result.Json(ctx, res, err)
+}
+
+// AddressDestroy 地址删除
+// @Router /admin/customer/address-destroy [POST]
+func (s Customer) AddressDestroy(ctx *fiber.Ctx) (e error) {
+	var form = &meet.CustomerAddressDestroyReq{}
+	if err := s.ValidateRequest(ctx, form); err != nil {
+		return result.Json(ctx, nil, err)
+	}
+
+	res, err := s.getDep(ctx).AddressDestroy(form)
+	return result.Json(ctx, res, err)
+}

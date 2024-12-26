@@ -78,7 +78,8 @@
               {"name": "title", "class": "string", "desc": "商店名称"},
               {"name": "address", "class": "string", "desc": "商店地址"},
               {"name": "tel", "class": "string", "desc": "联系电话"},
-              {"name": "created_date", "class": "string", "desc": "创建时间"}
+              {"name": "created_date", "class": "string", "desc": "创建时间"},
+              {"name": "customer_id", "class": "string", "desc": "客户id", "validate": "trim"}
             ]
           }
         ]
@@ -94,6 +95,32 @@
           {"name": "address", "class": "string", "desc": "商店地址", "validate": "trim,required"},
           {"name": "tel", "class": "string", "desc": "联系方式", "validate": "trim"},
           {"name": "customer_id", "class": "string", "desc": "客户id", "validate": "trim"}
+        ]
+      },
+      "res": {}
+    },
+    {
+      "name": "AddressUpdate",
+      "desc": "地址更新",
+      "method": "POST",
+      "req": {
+        "fields": [
+          {"name": "id", "class": "string", "desc": "商店地址id", "validate": "required"},
+          {"name": "title", "class": "string", "desc": "商店名称", "validate": "trim,required"},
+          {"name": "address", "class": "string", "desc": "商店地址", "validate": "trim,required"},
+          {"name": "tel", "class": "string", "desc": "联系方式", "validate": "trim"},
+          {"name": "customer_id", "class": "string", "desc": "客户id", "validate": "trim"}
+        ]
+      },
+      "res": {}
+    },
+    {
+      "name": "AddressDestroy",
+      "desc": "地址删除",
+      "method": "POST",
+      "req": {
+        "fields": [
+          {"name": "id", "class": "string", "desc": "商店地址id", "validate": "required"}
         ]
       },
       "res": {}

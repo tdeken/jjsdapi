@@ -2,12 +2,14 @@ package admin
 
 import (
 	"gorm.io/gen"
+	"gorm.io/gen/field"
 	meet "jjsdapi/internal/meet/admin"
 	"jjsdapi/internal/repository/model"
 	"jjsdapi/internal/service"
 	"jjsdapi/internal/utils"
 	"jjsdapi/internal/utils/dbcheck"
 	"jjsdapi/internal/utils/timez"
+	"time"
 )
 
 type Customer struct {
@@ -48,6 +50,7 @@ func (s Customer) AddressList(req *meet.CustomerAddressListReq) (*meet.CustomerA
 			Address:     v.Address,
 			Tel:         v.Tel,
 			CreatedDate: timez.TableDateTime(v.CreatedAt),
+			CustomerId:  utils.LongNumIdToStr(v.CustomerID),
 		})
 	}
 
@@ -91,7 +94,8 @@ func (s Customer) List(req *meet.CustomerListReq) (*meet.CustomerListRes, error)
 
 // Select 客户列表选择
 func (s Customer) Select(req *meet.CustomerSelectReq) (*meet.CustomerSelectRes, error) {
-	list, err := s.GetDao().Customer.WithContext(s.Ctx).SelectAll()
+	m := s.GetDao().Customer
+	list, err := m.WithContext(s.Ctx).Where(m.DeletedAt.Eq(0)).SelectAll()
 	if err != nil {
 		return nil, s.PushErr(err)
 	}
@@ -159,4 +163,64 @@ func (s Customer) AddressCreate(req *meet.CustomerAddressCreateReq) (*meet.Custo
 	}
 
 	return &meet.CustomerAddressCreateRes{}, nil
+}
+
+// AddressUpdate 地址更新
+func (s Customer) AddressUpdate(req *meet.CustomerAddressUpdateReq) (*meet.CustomerAddressUpdateRes, error) {
+	m := s.GetDao().CustomerAddress
+
+	address, err := m.WithContext(s.Ctx).Where(m.ID.Eq(utils.StrToLongNumId(req.Id)), m.DeletedAt.Eq(0)).Take()
+	if err = dbcheck.DbError(err); err != nil {
+		return nil, s.PushErr(err)
+	}
+
+	if address == nil {
+		return nil, s.ParamErr("你要找的地址信息不存在")
+	}
+
+	var up []field.AssignExpr
+	if req.Title != address.Title {
+		up = append(up, m.Title.Value(req.Title))
+	}
+
+	if req.Address != address.Address {
+		up = append(up, m.Address.Value(req.Address))
+	}
+
+	if req.Tel != address.Tel {
+		up = append(up, m.Tel.Value(req.Tel))
+	}
+
+	customerId := utils.StrToLongNumId(req.CustomerId)
+	if customerId > 0 && customerId != address.CustomerID {
+		up = append(up, m.CustomerID.Value(customerId))
+	}
+
+	if len(up) > 0 {
+		_, err = m.WithContext(s.Ctx).Where(m.ID.Eq(address.ID)).UpdateSimple(up...)
+		if err != nil {
+			return nil, s.PushErr(err)
+		}
+	}
+
+	return &meet.CustomerAddressUpdateRes{}, nil
+}
+
+// AddressDestroy 地址删除
+func (s Customer) AddressDestroy(req *meet.CustomerAddressDestroyReq) (*meet.CustomerAddressDestroyRes, error) {
+	m := s.GetDao().CustomerAddress
+
+	address, err := m.WithContext(s.Ctx).Where(m.ID.Eq(utils.StrToLongNumId(req.Id)), m.DeletedAt.Eq(0)).Take()
+	if err = dbcheck.DbError(err); err != nil {
+		return nil, s.PushErr(err)
+	}
+
+	if address != nil {
+		_, err = m.WithContext(s.Ctx).Where(m.ID.Eq(address.ID)).UpdateSimple(m.DeletedAt.Value(time.Now().Unix()))
+		if err != nil {
+			return nil, s.PushErr(err)
+		}
+	}
+
+	return &meet.CustomerAddressDestroyRes{}, nil
 }

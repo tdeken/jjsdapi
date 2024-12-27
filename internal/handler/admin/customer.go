@@ -77,3 +77,39 @@ func (s Customer) AddressDestroy(ctx *fiber.Ctx) (e error) {
 	res, err := s.getDep(ctx).AddressDestroy(form)
 	return result.Json(ctx, res, err)
 }
+
+// Store 新增客户
+// @Router /admin/customer/store [POST]
+func (s Customer) Store(ctx *fiber.Ctx) (e error) {
+	var form = &meet.CustomerStoreReq{}
+	if err := s.ValidateRequest(ctx, form); err != nil {
+		return result.Json(ctx, nil, err)
+	}
+
+	res, err := s.getDep(ctx).Store(form)
+	return result.Json(ctx, res, err)
+}
+
+// Update 更新客户
+// @Router /admin/customer/update [POST]
+func (s Customer) Update(ctx *fiber.Ctx) (e error) {
+	var form = &meet.CustomerUpdateReq{}
+	if err := s.ValidateRequest(ctx, form); err != nil {
+		return result.Json(ctx, nil, err)
+	}
+
+	res, err := s.getDep(ctx).Update(form)
+	return result.Json(ctx, res, err)
+}
+
+// Destroy 删除客户
+// @Router /admin/customer/destroy [POST]
+func (s Customer) Destroy(ctx *fiber.Ctx) (e error) {
+	var form = &meet.CustomerDestroyReq{}
+	if err := s.ValidateRequest(ctx, form); err != nil {
+		return result.Json(ctx, nil, err)
+	}
+
+	res, err := s.getDep(ctx).Destroy(form)
+	return result.Json(ctx, res, err)
+}

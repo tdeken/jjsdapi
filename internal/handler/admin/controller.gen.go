@@ -59,12 +59,15 @@ func (s Customer) Group() string {
 // Register 注册路由
 func (s Customer) Register() []action.Action {
 	return []action.Action{
-		action.NewAction("GET", s.List),
-		action.NewAction("GET", s.Select),
-		action.NewAction("GET", s.AddressList),
-		action.NewAction("POST", s.AddressCreate),
-		action.NewAction("POST", s.AddressUpdate),
-		action.NewAction("POST", s.AddressDestroy),
+		action.NewAction("GET", s.List, action.UseMidType("admin_jwt")),
+		action.NewAction("GET", s.Select, action.UseMidType("admin_jwt")),
+		action.NewAction("POST", s.Store, action.UseMidType("admin_jwt")),
+		action.NewAction("POST", s.Update, action.UseMidType("admin_jwt")),
+		action.NewAction("POST", s.Destroy, action.UseMidType("admin_jwt")),
+		action.NewAction("GET", s.AddressList, action.UseMidType("admin_jwt")),
+		action.NewAction("POST", s.AddressCreate, action.UseMidType("admin_jwt")),
+		action.NewAction("POST", s.AddressUpdate, action.UseMidType("admin_jwt")),
+		action.NewAction("POST", s.AddressDestroy, action.UseMidType("admin_jwt")),
 	}
 }
 

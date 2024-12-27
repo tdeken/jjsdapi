@@ -8,6 +8,7 @@
       "name": "List",
       "desc": "客户列表",
       "method": "GET",
+      "mid_type": "admin_jwt",
       "req": {
         "fields": [
           {"name": "page", "class": "int32", "desc": "当前页"},
@@ -37,6 +38,7 @@
       "name": "Select",
       "desc": "客户列表选择",
       "method": "GET",
+      "mid_type": "admin_jwt",
       "req": {},
       "res": {
         "fields": [
@@ -54,9 +56,49 @@
       }
     },
     {
+      "name": "Store",
+      "desc": "新增客户",
+      "method": "POST",
+      "mid_type": "admin_jwt",
+      "req": {
+        "fields": [
+          {"name": "name", "class": "string", "desc": "客户名称", "validate": "trim,required"},
+          {"name": "phone", "class": "string", "desc": "客户手机号", "validate": "trim"}
+        ]
+      },
+      "res": {}
+    },
+    {
+      "name": "Update",
+      "desc": "更新客户",
+      "method": "POST",
+      "mid_type": "admin_jwt",
+      "req": {
+        "fields": [
+          {"name": "id", "class": "string", "desc": "客户id", "validate": "required"},
+          {"name": "name", "class": "string", "desc": "客户名称", "validate": "trim,required"},
+          {"name": "phone", "class": "string", "desc": "客户手机号", "validate": "trim"}
+        ]
+      },
+      "res": {}
+    },
+    {
+      "name": "Destroy",
+      "desc": "删除客户",
+      "method": "POST",
+      "mid_type": "admin_jwt",
+      "req": {
+        "fields": [
+          {"name": "id", "class": "string", "desc": "客户id", "validate": "required"}
+        ]
+      },
+      "res": {}
+    },
+    {
       "name": "AddressList",
       "desc": "配送地址列表",
       "method": "GET",
+      "mid_type": "admin_jwt",
       "req": {
         "fields": [
           {"name": "page", "class": "int32", "desc": "当前页"},
@@ -89,6 +131,7 @@
       "name": "AddressCreate",
       "desc": "地址创建",
       "method": "POST",
+      "mid_type": "admin_jwt",
       "req": {
         "fields": [
           {"name": "title", "class": "string", "desc": "商店名称", "validate": "trim,required"},
@@ -103,6 +146,7 @@
       "name": "AddressUpdate",
       "desc": "地址更新",
       "method": "POST",
+      "mid_type": "admin_jwt",
       "req": {
         "fields": [
           {"name": "id", "class": "string", "desc": "商店地址id", "validate": "required"},
@@ -118,6 +162,7 @@
       "name": "AddressDestroy",
       "desc": "地址删除",
       "method": "POST",
+      "mid_type": "admin_jwt",
       "req": {
         "fields": [
           {"name": "id", "class": "string", "desc": "商店地址id", "validate": "required"}

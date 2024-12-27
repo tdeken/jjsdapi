@@ -32,6 +32,30 @@ type CustomerSelectOne struct {
 	Name string `json:"name"` //客户名称
 }
 
+type CustomerStoreReq struct {
+	Name  string `json:"name" form:"name" validate:"trim,required"` //客户名称
+	Phone string `json:"phone" form:"phone" validate:"trim"`        //客户手机号
+}
+
+type CustomerStoreRes struct {
+}
+
+type CustomerUpdateReq struct {
+	Id    string `json:"id" form:"id" validate:"required"`          //客户id
+	Name  string `json:"name" form:"name" validate:"trim,required"` //客户名称
+	Phone string `json:"phone" form:"phone" validate:"trim"`        //客户手机号
+}
+
+type CustomerUpdateRes struct {
+}
+
+type CustomerDestroyReq struct {
+	Id string `json:"id" form:"id" validate:"required"` //客户id
+}
+
+type CustomerDestroyRes struct {
+}
+
 type CustomerAddressListReq struct {
 	Page     int32  `json:"page" query:"page"`                   //当前页
 	PageSize int32  `json:"page_size" query:"page_size"`         //每页条数

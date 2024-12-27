@@ -224,3 +224,97 @@ func (s Customer) AddressDestroy(req *meet.CustomerAddressDestroyReq) (*meet.Cus
 
 	return &meet.CustomerAddressDestroyRes{}, nil
 }
+
+// Store 新增客户
+func (s Customer) Store(req *meet.CustomerStoreReq) (*meet.CustomerStoreRes, error) {
+	m := s.GetDao().Customer
+
+	customer, err := m.WithContext(s.Ctx).Where(m.Name.Eq(req.Name), m.DeletedAt.Eq(0)).Take()
+	if err = dbcheck.DbError(err); err != nil {
+		return nil, s.PushErr(err)
+	}
+
+	if customer != nil {
+		return nil, s.ParamErr("客户已存在")
+	}
+
+	err = m.WithContext(s.Ctx).Create(&model.Customer{
+		Name:  req.Name,
+		Phone: req.Phone,
+	})
+
+	if err != nil {
+		return nil, s.PushErr(err)
+	}
+
+	return &meet.CustomerStoreRes{}, nil
+}
+
+// Update 更新客户
+func (s Customer) Update(req *meet.CustomerUpdateReq) (*meet.CustomerUpdateRes, error) {
+	id := utils.StrToLongNumId(req.Id)
+
+	m := s.GetDao().Customer
+	exist, err := m.WithContext(s.Ctx).Where(m.Name.Eq(req.Name), m.ID.Neq(id), m.DeletedAt.Eq(0)).Take()
+	if err = dbcheck.DbError(err); err != nil {
+		return nil, s.PushErr(err)
+	}
+
+	if exist != nil {
+		return nil, s.ParamErr("客户已存在")
+	}
+
+	customer, err := m.WithContext(s.Ctx).Where(m.ID.Eq(id), m.DeletedAt.Eq(0)).Take()
+	if err = dbcheck.DbError(err); err != nil {
+		return nil, s.PushErr(err)
+	}
+
+	if customer == nil {
+		return nil, s.ParamErr("客户不存在")
+	}
+
+	var up []field.AssignExpr
+	if req.Name != customer.Name {
+		up = append(up, m.Name.Value(req.Name))
+	}
+
+	if req.Phone != customer.Phone {
+		up = append(up, m.Phone.Value(req.Phone))
+	}
+
+	if len(up) > 0 {
+		_, err = m.WithContext(s.Ctx).Where(m.ID.Eq(customer.ID)).UpdateSimple(up...)
+		if err != nil {
+			return nil, s.PushErr(err)
+		}
+	}
+
+	return &meet.CustomerUpdateRes{}, nil
+}
+
+// Destroy 删除客户
+func (s Customer) Destroy(req *meet.CustomerDestroyReq) (*meet.CustomerDestroyRes, error) {
+	id := utils.StrToLongNumId(req.Id)
+
+	m := s.GetDao().Customer
+
+	customer, err := m.WithContext(s.Ctx).Where(m.ID.Eq(id), m.DeletedAt.Eq(0)).Take()
+	if err = dbcheck.DbError(err); err != nil {
+		return nil, s.PushErr(err)
+	}
+
+	if customer != nil {
+		_, err = m.WithContext(s.Ctx).Where(m.ID.Eq(customer.ID)).UpdateSimple(m.DeletedAt.Value(time.Now().Unix()))
+		if err != nil {
+			return nil, s.PushErr(err)
+		}
+
+		addressM := s.GetDao().CustomerAddress
+		_, err = addressM.WithContext(s.Ctx).Where(addressM.CustomerID.Eq(customer.ID)).UpdateSimple(m.DeletedAt.Value(time.Now().Unix()))
+		if err != nil {
+			return nil, s.PushErr(err)
+		}
+	}
+
+	return &meet.CustomerDestroyRes{}, nil
+}

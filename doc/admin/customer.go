@@ -71,6 +71,87 @@ func (Customer) Select() {
 
 }
 
+type CustomerStoreFormat struct {
+	Code int32            `json:"code"`
+	Msg  string           `json:"msg"`
+	Data CustomerStoreRes `json:"data"`
+}
+
+type CustomerStoreReq struct {
+	Name  string `json:"name"  validate:"trim,required"` //客户名称
+	Phone string `json:"phone"  validate:"trim"`         //客户手机号
+}
+
+type CustomerStoreRes struct {
+}
+
+// Store
+// @Tags 客户数据
+// @Summary 新增客户
+// @Security apiKey
+// @accept application/json
+// @Produce application/json
+// @Param data body CustomerStoreReq true "数据"
+// @Success 200 {object} CustomerStoreFormat
+// @Router /admin/customer/store [POST]
+func (Customer) Store() {
+
+}
+
+type CustomerUpdateFormat struct {
+	Code int32             `json:"code"`
+	Msg  string            `json:"msg"`
+	Data CustomerUpdateRes `json:"data"`
+}
+
+type CustomerUpdateReq struct {
+	Id    string `json:"id"  validate:"required"`        //客户id
+	Name  string `json:"name"  validate:"trim,required"` //客户名称
+	Phone string `json:"phone"  validate:"trim"`         //客户手机号
+}
+
+type CustomerUpdateRes struct {
+}
+
+// Update
+// @Tags 客户数据
+// @Summary 更新客户
+// @Security apiKey
+// @accept application/json
+// @Produce application/json
+// @Param data body CustomerUpdateReq true "数据"
+// @Success 200 {object} CustomerUpdateFormat
+// @Router /admin/customer/update [POST]
+func (Customer) Update() {
+
+}
+
+type CustomerDestroyFormat struct {
+	Code int32              `json:"code"`
+	Msg  string             `json:"msg"`
+	Data CustomerDestroyRes `json:"data"`
+}
+
+type CustomerDestroyReq struct {
+	Id string `json:"id"  validate:"required"` //客户id
+}
+
+type CustomerDestroyRes struct {
+}
+
+// Destroy
+// @Tags 客户数据
+// @Summary 删除客户
+// @Security apiKey
+// @accept application/json
+// @Produce application/json
+// @Param data body CustomerDestroyReq true "数据"
+// @Success 200 {object} CustomerDestroyFormat
+// @Router /admin/customer/destroy [POST]
+func (Customer) Destroy() {
+
+}
+
 type CustomerAddressListFormat struct {
 	Code int32                  `json:"code"`
 	Msg  string                 `json:"msg"`

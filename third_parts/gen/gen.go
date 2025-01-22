@@ -88,6 +88,8 @@ func main() {
 
 	gn.ApplyBasic(
 		gn.GenerateModel("customer_address"),
+		gn.GenerateModel("goods"),
+		gn.GenerateModel("goods_sku"),
 	)
 
 	// Generate the code

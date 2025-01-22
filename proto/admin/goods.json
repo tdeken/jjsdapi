@@ -1,0 +1,111 @@
+{
+  "group": {
+    "name": "Goods",
+    "desc": "商品数据"
+  },
+  "interfaces": [
+    {
+      "name": "List",
+      "desc": "客户列表",
+      "method": "GET",
+      "mid_type": "admin_jwt",
+      "req": {
+        "fields": [
+          {"name": "page", "class": "int32", "desc": "当前页"},
+          {"name": "page_size", "class": "int32", "desc": "每页条数"},
+          {"name": "keyword", "class": "string", "desc": "关键字", "validate": "trim"},
+          {"name": "start", "class": "string", "desc": "关键字", "validate": "omitempty,datetime=2006-01-02 15:04:05"},
+          {"name": "end", "class": "string", "desc": "关键字", "validate": "omitempty,datetime=2006-01-02 15:04:05"}
+        ]
+      },
+      "res": {
+        "fields": [
+          {"name": "list", "class": "[]?One", "desc": "列表数据"},
+          {"name": "total", "class": "int64", "desc": "数据总条数"}
+        ],
+        "messages": [
+          {
+            "name": "One",
+            "fields": [
+              {"name": "id", "class": "string", "desc": "商品id"},
+              {"name": "title", "class": "string", "desc": "客户名称"},
+              {"name": "as_title", "class": "string", "desc": "商品别名"},
+              {"name": "sku_num", "class": "int64", "desc": "可售商品数量"},
+              {"name": "code", "class": "string", "desc": "商品编号"},
+              {"name": "created_date", "class": "string", "desc": "创建时间"}
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "Store",
+      "desc": "新增商品",
+      "method": "POST",
+      "mid_type": "admin_jwt",
+      "req": {
+        "fields": [
+          {"name": "title", "class": "string", "desc": "客户名称", "validate": "trim,required"},
+          {"name": "as_title", "class": "string", "desc": "商品别名", "validate": "trim"},
+          {"name": "code", "class": "string", "desc": "商品别名", "validate": "trim"},
+          {"name": "sku_attrs", "class": "[][]?Attr", "desc": "商品sku属性", "validate": "required,give"}
+        ],
+        "messages": [
+          {
+            "name": "Attr",
+            "fields": [
+              {"name": "mark", "class": "string", "desc": "属性", "validate": "required"},
+              {"name": "show_type", "class": "int32", "desc": "展示方式(1-不展示，2带括号，3-不带括号)", "validate": "oneof=1 2 3"}
+            ]
+          }
+        ]
+      },
+      "res": {}
+    },
+    {
+      "name": "Update",
+      "desc": "更新商品",
+      "method": "POST",
+      "mid_type": "admin_jwt",
+      "req": {
+        "fields": [
+          {"name": "id", "class": "string", "desc": "商品id", "validate": "trim,required"},
+          {"name": "title", "class": "string", "desc": "客户名称", "validate": "trim,required"},
+          {"name": "as_title", "class": "string", "desc": "商品别名", "validate": "trim"},
+          {"name": "code", "class": "string", "desc": "商品别名", "validate": "trim"},
+          {"name": "sku_attrs", "class": "[]?Attrs", "desc": "商品sku属性", "validate": "required,give"}
+        ],
+        "messages": [
+          {
+            "name": "Attrs",
+            "fields": [
+              {"name": "attrs", "class": "[]?Attr", "desc": "属性集合", "validate": "required,give"}
+            ],
+            "messages": [
+              {
+                "name": "Attr",
+                "fields": [
+                  {"name": "mark", "class": "string", "desc": "属性", "validate": "required"},
+                  {"name": "show_type", "class": "int32", "desc": "展示方式(1-不展示，2带括号，3-不带括号)", "validate": "oneof=1 2 3"}
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "res": {}
+    },
+    {
+      "name": "Destroy",
+      "desc": "删除商品",
+      "method": "POST",
+      "mid_type": "admin_jwt",
+      "req": {
+        "fields": [
+          {"name": "id", "class": "string", "desc": "商品id", "validate": "trim,required"}
+        ]
+      },
+      "res": {}
+    }
+  ]
+}

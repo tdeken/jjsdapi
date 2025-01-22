@@ -20,6 +20,8 @@ var (
 	AdminUser       *adminUser
 	Customer        *customer
 	CustomerAddress *customerAddress
+	Good            *good
+	GoodsSku        *goodsSku
 )
 
 func SetDefault(db *gorm.DB, opts ...gen.DOOption) {
@@ -27,6 +29,8 @@ func SetDefault(db *gorm.DB, opts ...gen.DOOption) {
 	AdminUser = &Q.AdminUser
 	Customer = &Q.Customer
 	CustomerAddress = &Q.CustomerAddress
+	Good = &Q.Good
+	GoodsSku = &Q.GoodsSku
 }
 
 func Use(db *gorm.DB, opts ...gen.DOOption) *Query {
@@ -35,6 +39,8 @@ func Use(db *gorm.DB, opts ...gen.DOOption) *Query {
 		AdminUser:       newAdminUser(db, opts...),
 		Customer:        newCustomer(db, opts...),
 		CustomerAddress: newCustomerAddress(db, opts...),
+		Good:            newGood(db, opts...),
+		GoodsSku:        newGoodsSku(db, opts...),
 	}
 }
 
@@ -44,6 +50,8 @@ type Query struct {
 	AdminUser       adminUser
 	Customer        customer
 	CustomerAddress customerAddress
+	Good            good
+	GoodsSku        goodsSku
 }
 
 func (q *Query) Available() bool { return q.db != nil }
@@ -54,6 +62,8 @@ func (q *Query) clone(db *gorm.DB) *Query {
 		AdminUser:       q.AdminUser.clone(db),
 		Customer:        q.Customer.clone(db),
 		CustomerAddress: q.CustomerAddress.clone(db),
+		Good:            q.Good.clone(db),
+		GoodsSku:        q.GoodsSku.clone(db),
 	}
 }
 
@@ -71,6 +81,8 @@ func (q *Query) ReplaceDB(db *gorm.DB) *Query {
 		AdminUser:       q.AdminUser.replaceDB(db),
 		Customer:        q.Customer.replaceDB(db),
 		CustomerAddress: q.CustomerAddress.replaceDB(db),
+		Good:            q.Good.replaceDB(db),
+		GoodsSku:        q.GoodsSku.replaceDB(db),
 	}
 }
 
@@ -78,6 +90,8 @@ type queryCtx struct {
 	AdminUser       *adminUserDo
 	Customer        *customerDo
 	CustomerAddress *customerAddressDo
+	Good            *goodDo
+	GoodsSku        *goodsSkuDo
 }
 
 func (q *Query) WithContext(ctx context.Context) *queryCtx {
@@ -85,6 +99,8 @@ func (q *Query) WithContext(ctx context.Context) *queryCtx {
 		AdminUser:       q.AdminUser.WithContext(ctx),
 		Customer:        q.Customer.WithContext(ctx),
 		CustomerAddress: q.CustomerAddress.WithContext(ctx),
+		Good:            q.Good.WithContext(ctx),
+		GoodsSku:        q.GoodsSku.WithContext(ctx),
 	}
 }
 

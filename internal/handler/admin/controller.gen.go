@@ -16,6 +16,7 @@ func Route() {
 	action.AutoRegister(r,
 		AdminUser{},
 		Customer{},
+		Goods{},
 	)
 
 }
@@ -74,6 +75,33 @@ func (s Customer) Register() []action.Action {
 // 获取依赖服务
 func (s Customer) getDep(ctx *fiber.Ctx) admin.Customer {
 	dep := admin.Customer{}
+	dep.Init(ctx)
+	return dep
+}
+
+// Goods 商品数据
+type Goods struct {
+	Controller
+}
+
+// Group 基础请求组
+func (s Goods) Group() string {
+	return "goods"
+}
+
+// Register 注册路由
+func (s Goods) Register() []action.Action {
+	return []action.Action{
+		action.NewAction("GET", s.List, action.UseMidType("admin_jwt")),
+		action.NewAction("POST", s.Store, action.UseMidType("admin_jwt")),
+		action.NewAction("POST", s.Update, action.UseMidType("admin_jwt")),
+		action.NewAction("POST", s.Destroy, action.UseMidType("admin_jwt")),
+	}
+}
+
+// 获取依赖服务
+func (s Goods) getDep(ctx *fiber.Ctx) admin.Goods {
+	dep := admin.Goods{}
 	dep.Init(ctx)
 	return dep
 }

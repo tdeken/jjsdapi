@@ -32,7 +32,17 @@
               {"name": "as_title", "class": "string", "desc": "商品别名"},
               {"name": "sku_num", "class": "int64", "desc": "可售商品数量"},
               {"name": "code", "class": "string", "desc": "商品编号"},
-              {"name": "created_date", "class": "string", "desc": "创建时间"}
+              {"name": "created_date", "class": "string", "desc": "创建时间"},
+              {"name": "sku_attrs", "class": "[][]?Attr", "desc": "商品sku属性"}
+            ],
+            "messages": [
+              {
+                "name": "Attr",
+                "fields": [
+                  {"name": "mark", "class": "string", "desc": "属性", "validate": "required"},
+                  {"name": "show_type", "class": "int32", "desc": "展示方式(1-不展示，2带括号，3-不带括号)", "validate": "oneof=1 2 3"}
+                ]
+              }
             ]
           }
         ]

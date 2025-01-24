@@ -16,12 +16,18 @@ type GoodsListRes struct {
 }
 
 type GoodsListOne struct {
-	Id          string `json:"id"`           //商品id
-	Title       string `json:"title"`        //客户名称
-	AsTitle     string `json:"as_title"`     //商品别名
-	SkuNum      int64  `json:"sku_num"`      //可售商品数量
-	Code        string `json:"code"`         //商品编号
-	CreatedDate string `json:"created_date"` //创建时间
+	Id          string                `json:"id"`           //商品id
+	Title       string                `json:"title"`        //客户名称
+	AsTitle     string                `json:"as_title"`     //商品别名
+	SkuNum      int64                 `json:"sku_num"`      //可售商品数量
+	Code        string                `json:"code"`         //商品编号
+	CreatedDate string                `json:"created_date"` //创建时间
+	SkuAttrs    [][]*GoodsListOneAttr `json:"sku_attrs"`    //商品sku属性
+}
+
+type GoodsListOneAttr struct {
+	Mark     string `json:"mark"`      //属性
+	ShowType int32  `json:"show_type"` //展示方式(1-不展示，2带括号，3-不带括号)
 }
 
 type GoodsStoreReq struct {

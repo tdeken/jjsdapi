@@ -49,6 +49,23 @@ func (s Goods) List(req *meet.GoodsListReq) (*meet.GoodsListRes, error) {
 
 	var data = make([]*meet.GoodsListOne, 0, len(list))
 	for _, v := range list {
+		skuAttrs := make([][]*meet.GoodsListOneAttr, 0)
+
+		skuAttrs = append(skuAttrs, []*meet.GoodsListOneAttr{
+			{
+				Mark:     "price",
+				ShowType: 2,
+			},
+			{
+				Mark:     "unit",
+				ShowType: 2,
+			},
+			{
+				Mark:     "stock",
+				ShowType: 1,
+			},
+		})
+
 		data = append(data, &meet.GoodsListOne{
 			Id:          utils.LongNumIdToStr(v.ID),
 			Title:       v.Title,
@@ -56,6 +73,7 @@ func (s Goods) List(req *meet.GoodsListReq) (*meet.GoodsListRes, error) {
 			SkuNum:      0,
 			Code:        v.Code,
 			CreatedDate: timez.TableDateTime(v.CreatedAt),
+			SkuAttrs:    skuAttrs,
 		})
 	}
 

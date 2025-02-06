@@ -32,8 +32,15 @@ func newGoodsSku(db *gorm.DB, opts ...gen.DOOption) goodsSku {
 	_goodsSku.UpdatedAt = field.NewInt64(tableName, "updated_at")
 	_goodsSku.DeletedAt = field.NewInt64(tableName, "deleted_at")
 	_goodsSku.GoodsID = field.NewInt64(tableName, "goods_id")
-	_goodsSku.SkuTitle = field.NewString(tableName, "sku_title")
-	_goodsSku.SkuData = field.NewString(tableName, "sku_data")
+	_goodsSku.Capacity = field.NewString(tableName, "capacity")
+	_goodsSku.Remark = field.NewString(tableName, "remark")
+	_goodsSku.Format = field.NewString(tableName, "format")
+	_goodsSku.Unit = field.NewString(tableName, "unit")
+	_goodsSku.Pp = field.NewFloat64(tableName, "pp")
+	_goodsSku.Wp = field.NewFloat64(tableName, "wp")
+	_goodsSku.Rp = field.NewFloat64(tableName, "rp")
+	_goodsSku.Stock = field.NewInt64(tableName, "stock")
+	_goodsSku.Number = field.NewString(tableName, "number")
 
 	_goodsSku.fillFieldMap()
 
@@ -48,9 +55,16 @@ type goodsSku struct {
 	CreatedAt field.Int64
 	UpdatedAt field.Int64
 	DeletedAt field.Int64
-	GoodsID   field.Int64  // 商品id
-	SkuTitle  field.String // sku标题
-	SkuData   field.String // sku数据
+	GoodsID   field.Int64   // 商品id
+	Capacity  field.String  // 商品重量
+	Remark    field.String  // 商品名称备注
+	Format    field.String  // 商品规格
+	Unit      field.String  // 单位
+	Pp        field.Float64 // 采购价
+	Wp        field.Float64 // 批发价
+	Rp        field.Float64 // 零售价
+	Stock     field.Int64   // 库存
+	Number    field.String  // 商品编码
 
 	fieldMap map[string]field.Expr
 }
@@ -72,8 +86,15 @@ func (g *goodsSku) updateTableName(table string) *goodsSku {
 	g.UpdatedAt = field.NewInt64(table, "updated_at")
 	g.DeletedAt = field.NewInt64(table, "deleted_at")
 	g.GoodsID = field.NewInt64(table, "goods_id")
-	g.SkuTitle = field.NewString(table, "sku_title")
-	g.SkuData = field.NewString(table, "sku_data")
+	g.Capacity = field.NewString(table, "capacity")
+	g.Remark = field.NewString(table, "remark")
+	g.Format = field.NewString(table, "format")
+	g.Unit = field.NewString(table, "unit")
+	g.Pp = field.NewFloat64(table, "pp")
+	g.Wp = field.NewFloat64(table, "wp")
+	g.Rp = field.NewFloat64(table, "rp")
+	g.Stock = field.NewInt64(table, "stock")
+	g.Number = field.NewString(table, "number")
 
 	g.fillFieldMap()
 
@@ -98,14 +119,21 @@ func (g *goodsSku) GetFieldByName(fieldName string) (field.OrderExpr, bool) {
 }
 
 func (g *goodsSku) fillFieldMap() {
-	g.fieldMap = make(map[string]field.Expr, 7)
+	g.fieldMap = make(map[string]field.Expr, 14)
 	g.fieldMap["id"] = g.ID
 	g.fieldMap["created_at"] = g.CreatedAt
 	g.fieldMap["updated_at"] = g.UpdatedAt
 	g.fieldMap["deleted_at"] = g.DeletedAt
 	g.fieldMap["goods_id"] = g.GoodsID
-	g.fieldMap["sku_title"] = g.SkuTitle
-	g.fieldMap["sku_data"] = g.SkuData
+	g.fieldMap["capacity"] = g.Capacity
+	g.fieldMap["remark"] = g.Remark
+	g.fieldMap["format"] = g.Format
+	g.fieldMap["unit"] = g.Unit
+	g.fieldMap["pp"] = g.Pp
+	g.fieldMap["wp"] = g.Wp
+	g.fieldMap["rp"] = g.Rp
+	g.fieldMap["stock"] = g.Stock
+	g.fieldMap["number"] = g.Number
 }
 
 func (g goodsSku) clone(db *gorm.DB) goodsSku {

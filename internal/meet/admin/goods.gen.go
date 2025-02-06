@@ -16,50 +16,40 @@ type GoodsListRes struct {
 }
 
 type GoodsListOne struct {
-	Id          string                `json:"id"`           //商品id
-	Title       string                `json:"title"`        //客户名称
-	AsTitle     string                `json:"as_title"`     //商品别名
-	SkuNum      int64                 `json:"sku_num"`      //可售商品数量
-	Code        string                `json:"code"`         //商品编号
-	CreatedDate string                `json:"created_date"` //创建时间
-	SkuAttrs    [][]*GoodsListOneAttr `json:"sku_attrs"`    //商品sku属性
+	Id          string                  `json:"id"`           //商品id
+	Title       string                  `json:"title"`        //客户名称
+	AsTitle     string                  `json:"as_title"`     //商品别名
+	SkuNum      int64                   `json:"sku_num"`      //可售商品数量
+	UpdatedDate string                  `json:"updated_date"` //更新时间
+	GoodsSkus   []*GoodsListOneGoodsSku `json:"goods_skus"`   //可售商品
 }
 
-type GoodsListOneAttr struct {
-	Mark     string `json:"mark"`      //属性
-	ShowType int32  `json:"show_type"` //展示方式(1-不展示，2带括号，3-不带括号)
+type GoodsListOneGoodsSku struct {
+	Id       string `json:"id"`       //商品skuID
+	Name     string `json:"name"`     //销售商品名称
+	Capacity string `json:"capacity"` //商品容量
+	Remark   string `json:"remark"`   //商品备注
+	Format   string `json:"format"`   //规格
+	Unit     string `json:"unit"`     //单位
+	Pp       string `json:"pp"`       //采购价
+	Wp       string `json:"wp"`       //批发价
+	Rp       string `json:"rp"`       //零售价
+	Stock    int64  `json:"stock"`    //库存
+	Number   string `json:"number"`   //商品编号
 }
 
 type GoodsStoreReq struct {
-	Title    string              `json:"title" form:"title" validate:"trim,required"`         //客户名称
-	AsTitle  string              `json:"as_title" form:"as_title" validate:"trim"`            //商品别名
-	Code     string              `json:"code" form:"code" validate:"trim"`                    //商品别名
-	SkuAttrs [][]*GoodsStoreAttr `json:"sku_attrs" form:"sku_attrs" validate:"required,give"` //商品sku属性
-}
-
-type GoodsStoreAttr struct {
-	Mark     string `json:"mark" form:"mark" validate:"required"`              //属性
-	ShowType int32  `json:"show_type" form:"show_type" validate:"oneof=1 2 3"` //展示方式(1-不展示，2带括号，3-不带括号)
+	Title   string `json:"title" form:"title" validate:"trim,required"` //客户名称
+	AsTitle string `json:"as_title" form:"as_title" validate:"trim"`    //商品别名
 }
 
 type GoodsStoreRes struct {
 }
 
 type GoodsUpdateReq struct {
-	Id       string              `json:"id" form:"id" validate:"trim,required"`               //商品id
-	Title    string              `json:"title" form:"title" validate:"trim,required"`         //客户名称
-	AsTitle  string              `json:"as_title" form:"as_title" validate:"trim"`            //商品别名
-	Code     string              `json:"code" form:"code" validate:"trim"`                    //商品别名
-	SkuAttrs []*GoodsUpdateAttrs `json:"sku_attrs" form:"sku_attrs" validate:"required,give"` //商品sku属性
-}
-
-type GoodsUpdateAttrs struct {
-	Attrs []*GoodsUpdateAttrsAttr `json:"attrs" form:"attrs" validate:"required,give"` //属性集合
-}
-
-type GoodsUpdateAttrsAttr struct {
-	Mark     string `json:"mark" form:"mark" validate:"required"`              //属性
-	ShowType int32  `json:"show_type" form:"show_type" validate:"oneof=1 2 3"` //展示方式(1-不展示，2带括号，3-不带括号)
+	Id      string `json:"id" form:"id" validate:"trim,required"`       //商品id
+	Title   string `json:"title" form:"title" validate:"trim,required"` //客户名称
+	AsTitle string `json:"as_title" form:"as_title" validate:"trim"`    //商品别名
 }
 
 type GoodsUpdateRes struct {

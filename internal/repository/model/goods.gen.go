@@ -9,13 +9,11 @@ const TableNameGood = "goods"
 // Good mapped from table <goods>
 type Good struct {
 	ID        int64  `gorm:"column:id;type:bigint;primaryKey;autoIncrement:true" json:"id"`
-	CreatedAt int64  `gorm:"column:created_at;type:bigint;not null;index:idx_created_at,priority:1" json:"created_at"`
-	UpdatedAt int64  `gorm:"column:updated_at;type:bigint;not null" json:"updated_at"`
+	CreatedAt int64  `gorm:"column:created_at;type:bigint;not null" json:"created_at"`
+	UpdatedAt int64  `gorm:"column:updated_at;type:bigint;not null;index:idx_updated_at,priority:1" json:"updated_at"`
 	DeletedAt int64  `gorm:"column:deleted_at;type:bigint;not null;uniqueIndex:uniq_title_deleted_at,priority:2" json:"deleted_at"`
-	Title     string `gorm:"column:title;type:varchar(255);not null;uniqueIndex:uniq_title_deleted_at,priority:1;comment:商品名称" json:"title"` // 商品名称
-	AsTitle   string `gorm:"column:as_title;type:varchar(255);not null;comment:商品别名" json:"as_title"`                                        // 商品别名
-	Code      string `gorm:"column:code;type:varchar(64);not null;comment:商品编码" json:"code"`                                                 // 商品编码
-	SkuAttrs  string `gorm:"column:sku_attrs;type:varchar(255);not null;comment:sku可选属性" json:"sku_attrs"`                                   // sku可选属性
+	Title     string `gorm:"column:title;type:varchar(32);not null;uniqueIndex:uniq_title_deleted_at,priority:1;comment:商品名称" json:"title"` // 商品名称
+	AsTitle   string `gorm:"column:as_title;type:varchar(255);not null;comment:商品别名" json:"as_title"`                                       // 商品别名
 }
 
 // TableName Good's table name

@@ -33,8 +33,6 @@ func newGood(db *gorm.DB, opts ...gen.DOOption) good {
 	_good.DeletedAt = field.NewInt64(tableName, "deleted_at")
 	_good.Title = field.NewString(tableName, "title")
 	_good.AsTitle = field.NewString(tableName, "as_title")
-	_good.Code = field.NewString(tableName, "code")
-	_good.SkuAttrs = field.NewString(tableName, "sku_attrs")
 
 	_good.fillFieldMap()
 
@@ -51,8 +49,6 @@ type good struct {
 	DeletedAt field.Int64
 	Title     field.String // 商品名称
 	AsTitle   field.String // 商品别名
-	Code      field.String // 商品编码
-	SkuAttrs  field.String // sku可选属性
 
 	fieldMap map[string]field.Expr
 }
@@ -75,8 +71,6 @@ func (g *good) updateTableName(table string) *good {
 	g.DeletedAt = field.NewInt64(table, "deleted_at")
 	g.Title = field.NewString(table, "title")
 	g.AsTitle = field.NewString(table, "as_title")
-	g.Code = field.NewString(table, "code")
-	g.SkuAttrs = field.NewString(table, "sku_attrs")
 
 	g.fillFieldMap()
 
@@ -101,15 +95,13 @@ func (g *good) GetFieldByName(fieldName string) (field.OrderExpr, bool) {
 }
 
 func (g *good) fillFieldMap() {
-	g.fieldMap = make(map[string]field.Expr, 8)
+	g.fieldMap = make(map[string]field.Expr, 6)
 	g.fieldMap["id"] = g.ID
 	g.fieldMap["created_at"] = g.CreatedAt
 	g.fieldMap["updated_at"] = g.UpdatedAt
 	g.fieldMap["deleted_at"] = g.DeletedAt
 	g.fieldMap["title"] = g.Title
 	g.fieldMap["as_title"] = g.AsTitle
-	g.fieldMap["code"] = g.Code
-	g.fieldMap["sku_attrs"] = g.SkuAttrs
 }
 
 func (g good) clone(db *gorm.DB) good {

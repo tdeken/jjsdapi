@@ -1,12 +1,14 @@
 package admin
 
 import (
-	"encoding/json"
+	"fmt"
 	"gorm.io/gen"
+	"gorm.io/gen/field"
 	meet "jjsdapi/internal/meet/admin"
 	"jjsdapi/internal/repository/model"
 	"jjsdapi/internal/service"
 	"jjsdapi/internal/utils"
+	"jjsdapi/internal/utils/dbcheck"
 	"jjsdapi/internal/utils/timez"
 )
 
@@ -25,20 +27,19 @@ func (s Goods) List(req *meet.GoodsListReq) (*meet.GoodsListRes, error) {
 	if req.Keyword != "" {
 		conds = append(conds, m.WithContext(s.Ctx).
 			Or(m.Title.Like(utils.DbAllLike(req.Keyword))).
-			Or(m.AsTitle.Like(utils.DbAllLike(req.Keyword))).
-			Or(m.Code.Like(utils.DbAllLike(req.Keyword))))
+			Or(m.AsTitle.Like(utils.DbAllLike(req.Keyword))))
 	}
 
 	if req.Start != "" {
-		conds = append(conds, m.CreatedAt.Gte(timez.TableSearchTime(req.Start)))
+		conds = append(conds, m.UpdatedAt.Gte(timez.TableSearchTime(req.Start)))
 	}
 
 	if req.End != "" {
-		conds = append(conds, m.CreatedAt.Gte(timez.TableSearchTime(req.End)))
+		conds = append(conds, m.UpdatedAt.Gte(timez.TableSearchTime(req.End)))
 	}
 
 	offset, limit := utils.PpDbLo(req.Page, req.PageSize)
-	list, total, err := m.WithContext(s.Ctx).Where(conds...).Order(m.CreatedAt.Desc()).FindByPage(offset, limit)
+	list, total, err := m.WithContext(s.Ctx).Where(conds...).Order(m.UpdatedAt.Desc()).FindByPage(offset, limit)
 	if err != nil {
 		return nil, s.PushErr(err)
 	}
@@ -47,34 +48,58 @@ func (s Goods) List(req *meet.GoodsListReq) (*meet.GoodsListRes, error) {
 		return &meet.GoodsListRes{}, nil
 	}
 
+	var ids = make([]int64, 0, len(list))
+	for _, v := range list {
+		ids = append(ids, v.ID)
+	}
+
+	skuM := s.GetDao().GoodsSku
+	skuList, err := skuM.WithContext(s.Ctx).Where(skuM.GoodsID.In(ids...), skuM.DeletedAt.Eq(0)).Order(skuM.CreatedAt.Desc()).Find()
+	if err != nil {
+		return nil, s.PushErr(err)
+	}
+
+	var skuMap = make(map[int64][]*model.GoodsSku)
+	for _, v := range skuList {
+		skuMap[v.GoodsID] = append(skuMap[v.GoodsID], v)
+	}
+
 	var data = make([]*meet.GoodsListOne, 0, len(list))
 	for _, v := range list {
-		skuAttrs := make([][]*meet.GoodsListOneAttr, 0)
-
-		skuAttrs = append(skuAttrs, []*meet.GoodsListOneAttr{
-			{
-				Mark:     "price",
-				ShowType: 2,
-			},
-			{
-				Mark:     "unit",
-				ShowType: 2,
-			},
-			{
-				Mark:     "stock",
-				ShowType: 1,
-			},
-		})
-
-		data = append(data, &meet.GoodsListOne{
+		one := &meet.GoodsListOne{
 			Id:          utils.LongNumIdToStr(v.ID),
 			Title:       v.Title,
 			AsTitle:     v.AsTitle,
-			SkuNum:      0,
-			Code:        v.Code,
-			CreatedDate: timez.TableDateTime(v.CreatedAt),
-			SkuAttrs:    skuAttrs,
-		})
+			SkuNum:      int64(len(skuMap[v.ID])),
+			UpdatedDate: timez.TableDateTime(v.UpdatedAt),
+			GoodsSkus:   make([]*meet.GoodsListOneGoodsSku, 0, len(skuMap[v.ID])),
+		}
+		for _, sku := range skuMap[v.ID] {
+			name := v.Title
+			if sku.Capacity != "" {
+				name = sku.Capacity + name
+			}
+
+			if sku.Remark != "" {
+				name += fmt.Sprintf("(%s)", sku.Remark)
+			}
+
+			one.GoodsSkus = append(one.GoodsSkus, &meet.GoodsListOneGoodsSku{
+				Id:       utils.LongNumIdToStr(sku.ID),
+				Name:     name,
+				Capacity: sku.Capacity,
+				Remark:   sku.Remark,
+				Format:   sku.Format,
+				Unit:     sku.Unit,
+				Pp:       utils.Price(sku.Pp),
+				Wp:       utils.Price(sku.Wp),
+				Rp:       utils.Price(sku.Rp),
+				Stock:    sku.Stock,
+				Number:   sku.Number,
+			})
+		}
+
+		data = append(data, one)
 	}
 
 	return &meet.GoodsListRes{
@@ -85,13 +110,19 @@ func (s Goods) List(req *meet.GoodsListReq) (*meet.GoodsListRes, error) {
 
 // Store 新增商品
 func (s Goods) Store(req *meet.GoodsStoreReq) (*meet.GoodsStoreRes, error) {
+	m := s.GetDao().Good
+	exist, err := m.WithContext(s.Ctx).Where(m.Title.Eq(req.Title), m.DeletedAt.Eq(0)).First()
+	if err = dbcheck.DbError(err); err != nil {
+		return nil, s.PushErr(err)
+	}
 
-	skuAttrs, _ := json.Marshal(req.SkuAttrs)
-	err := s.GetDao().Good.WithContext(s.Ctx).Create(&model.Good{
-		Title:    req.Title,
-		AsTitle:  req.AsTitle,
-		Code:     req.Code,
-		SkuAttrs: string(skuAttrs),
+	if exist != nil {
+		return nil, s.ParamErr("商品已存在")
+	}
+
+	err = m.WithContext(s.Ctx).Create(&model.Good{
+		Title:   req.Title,
+		AsTitle: req.AsTitle,
 	})
 	if err != nil {
 		return nil, s.PushErr(err)
@@ -102,7 +133,42 @@ func (s Goods) Store(req *meet.GoodsStoreReq) (*meet.GoodsStoreRes, error) {
 
 // Update 更新商品
 func (s Goods) Update(req *meet.GoodsUpdateReq) (*meet.GoodsUpdateRes, error) {
-	//TODO 实现业务
+	id := utils.StrToLongNumId(req.Id)
+
+	m := s.GetDao().Good
+	exist, err := m.WithContext(s.Ctx).Where(m.Title.Eq(req.Title), m.DeletedAt.Eq(0), m.ID.Neq(id)).First()
+	if err = dbcheck.DbError(err); err != nil {
+		return nil, s.PushErr(err)
+	}
+
+	if exist != nil {
+		return nil, s.ParamErr("商品已存在")
+	}
+
+	goods, err := m.WithContext(s.Ctx).Where(m.ID.Eq(id)).First()
+	if err = dbcheck.DbError(err); err != nil {
+		return nil, s.PushErr(err)
+	}
+
+	if goods == nil {
+		return nil, s.ParamErr("商品不存在")
+	}
+
+	var up []field.AssignExpr
+	if goods.Title != req.Title {
+		up = append(up, m.Title.Value(req.Title))
+	}
+	if goods.AsTitle != req.AsTitle {
+		up = append(up, m.AsTitle.Value(req.AsTitle))
+	}
+
+	if len(up) > 0 {
+		_, err = m.WithContext(s.Ctx).Where(m.ID.Eq(goods.ID)).UpdateSimple(up...)
+		if err != nil {
+			return nil, s.PushErr(err)
+		}
+	}
+
 	return &meet.GoodsUpdateRes{}, nil
 }
 

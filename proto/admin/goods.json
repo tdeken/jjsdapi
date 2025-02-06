@@ -31,16 +31,24 @@
               {"name": "title", "class": "string", "desc": "客户名称"},
               {"name": "as_title", "class": "string", "desc": "商品别名"},
               {"name": "sku_num", "class": "int64", "desc": "可售商品数量"},
-              {"name": "code", "class": "string", "desc": "商品编号"},
-              {"name": "created_date", "class": "string", "desc": "创建时间"},
-              {"name": "sku_attrs", "class": "[][]?Attr", "desc": "商品sku属性"}
+              {"name": "updated_date", "class": "string", "desc": "更新时间"},
+              {"name": "goods_skus", "class": "[]?GoodsSku", "desc": "可售商品"}
             ],
             "messages": [
               {
-                "name": "Attr",
+                "name": "GoodsSku",
                 "fields": [
-                  {"name": "mark", "class": "string", "desc": "属性", "validate": "required"},
-                  {"name": "show_type", "class": "int32", "desc": "展示方式(1-不展示，2带括号，3-不带括号)", "validate": "oneof=1 2 3"}
+                  {"name": "id", "class": "string", "desc": "商品skuID"},
+                  {"name": "name", "class": "string", "desc": "销售商品名称"},
+                  {"name": "capacity", "class": "string", "desc": "商品容量"},
+                  {"name": "remark", "class": "string", "desc": "商品备注"},
+                  {"name": "format", "class": "string", "desc": "规格"},
+                  {"name": "unit", "class": "string", "desc": "单位"},
+                  {"name": "pp", "class": "string", "desc": "采购价"},
+                  {"name": "wp", "class": "string", "desc": "批发价"},
+                  {"name": "rp", "class": "string", "desc": "零售价"},
+                  {"name": "stock", "class": "int64", "desc": "库存"},
+                  {"name": "number", "class": "string", "desc": "商品编号"}
                 ]
               }
             ]
@@ -56,18 +64,7 @@
       "req": {
         "fields": [
           {"name": "title", "class": "string", "desc": "客户名称", "validate": "trim,required"},
-          {"name": "as_title", "class": "string", "desc": "商品别名", "validate": "trim"},
-          {"name": "code", "class": "string", "desc": "商品别名", "validate": "trim"},
-          {"name": "sku_attrs", "class": "[][]?Attr", "desc": "商品sku属性", "validate": "required,give"}
-        ],
-        "messages": [
-          {
-            "name": "Attr",
-            "fields": [
-              {"name": "mark", "class": "string", "desc": "属性", "validate": "required"},
-              {"name": "show_type", "class": "int32", "desc": "展示方式(1-不展示，2带括号，3-不带括号)", "validate": "oneof=1 2 3"}
-            ]
-          }
+          {"name": "as_title", "class": "string", "desc": "商品别名", "validate": "trim"}
         ]
       },
       "res": {}
@@ -81,26 +78,7 @@
         "fields": [
           {"name": "id", "class": "string", "desc": "商品id", "validate": "trim,required"},
           {"name": "title", "class": "string", "desc": "客户名称", "validate": "trim,required"},
-          {"name": "as_title", "class": "string", "desc": "商品别名", "validate": "trim"},
-          {"name": "code", "class": "string", "desc": "商品别名", "validate": "trim"},
-          {"name": "sku_attrs", "class": "[]?Attrs", "desc": "商品sku属性", "validate": "required,give"}
-        ],
-        "messages": [
-          {
-            "name": "Attrs",
-            "fields": [
-              {"name": "attrs", "class": "[]?Attr", "desc": "属性集合", "validate": "required,give"}
-            ],
-            "messages": [
-              {
-                "name": "Attr",
-                "fields": [
-                  {"name": "mark", "class": "string", "desc": "属性", "validate": "required"},
-                  {"name": "show_type", "class": "int32", "desc": "展示方式(1-不展示，2带括号，3-不带括号)", "validate": "oneof=1 2 3"}
-                ]
-              }
-            ]
-          }
+          {"name": "as_title", "class": "string", "desc": "商品别名", "validate": "trim"}
         ]
       },
       "res": {}

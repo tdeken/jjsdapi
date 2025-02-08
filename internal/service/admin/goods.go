@@ -10,6 +10,7 @@ import (
 	"jjsdapi/internal/utils"
 	"jjsdapi/internal/utils/dbcheck"
 	"jjsdapi/internal/utils/timez"
+	"time"
 )
 
 type Goods struct {
@@ -174,6 +175,19 @@ func (s Goods) Update(req *meet.GoodsUpdateReq) (*meet.GoodsUpdateRes, error) {
 
 // Destroy 删除商品
 func (s Goods) Destroy(req *meet.GoodsDestroyReq) (*meet.GoodsDestroyRes, error) {
-	//TODO 实现业务
+	id := utils.StrToLongNumId(req.Id)
+	m := s.GetDao().Good
+	goods, err := m.WithContext(s.Ctx).Where(m.ID.Eq(id)).First()
+	if err = dbcheck.DbError(err); err != nil {
+		return nil, s.PushErr(err)
+	}
+
+	if goods != nil && goods.DeletedAt == 0 {
+		_, err = m.WithContext(s.Ctx).Where(m.ID.Eq(id)).UpdateSimple(m.DeletedAt.Value(time.Now().Unix()))
+		if err != nil {
+			return nil, s.PushErr(err)
+		}
+	}
+
 	return &meet.GoodsDestroyRes{}, nil
 }

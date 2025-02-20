@@ -53,3 +53,51 @@ func (s Goods) Destroy(ctx *fiber.Ctx) (e error) {
 	res, err := s.getDep(ctx).Destroy(form)
 	return result.Json(ctx, res, err)
 }
+
+// SelectInfo 表单要选择的数据
+// @Router /admin/goods/select-info [POST]
+func (s Goods) SelectInfo(ctx *fiber.Ctx) (e error) {
+	var form = &meet.GoodsSelectInfoReq{}
+	if err := s.ValidateRequest(ctx, form); err != nil {
+		return result.Json(ctx, nil, err)
+	}
+
+	res, err := s.getDep(ctx).SelectInfo(form)
+	return result.Json(ctx, res, err)
+}
+
+// SkuStore 创建销售品
+// @Router /admin/goods/sku-store [POST]
+func (s Goods) SkuStore(ctx *fiber.Ctx) (e error) {
+	var form = &meet.GoodsSkuStoreReq{}
+	if err := s.ValidateRequest(ctx, form); err != nil {
+		return result.Json(ctx, nil, err)
+	}
+
+	res, err := s.getDep(ctx).SkuStore(form)
+	return result.Json(ctx, res, err)
+}
+
+// SkuUpdate 更新销售品
+// @Router /admin/goods/sku-update [POST]
+func (s Goods) SkuUpdate(ctx *fiber.Ctx) (e error) {
+	var form = &meet.GoodsSkuUpdateReq{}
+	if err := s.ValidateRequest(ctx, form); err != nil {
+		return result.Json(ctx, nil, err)
+	}
+
+	res, err := s.getDep(ctx).SkuUpdate(form)
+	return result.Json(ctx, res, err)
+}
+
+// SkuDestroy 删除销售品
+// @Router /admin/goods/sku-destroy [POST]
+func (s Goods) SkuDestroy(ctx *fiber.Ctx) (e error) {
+	var form = &meet.GoodsSkuDestroyReq{}
+	if err := s.ValidateRequest(ctx, form); err != nil {
+		return result.Json(ctx, nil, err)
+	}
+
+	res, err := s.getDep(ctx).SkuDestroy(form)
+	return result.Json(ctx, res, err)
+}

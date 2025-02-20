@@ -32,6 +32,7 @@ func newGoodsSku(db *gorm.DB, opts ...gen.DOOption) goodsSku {
 	_goodsSku.UpdatedAt = field.NewInt64(tableName, "updated_at")
 	_goodsSku.DeletedAt = field.NewInt64(tableName, "deleted_at")
 	_goodsSku.GoodsID = field.NewInt64(tableName, "goods_id")
+	_goodsSku.Mark = field.NewString(tableName, "mark")
 	_goodsSku.Capacity = field.NewString(tableName, "capacity")
 	_goodsSku.Remark = field.NewString(tableName, "remark")
 	_goodsSku.Format = field.NewString(tableName, "format")
@@ -56,6 +57,7 @@ type goodsSku struct {
 	UpdatedAt field.Int64
 	DeletedAt field.Int64
 	GoodsID   field.Int64   // 商品id
+	Mark      field.String  // 可售商品唯一标识
 	Capacity  field.String  // 商品重量
 	Remark    field.String  // 商品名称备注
 	Format    field.String  // 商品规格
@@ -86,6 +88,7 @@ func (g *goodsSku) updateTableName(table string) *goodsSku {
 	g.UpdatedAt = field.NewInt64(table, "updated_at")
 	g.DeletedAt = field.NewInt64(table, "deleted_at")
 	g.GoodsID = field.NewInt64(table, "goods_id")
+	g.Mark = field.NewString(table, "mark")
 	g.Capacity = field.NewString(table, "capacity")
 	g.Remark = field.NewString(table, "remark")
 	g.Format = field.NewString(table, "format")
@@ -119,12 +122,13 @@ func (g *goodsSku) GetFieldByName(fieldName string) (field.OrderExpr, bool) {
 }
 
 func (g *goodsSku) fillFieldMap() {
-	g.fieldMap = make(map[string]field.Expr, 14)
+	g.fieldMap = make(map[string]field.Expr, 15)
 	g.fieldMap["id"] = g.ID
 	g.fieldMap["created_at"] = g.CreatedAt
 	g.fieldMap["updated_at"] = g.UpdatedAt
 	g.fieldMap["deleted_at"] = g.DeletedAt
 	g.fieldMap["goods_id"] = g.GoodsID
+	g.fieldMap["mark"] = g.Mark
 	g.fieldMap["capacity"] = g.Capacity
 	g.fieldMap["remark"] = g.Remark
 	g.fieldMap["format"] = g.Format

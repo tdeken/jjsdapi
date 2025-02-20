@@ -1,6 +1,10 @@
 package utils
 
-import "strconv"
+import (
+	"crypto/md5"
+	"encoding/hex"
+	"strconv"
+)
 
 // Ternary 三元运算
 func Ternary[T any](cond bool, t, f T) T {
@@ -45,4 +49,19 @@ func LongNumIdToStr(v int64) string {
 
 func Price(v float64) string {
 	return strconv.FormatFloat(v, 'f', 2, 64)
+}
+
+func PriceNumber(v string) float64 {
+	val, _ := strconv.ParseFloat(v, 64)
+	return val
+}
+
+func Md5Str(val []byte) (str string, err error) {
+	hash := md5.New()
+	_, err = hash.Write(val)
+	if err != nil {
+		return
+	}
+	str = hex.EncodeToString(hash.Sum(nil))
+	return
 }

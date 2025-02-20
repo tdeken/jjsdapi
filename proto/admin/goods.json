@@ -39,6 +39,7 @@
                 "name": "GoodsSku",
                 "fields": [
                   {"name": "id", "class": "string", "desc": "商品skuID"},
+                  {"name": "goods_id", "class": "string", "desc": "商品ID"},
                   {"name": "name", "class": "string", "desc": "销售商品名称"},
                   {"name": "capacity", "class": "string", "desc": "商品容量"},
                   {"name": "remark", "class": "string", "desc": "商品备注"},
@@ -86,6 +87,82 @@
     {
       "name": "Destroy",
       "desc": "删除商品",
+      "method": "POST",
+      "mid_type": "admin_jwt",
+      "req": {
+        "fields": [
+          {"name": "id", "class": "string", "desc": "商品id", "validate": "trim,required"}
+        ]
+      },
+      "res": {}
+    },
+    {
+      "name": "SelectInfo",
+      "desc": "表单要选择的数据",
+      "method": "GET",
+      "mid_type": "admin_jwt",
+      "req": {},
+      "res": {
+        "fields": [
+          {"name": "format", "class": "[]?One", "desc": "商品规格"},
+          {"name": "unit", "class": "[]?One", "desc": "单位"}
+        ],
+        "messages": [
+          {
+            "name": "One",
+            "fields": [
+              {"name": "label", "class": "string", "desc": "标签"},
+              {"name": "value", "class": "string", "desc": "值"}
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "SkuStore",
+      "desc": "创建销售品",
+      "method": "POST",
+      "mid_type": "admin_jwt",
+      "req": {
+        "fields": [
+          {"name": "goods_id", "class": "string", "desc": "商品id", "validate": "trim,required"},
+          {"name": "capacity", "class": "string", "desc": "商品重量", "validate": "trim"},
+          {"name": "remark", "class": "string", "desc": "商品名称备注", "validate": "trim"},
+          {"name": "format", "class": "string", "desc": "商品规格"},
+          {"name": "unit", "class": "string", "desc": "单位"},
+          {"name": "pp", "class": "string", "desc": "采购价"},
+          {"name": "wp", "class": "string", "desc": "批发价"},
+          {"name": "rp", "class": "string", "desc": "零售价"},
+          {"name": "stock", "class": "int64", "desc": "库存"},
+          {"name": "number", "class": "string", "desc": "商品编码", "validate": "trim"}
+        ]
+      },
+      "res": {}
+    },
+    {
+      "name": "SkuUpdate",
+      "desc": "更新销售品",
+      "method": "POST",
+      "mid_type": "admin_jwt",
+      "req": {
+        "fields": [
+          {"name": "id", "class": "string", "desc": "商品id", "validate": "trim,required"},
+          {"name": "capacity", "class": "string", "desc": "商品重量", "validate": "trim"},
+          {"name": "remark", "class": "string", "desc": "商品名称备注", "validate": "trim"},
+          {"name": "format", "class": "string", "desc": "商品规格"},
+          {"name": "unit", "class": "string", "desc": "单位"},
+          {"name": "pp", "class": "string", "desc": "采购价"},
+          {"name": "wp", "class": "string", "desc": "批发价"},
+          {"name": "rp", "class": "string", "desc": "零售价"},
+          {"name": "stock", "class": "int64", "desc": "库存"},
+          {"name": "number", "class": "string", "desc": "商品编码", "validate": "trim"}
+        ]
+      },
+      "res": {}
+    },
+    {
+      "name": "SkuDestroy",
+      "desc": "删除销售品",
       "method": "POST",
       "mid_type": "admin_jwt",
       "req": {

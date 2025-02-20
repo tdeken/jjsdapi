@@ -96,6 +96,10 @@ func (s Goods) Register() []action.Action {
 		action.NewAction("POST", s.Store, action.UseMidType("admin_jwt")),
 		action.NewAction("POST", s.Update, action.UseMidType("admin_jwt")),
 		action.NewAction("POST", s.Destroy, action.UseMidType("admin_jwt")),
+		action.NewAction("GET", s.SelectInfo, action.UseMidType("admin_jwt")),
+		action.NewAction("POST", s.SkuStore, action.UseMidType("admin_jwt")),
+		action.NewAction("POST", s.SkuUpdate, action.UseMidType("admin_jwt")),
+		action.NewAction("POST", s.SkuDestroy, action.UseMidType("admin_jwt")),
 	}
 }
 

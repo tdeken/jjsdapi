@@ -11,17 +11,18 @@ type GoodsSku struct {
 	ID        int64   `gorm:"column:id;type:bigint;primaryKey;autoIncrement:true" json:"id"`
 	CreatedAt int64   `gorm:"column:created_at;type:bigint;not null;index:idx_created_at,priority:1" json:"created_at"`
 	UpdatedAt int64   `gorm:"column:updated_at;type:bigint;not null" json:"updated_at"`
-	DeletedAt int64   `gorm:"column:deleted_at;type:bigint;not null;uniqueIndex:uniq_title_deleted_at,priority:2" json:"deleted_at"`
-	GoodsID   int64   `gorm:"column:goods_id;type:bigint;not null;index:idx_goods_id,priority:1;comment:商品id" json:"goods_id"`                     // 商品id
-	Capacity  string  `gorm:"column:capacity;type:varchar(32);not null;uniqueIndex:uniq_title_deleted_at,priority:1;comment:商品重量" json:"capacity"` // 商品重量
-	Remark    string  `gorm:"column:remark;type:varchar(32);not null;comment:商品名称备注" json:"remark"`                                                // 商品名称备注
-	Format    string  `gorm:"column:format;type:varchar(10);not null;comment:商品规格" json:"format"`                                                  // 商品规格
-	Unit      string  `gorm:"column:unit;type:varchar(5);not null;comment:单位" json:"unit"`                                                         // 单位
-	Pp        float64 `gorm:"column:pp;type:decimal(6,2);not null;default:0.00;comment:采购价" json:"pp"`                                             // 采购价
-	Wp        float64 `gorm:"column:wp;type:decimal(6,2);not null;default:0.00;comment:批发价" json:"wp"`                                             // 批发价
-	Rp        float64 `gorm:"column:rp;type:decimal(6,2);not null;default:0.00;comment:零售价" json:"rp"`                                             // 零售价
-	Stock     int64   `gorm:"column:stock;type:bigint;not null;comment:库存" json:"stock"`                                                           // 库存
-	Number    string  `gorm:"column:number;type:varchar(32);not null;comment:商品编码" json:"number"`                                                  // 商品编码
+	DeletedAt int64   `gorm:"column:deleted_at;type:bigint;not null;uniqueIndex:uniq_mark_deleted_at,priority:2" json:"deleted_at"`
+	GoodsID   int64   `gorm:"column:goods_id;type:bigint;not null;index:idx_goods_id,priority:1;comment:商品id" json:"goods_id"`                // 商品id
+	Mark      string  `gorm:"column:mark;type:varchar(32);not null;uniqueIndex:uniq_mark_deleted_at,priority:1;comment:可售商品唯一标识" json:"mark"` // 可售商品唯一标识
+	Capacity  string  `gorm:"column:capacity;type:varchar(32);not null;comment:商品重量" json:"capacity"`                                         // 商品重量
+	Remark    string  `gorm:"column:remark;type:varchar(32);not null;comment:商品名称备注" json:"remark"`                                           // 商品名称备注
+	Format    string  `gorm:"column:format;type:varchar(10);not null;comment:商品规格" json:"format"`                                             // 商品规格
+	Unit      string  `gorm:"column:unit;type:varchar(5);not null;comment:单位" json:"unit"`                                                    // 单位
+	Pp        float64 `gorm:"column:pp;type:decimal(6,2);not null;default:0.00;comment:采购价" json:"pp"`                                        // 采购价
+	Wp        float64 `gorm:"column:wp;type:decimal(6,2);not null;default:0.00;comment:批发价" json:"wp"`                                        // 批发价
+	Rp        float64 `gorm:"column:rp;type:decimal(6,2);not null;default:0.00;comment:零售价" json:"rp"`                                        // 零售价
+	Stock     int64   `gorm:"column:stock;type:bigint;not null;comment:库存" json:"stock"`                                                      // 库存
+	Number    string  `gorm:"column:number;type:varchar(32);not null;comment:商品编码" json:"number"`                                             // 商品编码
 }
 
 // TableName GoodsSku's table name

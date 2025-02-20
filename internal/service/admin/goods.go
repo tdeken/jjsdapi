@@ -87,6 +87,7 @@ func (s Goods) List(req *meet.GoodsListReq) (*meet.GoodsListRes, error) {
 
 			one.GoodsSkus = append(one.GoodsSkus, &meet.GoodsListOneGoodsSku{
 				Id:       utils.LongNumIdToStr(sku.ID),
+				GoodsId:  one.Id,
 				Name:     name,
 				Capacity: sku.Capacity,
 				Remark:   sku.Remark,
@@ -190,4 +191,213 @@ func (s Goods) Destroy(req *meet.GoodsDestroyReq) (*meet.GoodsDestroyRes, error)
 	}
 
 	return &meet.GoodsDestroyRes{}, nil
+}
+
+// SelectInfo 表单要选择的数据
+func (s Goods) SelectInfo(req *meet.GoodsSelectInfoReq) (*meet.GoodsSelectInfoRes, error) {
+	var format = []*meet.GoodsSelectInfoOne{
+		{Label: "1*1", Value: "1*1"},
+		{Label: "1*2", Value: "1*2"},
+		{Label: "1*4", Value: "1*4"},
+		{Label: "1*6", Value: "1*6"},
+		{Label: "1*8", Value: "1*8"},
+		{Label: "1*10", Value: "1*10"},
+		{Label: "1*12", Value: "1*12"},
+		{Label: "1*15", Value: "1*15"},
+		{Label: "1*20", Value: "1*20"},
+		{Label: "1*24", Value: "1*24"},
+		{Label: "1*16", Value: "1*16"},
+		{Label: "1*40", Value: "1*40"},
+		{Label: "1*36", Value: "1*36"},
+		{Label: "1*2*20", Value: "1*2*20"},
+		{Label: "1*100", Value: "1*100"},
+		{Label: "1*50", Value: "1*50"},
+		{Label: "1*32", Value: "1*32"},
+		{Label: "1*30", Value: "1*30"},
+		{Label: "1*60", Value: "1*60"},
+		{Label: "1*80", Value: "1*80"},
+	}
+
+	var unit = []*meet.GoodsSelectInfoOne{
+		{Label: "件", Value: "件"},
+		{Label: "份", Value: "份"},
+		{Label: "箱", Value: "箱"},
+		{Label: "斤", Value: "斤"},
+		{Label: "瓶", Value: "瓶"},
+		{Label: "条", Value: "条"},
+		{Label: "包", Value: "包"},
+		{Label: "个", Value: "个"},
+		{Label: "袋", Value: "袋"},
+		{Label: "盒", Value: "盒"},
+		{Label: "捆", Value: "捆"},
+		{Label: "抽", Value: "抽"},
+		{Label: "提", Value: "提"},
+		{Label: "支", Value: "支"},
+		{Label: "捆", Value: "捆"},
+	}
+
+	return &meet.GoodsSelectInfoRes{
+		Format: format,
+		Unit:   unit,
+	}, nil
+}
+
+// SkuStore 创建销售品
+func (s Goods) SkuStore(req *meet.GoodsSkuStoreReq) (*meet.GoodsSkuStoreRes, error) {
+	goodsId := utils.StrToLongNumId(req.GoodsId)
+
+	val := fmt.Sprintf("%d_%s_%s_%s_%s", goodsId, req.Capacity, req.Remark, req.Format, req.Unit)
+	mark, err := utils.Md5Str([]byte(val))
+	if err != nil {
+		return nil, s.PushErr(err)
+	}
+
+	m := s.GetDao().GoodsSku
+	exist, err := m.WithContext(s.Ctx).Where(m.Mark.Eq(mark), m.DeletedAt.Eq(0)).First()
+	if err = dbcheck.DbError(err); err != nil {
+		return nil, s.PushErr(err)
+	}
+	if exist != nil {
+		return nil, s.ParamErr("销售品已存在")
+	}
+
+	err = m.WithContext(s.Ctx).Create(&model.GoodsSku{
+		GoodsID:  goodsId,
+		Mark:     mark,
+		Capacity: req.Capacity,
+		Remark:   req.Remark,
+		Format:   req.Format,
+		Unit:     req.Unit,
+		Pp:       utils.PriceNumber(req.Pp),
+		Wp:       utils.PriceNumber(req.Wp),
+		Rp:       utils.PriceNumber(req.Rp),
+		Stock:    req.Stock,
+		Number:   req.Number,
+	})
+
+	if err != nil {
+		return nil, s.PushErr(err)
+	}
+
+	goodsM := s.GetDao().Good
+	_, err = goodsM.WithContext(s.Ctx).Where(goodsM.ID.Eq(goodsId)).UpdateSimple(goodsM.UpdatedAt.Value(time.Now().Unix()))
+	if err != nil {
+		return nil, s.PushErr(err)
+	}
+
+	return &meet.GoodsSkuStoreRes{}, nil
+}
+
+// SkuUpdate 更新销售品
+func (s Goods) SkuUpdate(req *meet.GoodsSkuUpdateReq) (*meet.GoodsSkuUpdateRes, error) {
+	id := utils.StrToLongNumId(req.Id)
+	m := s.GetDao().GoodsSku
+	sku, err := m.WithContext(s.Ctx).Where(m.ID.Eq(id)).First()
+	if err = dbcheck.DbError(err); err != nil {
+		return nil, s.PushErr(err)
+	}
+	if sku == nil {
+		return nil, s.ParamErr("销售品不存在")
+	}
+
+	val := fmt.Sprintf("%d_%s_%s_%s_%s", sku.GoodsID, req.Capacity, req.Remark, req.Format, req.Unit)
+	mark, err := utils.Md5Str([]byte(val))
+	if err != nil {
+		return nil, s.PushErr(err)
+	}
+
+	exist, err := m.WithContext(s.Ctx).Where(m.Mark.Eq(mark), m.ID.Neq(sku.ID), m.DeletedAt.Eq(0)).First()
+	if err = dbcheck.DbError(err); err != nil {
+		return nil, s.PushErr(err)
+	}
+	if exist != nil {
+		return nil, s.ParamErr("销售品已存在")
+	}
+
+	pp := utils.PriceNumber(req.Pp)
+	wp := utils.PriceNumber(req.Wp)
+	rp := utils.PriceNumber(req.Rp)
+
+	var up []field.AssignExpr
+
+	if sku.Mark != mark {
+		up = append(up, m.Mark.Value(mark))
+	}
+
+	if sku.Capacity != req.Capacity {
+		up = append(up, m.Capacity.Value(req.Capacity))
+	}
+
+	if sku.Remark != req.Remark {
+		up = append(up, m.Remark.Value(req.Remark))
+	}
+
+	if sku.Format != req.Format {
+		up = append(up, m.Format.Value(req.Format))
+	}
+
+	if sku.Unit != req.Unit {
+		up = append(up, m.Unit.Value(req.Unit))
+	}
+
+	if sku.Pp != pp {
+		up = append(up, m.Pp.Value(pp))
+	}
+
+	if sku.Wp != wp {
+		up = append(up, m.Wp.Value(wp))
+	}
+
+	if sku.Rp != rp {
+		up = append(up, m.Rp.Value(rp))
+	}
+
+	if sku.Stock != req.Stock {
+		up = append(up, m.Stock.Value(req.Stock))
+	}
+
+	if sku.Number != req.Number {
+		up = append(up, m.Number.Value(req.Number))
+	}
+
+	if len(up) != 0 {
+		_, err = m.WithContext(s.Ctx).Where(m.ID.Eq(sku.ID)).UpdateSimple(up...)
+		if err != nil {
+			return nil, s.PushErr(err)
+		}
+
+		goodsM := s.GetDao().Good
+		_, err = goodsM.WithContext(s.Ctx).Where(goodsM.ID.Eq(sku.GoodsID)).UpdateSimple(goodsM.UpdatedAt.Value(time.Now().Unix()))
+		if err != nil {
+			return nil, s.PushErr(err)
+		}
+	}
+
+	return &meet.GoodsSkuUpdateRes{}, nil
+}
+
+// SkuDestroy 删除销售品
+func (s Goods) SkuDestroy(req *meet.GoodsSkuDestroyReq) (*meet.GoodsSkuDestroyRes, error) {
+	id := utils.StrToLongNumId(req.Id)
+
+	m := s.GetDao().GoodsSku
+	sku, err := m.WithContext(s.Ctx).Where(m.ID.Eq(id), m.DeletedAt.Eq(0)).First()
+	if err = dbcheck.DbError(err); err != nil {
+		return nil, s.PushErr(err)
+	}
+
+	if sku != nil {
+		_, err = m.WithContext(s.Ctx).Where(m.ID.Eq(sku.ID)).UpdateSimple(m.DeletedAt.Value(time.Now().Unix()))
+		if err != nil {
+			return nil, s.PushErr(err)
+		}
+
+		goodsM := s.GetDao().Good
+		_, err = goodsM.WithContext(s.Ctx).Where(goodsM.ID.Eq(sku.GoodsID)).UpdateSimple(goodsM.UpdatedAt.Value(time.Now().Unix()))
+		if err != nil {
+			return nil, s.PushErr(err)
+		}
+	}
+
+	return &meet.GoodsSkuDestroyRes{}, nil
 }

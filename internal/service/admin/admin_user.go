@@ -25,7 +25,7 @@ func (s AdminUser) Login(req *meet.AdminUserLoginReq) (*meet.AdminUserLoginRes, 
 		return nil, s.PushErr(err)
 	}
 
-	if user == nil || user.Password != req.Password {
+	if user == nil || user.Password != utils.Sha1String(utils.Sha1String(req.Password)+user.Username) {
 		return nil, code.AdminUserLoginErr
 	}
 

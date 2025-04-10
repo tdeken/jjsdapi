@@ -2,6 +2,7 @@ package utils
 
 import (
 	"crypto/md5"
+	"crypto/sha1"
 	"encoding/hex"
 	"strconv"
 )
@@ -64,4 +65,13 @@ func Md5Str(val []byte) (str string, err error) {
 	}
 	str = hex.EncodeToString(hash.Sum(nil))
 	return
+}
+
+// Sha1String sha1字符串
+func Sha1String(v string) string {
+	hash := sha1.New()
+	hash.Write([]byte(v))
+	b := hash.Sum(nil)
+
+	return hex.EncodeToString(b)
 }
